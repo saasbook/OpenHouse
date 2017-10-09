@@ -1,3 +1,3 @@
-<a href="https://codeclimate.com/github/codeclimate/codeclimate">
-    <img src="https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg" />
+<a href="https://codeclimate.com/github/jjeremydiaz/OpenHouse">
+    <img src="https://codeclimate.com/github/jjeremydiaz/OpenHouse/badges/gpa.svg" />
 </a>
