@@ -7,7 +7,7 @@
 
 <h2>OpenHouse</h2>
 Abstractly speaking, the clients want to dynamically match any available space with local demand for activities. 
-The overall aim is to reduce rent and revolutionize housing affordability.
+The overall aim is to reduce rent and revolutionize housing affordability by optimizing residential space.
 <br>
 To do this, we try to create an app that allows rental advertisement of available space ("OpenHouse") to be matched with demands to use those spaces. <br>
 
