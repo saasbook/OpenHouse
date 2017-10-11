@@ -19,6 +19,11 @@ To do this, we try to create an app that allows rental advertisement of availabl
     <li>Online payment system</li>
 </ul>
 
+<h3>Heroku Link</h3>
+http://openhouse-1.herokuapp.com/
+
+<h3>Pivotal Tracker</h3>
+https://www.pivotaltracker.com/n/projects/2117895
 
 <h3>Screencasts</h3>
 
