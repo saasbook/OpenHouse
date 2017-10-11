@@ -7,21 +7,3 @@ development:
   host: localhost
   username: dev
   password: devpass
-
-test:
-  # this won't work 
-  adapter: postgresql
-  encoding: SQL_ASCII
-  database: openhouse_test
-  pool: 5
-  username: test
-  password:
-
-production:
-  # this won't work 
-  adapter: postgresql
-  encoding: SQL_ASCII
-  database: openhouse_production
-  pool: 5
-  username: production
-  password:
