@@ -11,8 +11,7 @@ The overall aim is to reduce rent and revolutionize housing affordability.
 <br>
 To do this, we try to create an app that allows rental advertisement of available space ("OpenHouse") to be matched with demands to use those spaces. <br>
 
-
-The app should support:
+<br>The app should support:
 <ul>
     <li>Account creation</li>
     <li>Messaging app, to help support communication between rentor and renter</li>
