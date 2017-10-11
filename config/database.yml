@@ -1,28 +1,27 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
-default: &default
+development:
   adapter: postgresql
   pool: 5
-  timeout: 5000
+  # these are our new parameters
+  encoding: SQL_ASCII
+  database: openhouse_development
+  host: localhost
+  username: dev
+  password: devpass
 
-development:
-  <<: *default
-  database: db/development.postgresql
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test: &test
-  <<: *default
-  database: db/test.postgresql
+test:
+  # this won't work 
+  adapter: postgresql
+  encoding: SQL_ASCII
+  database: openhouse_test
+  pool: 5
+  username: test
+  password:
 
 production:
-  <<: *default
-  database: db/production.postgresql
-
-cucumber:
-  <<: *test
+  # this won't work 
+  adapter: postgresql
+  encoding: SQL_ASCII
+  database: openhouse_production
+  pool: 5
+  username: production
+  password:
