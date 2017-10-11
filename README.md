@@ -11,9 +11,9 @@ Helpful Links: <br>
 Abstractly speaking, the clients want to dynamically match any available space with local demand for activities. 
 The overall aim is to reduce rent and revolutionize housing affordability.
 
-To do this, we try to create an app that allows rental advertisement of available space ("OpenHouse") to be matched with demands to use those spaces.
-The app should support:
-    Account creation
-    Messaging app, to help support communication between rentor and renter
-    Database for numerous and various rentals
-    Online payment system
+To do this, we try to create an app that allows rental advertisement of available space ("OpenHouse") to be matched with demands to use those spaces. <br>
+The app should support: <br>
+    Account creation <br>
+    Messaging app, to help support communication between rentor and renter <br>
+    Database for numerous and various rentals <br>
+    Online payment system <br>
