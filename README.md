@@ -2,6 +2,8 @@
     <img src="https://codeclimate.com/github/jjeremydiaz/OpenHouse/badges/gpa.svg" />
 </a>
 
+<a href="https://codeclimate.com/github/jjeremydiaz/OpenHouse/coverage"><img src="https://codeclimate.com/github/jjeremydiaz/OpenHouse/badges/coverage.svg" /></a>
+
 [![Build Status](https://travis-ci.org/jjeremydiaz/OpenHouse.svg?branch=master)](https://travis-ci.org/jjeremydiaz/OpenHouse)
 
 Helpful Links: <br>
@@ -17,3 +19,10 @@ The app should support: <br>
 &nbsp;&nbsp;&nbsp;&nbsp; Messaging app, to help support communication between rentor and renter <br>
 &nbsp;&nbsp;&nbsp;&nbsp; Database for numerous and various rentals <br>
 &nbsp;&nbsp;&nbsp;&nbsp; Online payment system <br>
+
+<br>
+*Screencasts*
+Jared Ryan [link](https://youtu.be/HhS8nJyHy0M)
+Jeremy Diaz [link](https://www.youtube.com/watch?v=VkJ3PSCxS-Y&feature=youtu.be&hd=1)
+Jemal Aytjanova [link](https://youtu.be/PjTpubjJ5Eo)
+Vinsen Vilano [link](https://www.youtube.com/watch?v=S9H3EdSkTdg)
