@@ -19,12 +19,6 @@ To do this, we try to create an app that allows rental advertisement of availabl
     <li>Online payment system</li>
 </ul>
 
-<h3>Heroku Link</h3>
-http://openhouse-1.herokuapp.com/
-
-<h3>Pivotal Tracker</h3>
-https://www.pivotaltracker.com/n/projects/2117895
-
 <h3>Screencasts</h3>
 
 Jared Ryan [link](https://youtu.be/HhS8nJyHy0M) <br>
@@ -35,4 +29,4 @@ Kyle Kovacs [link](https://youtu.be/42MVLRLWCq0) <br>
 
 <h3>Helpful Links</h3>
 <a href="https://www.pivotaltracker.com/n/projects/2117895"> Pivotal Tracker </a> <br>
-<a href="https://openhouse-1.herokuapp.com/"> Heroku App </a>
+<a href="http://openhouse-1.herokuapp.com/"> Heroku App </a>
