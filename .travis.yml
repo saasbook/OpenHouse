@@ -1,10 +1,10 @@
 language: ruby
 rvm:
  - 2.3.5
- - jruby
+ - jruby-9.0.5.0 
  - rbx-2
 services:
   - postgresql
 before_script:
   - psql -c 'create database openhousedev;' -U postgres
-  - psql -c 'create database openhousetest;' -U postgres
+  - psql -c 'create database openhousetest;' -U postgre
