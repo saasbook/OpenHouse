@@ -14,6 +14,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'simplecov'
+require 'factory_girl_rails'
 SimpleCov.start
 
 RSpec.configure do |config|
