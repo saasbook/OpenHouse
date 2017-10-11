@@ -21,7 +21,7 @@ The app should support: <br>
 &nbsp;&nbsp;&nbsp;&nbsp; Online payment system <br>
 
 <br>
-**Screencasts**
+__Screencasts__
 
 Jared Ryan [link](https://youtu.be/HhS8nJyHy0M) <br>
 Jeremy Diaz [link](https://www.youtube.com/watch?v=VkJ3PSCxS-Y&feature=youtu.be&hd=1) <br>
