@@ -7,8 +7,8 @@ default: &default
   
 development:
   <<: *default
-  database: openhouse_development
+  database: db/openhousedev
   
 test:
   <<: *default
-  database: openhouse_test
+  database: db/openhousetest
