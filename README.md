@@ -4,8 +4,8 @@
 
 [![Build Status](https://travis-ci.org/jjeremydiaz/OpenHouse.svg?branch=master)](https://travis-ci.org/jjeremydiaz/OpenHouse)
 
-Helpful Links:
-<a href="https://www.pivotaltracker.com/n/projects/2117895"> Pivotal Tracker </a>
+Helpful Links: <br>
+<a href="https://www.pivotaltracker.com/n/projects/2117895"> Pivotal Tracker </a> <br>
 <a href="https://openhouse-1.herokuapp.com/"> Heroku App </a>
 
 Abstractly speaking, the clients want to dynamically match any available space with local demand for activities. 
