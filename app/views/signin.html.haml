@@ -1,0 +1,13 @@
+%h1 Log In
+
+= form_tag index_path do
+
+  = label :user, :username, 'Username'
+  = text_field :username, 'username'
+
+  = label :user, :password, 'Password'
+  = text_field :password, 'password'
+
+  = submit_tag 'Log In'
+  
+= link_to 'Create New Account', new_user_path
