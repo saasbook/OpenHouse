@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   
-  resources :users
   # map '/' to be a redirect to '/users'
-  root :to => redirect('/users')
   
   # get 'same_director/:title' => 'movies#search', as: :same_director
   
@@ -61,6 +59,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
+  resources :users
   get '/', to: 'main#show', as: 'root'
   
 end
