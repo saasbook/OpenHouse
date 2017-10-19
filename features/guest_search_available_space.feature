@@ -10,7 +10,6 @@ Background: houses have been added to database
   | address                 | post_date |
   | 1 home drive, CA        | 25-Nov-1992  |
   | 2 home drive, VA        | 26-Oct-1984  |
-  | 
 Scenario: Search for a space
   When I follow "search"
   And my lcoation is "CA"
