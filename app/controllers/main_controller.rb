@@ -4,7 +4,7 @@ class MainController < ApplicationController
         if session[:username] != nil
             render 'main/show'
         else
-            redirect_to 'users/create'
+            redirect_to new_user_path
         end
     end
 end
