@@ -61,5 +61,6 @@ Rails.application.routes.draw do
   
   resources :users
   get '/', to: 'main#show', as: 'root'
+  get '/logout', to: 'main#logout', as: 'logout'
   
 end

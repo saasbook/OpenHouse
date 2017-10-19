@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+    def user_params
+        params.require(:user).permit(:username, :password, :name, :email, :credit_card_number, :address)
+    end
+
     def index
         redirect_to new_user_path
     end
@@ -7,7 +11,8 @@ class UsersController < ApplicationController
     end
     
     def create
-        @user = User.create!(params[:user])
+        session[:old_params] = params
+        @user = User.create!(user_params)
         flash[:notice] = "#{@user.username} was successfully created."
         # Should also log you in before redirecting
         session[:username] = @user.username
