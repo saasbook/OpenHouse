@@ -1,9 +1,6 @@
 class MainController < ApplicationController
     def show()
-        puts session[:username]  == nil
-        if session[:username] != nil
-            render 'main/show'
-        else
+        if session[:username] == nil
             redirect_to new_user_path
         end
     end
