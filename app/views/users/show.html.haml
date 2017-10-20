@@ -1,0 +1,7 @@
+%h1= "USER " + @user.username
+
+%p= @user.email
+%p= @user.address
+
+%br
+= link_to "Edit Profile", edit_user_path(User.where({username: session["username"]}).first.id)
