@@ -1,0 +1,25 @@
+%h1 Create New User
+
+= form_tag users_path do
+
+  = label :user, :username, 'Username'
+  = text_field :user, 'username'
+
+  = label :user, :password, 'Password'
+  = text_field :user, 'password'
+
+  = label :user, :name, 'Full Name'
+  = text_field :user, 'name'
+  
+  = label :user, :credit_card, 'Credit Card'
+  = text_field :user, 'credit_card_number'
+  
+  = label :user, :email, 'E-Mail'
+  = text_field :user, 'email'
+  
+  = label :user, :address, 'Address'
+  = text_field :user, 'address'
+
+  = submit_tag 'Submit'
+
+

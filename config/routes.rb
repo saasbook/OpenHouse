@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-
+  
+  # get 'same_director/:title' => 'movies#search', as: :same_director
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -54,4 +56,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  resources :users
+  get '/', to: 'main#show', as: 'root'
+  get '/logout', to: 'main#logout', as: 'logout'
+  get '/login', to: 'main#login_page', as: 'login_page'
+  post '/login', to: 'main#login', as: 'login'
+  
 end

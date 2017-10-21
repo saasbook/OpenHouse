@@ -1,0 +1,5 @@
+%h1 OpenHouse Homepage
+
+= link_to "View Profile", user_path(User.where({username: session["username"]}).first.id)
+%br
+= link_to 'Log Out', logout_path
