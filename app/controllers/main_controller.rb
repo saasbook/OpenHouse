@@ -4,9 +4,6 @@ class MainController < ApplicationController
     end
 
     def show
-        if not logged_in?
-            redirect_to login_page_path
-        end
     end
 
     def logout
