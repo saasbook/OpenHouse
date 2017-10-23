@@ -1,17 +1,31 @@
 class UsersController < ApplicationController
     def user_params
-        params.require(:user).permit(:username, :password, :name, :email, :credit_card_number, :address)
+        params.require(:user).permit(:email, :password, :street_address, :city, :state, :zip_code, :first_name, :last_name, :credit_card_number, :expiration_date, :cvv)
     end
 
     def new
     end
     
     def create
-        session[:old_params] = params
-        @user = User.create!(user_params)
-        flash[:notice] = "#{@user.username} was successfully created."
-        flash[:username] = params[:username]
-        session[:username] = @user.username
-        redirect_to login_path
+        if email_exists(params[:user][:email])
+            flash[:notice] = "An account with that e-mail address already exists."
+            redirect_to new_user_path
+        elsif not email_valid(params[:user][:email])
+            flash[:notice] = "Please enter a valid e-mail address."
+            redirect_to new_user_path
+        else
+            @user = User.create!(user_params)
+            flash[:notice] = "#{@user.email} was successfully created."
+            session[:email] = @user.email
+            redirect_to login_path
+        end
+    end
+
+    def email_exists(email)
+        User.find_by(email: email)
+    end
+
+    def email_valid(email)
+        return email =~ /[a-zA-Z_\.0-9]+@[a-zA-Z_\.0-9]+\.[a-zA-Z_\.0-9]+/
     end
 end
