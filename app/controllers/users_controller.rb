@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
-    def user_params
-        params.require(:user).permit(:email, :password, :street_address, :city, :state, :zip_code, :first_name, :last_name, :credit_card_number, :expiration_date, :cvv)
+    private def user_params
+        params.require(:user).permit(:email, :password, :street_address, :city, :state, :zip_code, :first_name, :last_name, :credit_card_number, :expiration_date, :cvv, :password_confirmation)
+    end
+
+    def show
+        @user = User.find(params[:id])
     end
 
     def new
+        @user = User.new
     end
     
     def create
@@ -21,11 +26,11 @@ class UsersController < ApplicationController
         end
     end
 
-    def email_exists(email)
+    private def email_exists(email)
         User.find_by(email: email)
     end
 
-    def email_valid(email)
+    private def email_valid(email)
         return email =~ /[a-zA-Z_\.0-9]+@[a-zA-Z_\.0-9]+\.[a-zA-Z_\.0-9]+/
     end
 end
