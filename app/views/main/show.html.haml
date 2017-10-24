@@ -1,4 +1,8 @@
 %h1 OpenHouse Homepage
+%p= flash[:notice] if flash[:notice]
 
-= link_to 'Log Out', logout_path, method: :delete
-= link_to 'Log In', login_path
+- if logged_in?
+    = link_to 'Edit Profile', edit_user_path
+    = link_to 'Log Out', logout_path, method: :delete
+- else
+    = link_to 'Log In', login_path

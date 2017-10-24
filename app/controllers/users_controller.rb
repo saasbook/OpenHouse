@@ -20,6 +20,10 @@ class UsersController < ApplicationController
             redirect_to login_path
         end
     end
+    
+    def edit
+        @user = current_user
+    end
 
     def email_exists(email)
         User.find_by(email: email)
@@ -29,6 +33,13 @@ class UsersController < ApplicationController
         return email =~ /[a-zA-Z_\.0-9]+@[a-zA-Z_\.0-9]+\.[a-zA-Z_\.0-9]+/
     end
 
+    def update
+        @user = current_user
+        @user.update_attributes!(user_params)
+        flash[:notice] = "Your account has been updated!"
+        redirect_to root_path
+        # redirect_to user_path
+    end
     #def authenticate(email, password)
     #    if email_exists
     #        User.find_by(email: email).password == password
@@ -38,3 +49,4 @@ class UsersController < ApplicationController
     #    end
     #end
 end
+

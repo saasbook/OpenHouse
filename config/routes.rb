@@ -58,10 +58,12 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  resources :users
+  
   get '/', to: 'main#show', as: 'root'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get 'sessions/new'
+  get '/users/edit', to: 'users#edit', as: 'edit_user'
+  resources :users, :except => [:edit]
 end
