@@ -34,6 +34,7 @@
   = text_field :user, 'cvv', :value=>@user.cvv
 
   = submit_tag 'Submit'
-  = button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
-  = link_to "Back to main page", root_path
+  
+= button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
+= link_to "Back to main page", root_path
 

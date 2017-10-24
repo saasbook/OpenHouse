@@ -35,7 +35,20 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        @user.update_attributes!(user_params)
+        # params[:user][:password] = @user.password
+        # @user.update_attributes(user_params)
+        @user.update_attribute(:email, user_params[:email])
+        @user.update_attribute(:street_address, user_params[:street_address])
+        @user.update_attribute(:city, user_params[:city])
+        @user.update_attribute(:state, user_params[:state])
+        @user.update_attribute(:zip_code, user_params[:zip_code])
+        @user.update_attribute(:first_name, user_params[:first_name])
+        @user.update_attribute(:last_name, user_params[:last_name])
+        @user.update_attribute(:credit_card_number, user_params[:credit_card_number])
+        @user.update_attribute(:expiration_date, user_params[:expiration_date])
+        @user.update_attribute(:cvv, user_params[:cvv])
+        @user.save
+        # @user.update_attributes!(:address => user_params[:address])
         flash[:notice] = "Your account has been updated!"
         redirect_to root_path
         # redirect_to user_path
