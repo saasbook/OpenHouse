@@ -40,6 +40,14 @@ class UsersController < ApplicationController
         redirect_to root_path
         # redirect_to user_path
     end
+    
+    def destroy
+        @user = current_user
+        log_out
+        @user.destroy
+        flash[:notice] = "Your account has been deleted."
+        redirect_to root_path
+    end
     #def authenticate(email, password)
     #    if email_exists
     #        User.find_by(email: email).password == password
