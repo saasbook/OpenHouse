@@ -20,3 +20,6 @@ after_script:
 before_install:
   - rvm install 2.3.5
   - rvm use 2.3.5
+branches:
+  only:
+  - /.*/
