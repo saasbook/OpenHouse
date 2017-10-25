@@ -17,8 +17,7 @@ ActiveRecord::Schema.define(version: 20171025194800) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
+    t.string "email"
     t.string "password"
     t.string "billing_street_address"
     t.string "billing_city"
@@ -27,9 +26,8 @@ ActiveRecord::Schema.define(version: 20171025194800) do
     t.string "first_name"
     t.string "last_name"
     t.string "credit_card_number"
-    t.string "encrypted_password", limit: 128
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token",     limit: 128
+    t.string "expiration_date"
+    t.string "cvv"
     t.string "password_digest"
     t.string "profile_picture"
     t.text   "personal_description"
@@ -40,8 +38,5 @@ ActiveRecord::Schema.define(version: 20171025194800) do
     t.string "house_picture"
     t.text   "house_description"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

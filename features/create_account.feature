@@ -14,20 +14,17 @@ Scenario: Human can create an account with an unused username
     When I follow "Log In"
     When I follow "Sign up now!"
     And I fill in "E-mail Address" with "dave101@gmail.com"
-    And I fill in "Password" with "1234"
+    And I fill in "Password" with "12345678"
     Then I press "Submit"
-    Then I should see "dave101"
-    And account with email "dave" should exist
+    Then I should see "dave101@gmail.com was successfully created."
+    And account with email "dave101@gmail.com" should exist
 
 Scenario: Human cannot create an account with a used username
-    Given account "Dave101" exists
-    And I am on the home page
-    When I follow "Create New Account"
-    And I fill in "Username" with "Dave101"
-    And I fill in "Password" with "12345"
-    And I fill in "Full Name" with "Dave Smith"
-    And I fill in "E-Mail" with "dave101@gmail.com"
-    And I fill in "Credit Card" with "12345678"
+    Given I am on the home page
+    When I follow "Log In"
+    When I follow "Sign up now!"
+    And I fill in "E-mail Address" with "aladdin@agrabah.com"
+    And I fill in "Password" with "12345678"
     Then I press "Submit"
-    Then I should see "Username Dave101 already taken."
-    And account "Dave101" should not exist
+    Then I should see "An account with that e-mail address already exists."
+    And account with email "aladdin@agrabah.com" should exist
