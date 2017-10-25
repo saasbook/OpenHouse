@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def user_params
-        params.require(:user).permit(:email, :password, :street_address, :city, :state, :zip_code, :first_name, :last_name, :credit_card_number, :expiration_date, :cvv)
+        params.require(:user).permit(:email, :password, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :first_name, :last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :profile_picture, :personal_description, :house_picture, :house_description)
     end
 
     def new
@@ -38,15 +38,23 @@ class UsersController < ApplicationController
         # params[:user][:password] = @user.password
         # @user.update_attributes(user_params)
         @user.update_attribute(:email, user_params[:email])
-        @user.update_attribute(:street_address, user_params[:street_address])
-        @user.update_attribute(:city, user_params[:city])
-        @user.update_attribute(:state, user_params[:state])
-        @user.update_attribute(:zip_code, user_params[:zip_code])
+        @user.update_attribute(:billing_street_address, user_params[:billing_street_address])
+        @user.update_attribute(:billing_city, user_params[:billing_city])
+        @user.update_attribute(:billing_state, user_params[:billing_state])
+        @user.update_attribute(:billing_zip_code, user_params[:billing_zip_code])
         @user.update_attribute(:first_name, user_params[:first_name])
         @user.update_attribute(:last_name, user_params[:last_name])
         @user.update_attribute(:credit_card_number, user_params[:credit_card_number])
         @user.update_attribute(:expiration_date, user_params[:expiration_date])
         @user.update_attribute(:cvv, user_params[:cvv])
+        @user.update_attribute(:home_street_address, user_params[:home_street_address])
+        @user.update_attribute(:home_city, user_params[:home_city])
+        @user.update_attribute(:home_state, user_params[:home_state])
+        @user.update_attribute(:home_zip_code, user_params[:home_zip_code])
+        @user.update_attribute(:profile_picture, user_params[:profile_picture])
+        @user.update_attribute(:personal_description, user_params[:personal_description])
+        @user.update_attribute(:house_picture, user_params[:house_picture])
+        @user.update_attribute(:house_description, user_params[:house_description])
         @user.save
         # @user.update_attributes!(:address => user_params[:address])
         flash[:notice] = "Your account has been updated!"
