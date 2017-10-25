@@ -17,18 +17,19 @@ ActiveRecord::Schema.define(version: 20171023051132) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
+    t.string "name"
+    t.string "username"
     t.string "password"
-    t.string "street_address"
-    t.string "city"
-    t.string "state"
-    t.string "zip_code"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "email"
+    t.text   "address"
     t.string "credit_card_number"
-    t.string "expiration_date"
-    t.string "cvv"
+    t.string "encrypted_password", limit: 128
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token",     limit: 128
     t.string "password_digest"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
