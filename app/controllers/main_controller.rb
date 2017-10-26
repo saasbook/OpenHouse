@@ -15,11 +15,4 @@ class MainController < ApplicationController
             redirect_to root_path
         end
     end
-
-    def login
-        if params[:username] != nil
-            session[:username] = params[:username]
-        end
-        redirect_to root_path
-    end
 end
