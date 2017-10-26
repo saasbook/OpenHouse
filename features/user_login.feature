@@ -11,29 +11,30 @@ Background: a user has been created in the database
 
 Scenario: Host can log in with correct credentials
     Given I am on the login page
-    And I enter my credentials
-    When I press the "Log In" button
+    And I fill in "Email" with "dave@gmail.com"
+    And I fill in "Password" with "12345678"
+    When I press "Log in" 
     Then I should be logged in as user with email "dave@gmail.com"
 
 Scenario: Host cannot log in with incorrect email
     Given I am on the login page
-    And I fill in "E-mail Address" with "jonathan@gmail.com"
-    When I press the "Log In" button
+    And I fill in "Email" with "jonathan@gmail.com"
+    When I press "Log in" 
     Then I should see an error message
     
 Scenario: Host cannot log in with incorrect password
     Given I am on the login page
     And I fill in "Password" with "12345679"
-    When I press the "Log In" button
+    When I press "Log in" 
     Then I should see an error message
 
 Scenario: Host cannot log in with incorrect email and password
     Given I am on the login page
-    And I fill in "E-mail Address" with "jonathan@gmail.com"
+    And I fill in "Email" with "jonathan@gmail.com"
     And I fill in "Password" with "12345679"
-    When I press the "Log In" button
+    When I press "Log in"
     Then I should see an error message
 
 Scenario: Host cannot log in if already logged in
     And I am on the home page
-    Then I should not see the option to log in
+    Then I should not see "Log In"

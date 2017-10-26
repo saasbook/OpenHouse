@@ -13,8 +13,3 @@ Then /account with email "(.*)" should( not)? exist/ do |e, should_not_exist|
   end
 end
 
-Given /the following accounts exist/ do |users_table|
-  users_table.hashes.each do |user|
-    User.create user
-  end
-end
