@@ -7,15 +7,16 @@ Feature: User Login
     
 Background: a user has been created in the database
     Given the following accounts exist:
-      | email          | password | billing_street_address | billing_city | billing_state | billing_zip_code | first_name | last_name | credit_card_number   | expiration_date | cvv |
-      | dave@gmail.com | 12345678 | 2700 Mars              | Berkeley     | California    | 94720            | Dave       | Schiller  | 12341234123412341234 | 6/22            | 511 |
+      | email          | password | street_address | city         | state         | zip_code | first_name | last_name | credit_card_number   | expiration_date | cvv |
+      | dave@gmail.com | 12345678 | 2700 Mars      | Berkeley     | California    | 94720    | Dave       | Schiller  | 12341234123412341234 | 6/22            | 511 |
 
 Scenario: Host can log in with correct credentials
     Given I am on the login page
     And I fill in "Email" with "dave@gmail.com"
     And I fill in "Password" with "12345678"
     When I press "Log in" 
-    Then I should be logged in as user with email "dave@gmail.com"
+    # Then I should be logged in as user with email "dave@gmail.com"
+    Then I should see "Edit Profile"
     And I should not see "Log In"
     And I should see "Log Out"
 
@@ -45,5 +46,8 @@ Scenario: Host cannot log in with incorrect email and password
     And I should not see "Log Out"
 
 Scenario: Host cannot log in if already logged in
-    And I am on the home page
+    Given I am on the login page
+    And I fill in "Email" with "dave@gmail.com"
+    And I fill in "Password" with "12345678"
+    When I press "Log in" 
     Then I should not see "Log In"
