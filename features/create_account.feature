@@ -9,7 +9,7 @@ Background: movies have been added to database
     | aladdin@agrabah.com     | 12341001 | Agrabah Dessert        | Agrabah      | Middle East    | 10101            | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 |
     | terminator@future.com   | password | 1234 Robots Factory    | New Berkeley | New California | 76767            | Terminator | T-800     | 2222222222222222   | 26-Oct-2017     | 222 |
 
-Scenario: Human can create an account with an unused username
+Scenario: Human can create an account with an unused email
     Given I am on the home page
     When I follow "Log In"
     When I follow "Sign up now!"
@@ -19,12 +19,42 @@ Scenario: Human can create an account with an unused username
     Then I should see "dave101@gmail.com was successfully created."
     And account with email "dave101@gmail.com" should exist
 
-Scenario: Human cannot create an account with a used username
+Scenario: Human cannot create an account with a used email
     Given I am on the home page
     When I follow "Log In"
     When I follow "Sign up now!"
     And I fill in "E-mail Address" with "aladdin@agrabah.com"
     And I fill in "Password" with "12345678"
     Then I press "Submit"
-    Then I should see "An account with that e-mail address already exists."
+    Then I should see "email has already been taken"
     And account with email "aladdin@agrabah.com" should exist
+
+Scenario: Human cannot create an account with a blank email
+    Given I am on the home page
+    When I follow "Log In"
+    When I follow "Sign up now!"
+    And I fill in "E-mail Address" with ""
+    And I fill in "Password" with "12345678"
+    Then I press "Submit"
+    Then I should see "email can't be blank"
+
+Scenario: Human cannot create an account with a short password
+    Given I am on the home page
+    When I follow "Log In"
+    When I follow "Sign up now!"
+    And I fill in "E-mail Address" with "aladdin@agrabah.com"
+    And I fill in "Password" with "1234"
+    Then I press "Submit"
+    Then I should see "password is too short"
+    And account with email "aladdin@agrabah.com" should not exist
+    
+Scenario: Multiple errors
+    Given I am on the home page
+    When I follow "Log In"
+    When I follow "Sign up now!"
+    And I fill in "Password" with "1234"
+    Then I press "Submit"
+    Then I should see "email can't be blank"
+    Then I should see "password is too short"
+
+  
