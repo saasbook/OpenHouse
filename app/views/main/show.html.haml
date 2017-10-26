@@ -1,15 +1,6 @@
 %h1 OpenHouse Homepage
 %p= flash[:notice] if flash[:notice]
 
-<br>
-%h3 Search for available homes near you
-= form_tag search_path do
-  = text_field :search, 'query'
-  = submit_tag 'Search'
-
-<br>
-<br>
-
 - if logged_in?
   = link_to 'Edit Profile', edit_user_path
   <br>
