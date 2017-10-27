@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   
   
   get '/', to: 'main#show', as: 'root'
+  get '/search', to: 'main#search', as: 'search'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

@@ -15,4 +15,14 @@ class MainController < ApplicationController
             redirect_to root_path
         end
     end
+    
+    def search
+        @query = params[:search][:query]
+        # if @query
+        #     @users = User.search(@query) # NOT YET IMPLEMENTED
+        # else
+        #     @users = User.all
+        # end
+        @users = User.all
+    end
 end
