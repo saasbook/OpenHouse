@@ -7,12 +7,12 @@ Feature: User Login
     
 Background: a user has been created in the database
     Given the following accounts exist:
-      | email          | password | street_address | city         | state         | zip_code | first_name | last_name | credit_card_number   | expiration_date | cvv |
-      | dave@gmail.com | 12345678 | 2700 Mars      | Berkeley     | California    | 94720    | Dave       | Schiller  | 12341234123412341234 | 6/22            | 511 |
+    | email                   | password | billing_street_address | billing_city | billing_state  | billing_zip_code | first_name | last_name | credit_card_number | expiration_date | cvv |
+    | aladdin@agrabah.com     | 12341001 | Agrabah Dessert        | Agrabah      | Middle East    | 10101            | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 |
 
 Scenario: Host can log in with correct credentials
     Given I am on the login page
-    And I fill in "Email" with "dave@gmail.com"
+    And I fill in "Email" with "aladdin@agrabah.com"
     And I fill in "Password" with "12345678"
     When I press "Log in" 
     # Then I should be logged in as user with email "dave@gmail.com"
@@ -47,7 +47,7 @@ Scenario: Host cannot log in with incorrect email and password
 
 Scenario: Host cannot log in if already logged in
     Given I am on the login page
-    And I fill in "Email" with "dave@gmail.com"
-    And I fill in "Password" with "12345678"
+    And I fill in "Email" with "aladdin@agrabah.com"
+    And I fill in "Password" with "12341001"
     When I press "Log in" 
     Then I should not see "Log In"
