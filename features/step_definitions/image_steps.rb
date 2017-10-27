@@ -3,6 +3,14 @@ When /^I choose an? (.*) to upload/ do |type|
     pending
 end
 
+Then /^I should see pictures of different houses/ do
+    pending
+end
+
+Then /^I should see more pictures/ do
+    pending
+end
+
 Then /^I should see an error with a message containing "([^"]+)"(?: and "([^"]+)")?/ do |message1, message2|
     pending
 end
