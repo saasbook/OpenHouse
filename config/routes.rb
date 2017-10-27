@@ -65,5 +65,6 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get 'sessions/new'
   get '/users/edit', to: 'users#edit', as: 'edit_user'
-  resources :users, :except => [:edit]
+  get '/users/show', to: 'users#show', as: 'show_user'
+  resources :users, :except => [:edit, :show]
 end
