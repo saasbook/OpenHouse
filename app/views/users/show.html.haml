@@ -1,14 +1,76 @@
-%h1= "USER " + @user.first_name + " " + @user.last_name
-
-%p= "EMAIL: " + @user.email
-
-%p Address:
-%ul 
-    %li 
-        = @user.billing_street_address 
-    %li 
-        = @user.billing_city + ", " + @user.billing_state + ", " + @user.billing_zip_code
+%h1= @user.first_name + " " + @user.last_name + "'s Profile"
 
 %br
+%p= "Email: " + @user.email
+%br
+%p Billing Address Information:
+%ul 
+    %li Street:
+        = @user.billing_street_address 
+    %li City:
+        = @user.billing_city
+    %li State:
+        = @user.billing_state
+    %li Zip Code:
+        = @user.billing_zip_code
+%br
+%p Credit Card Information
+%ul 
+    %li Number:
+        = @user.credit_card_number
+    %li Expiration Date:
+        = @user.expiration_date
+    %li CVV:
+        = @user.cvv
+    %li Zip Code:
+        = @user.billing_zip_code
+%br
+%br
 = link_to "Edit Profile", edit_user_path
-= link_to "Home", root_path
+%br
+= link_to "Back to Main Page", root_path
+
+
+
+%p= flash[:notice] if flash[:notice]
+%h1 Create Your Account
+<br>
+%h4 Enter your new account information below.
+= form_tag users_path do
+
+  = label :user, :email, 'E-mail Address'
+  = text_field :user, 'email'
+  <br>
+  = label :user, :password, 'Password'
+  = text_field :user, 'password'
+  <br>
+  <br>
+  %h4 Enter your billing information below.
+  = label :user, :billing_street_address, 'Billing Street Address'
+  = text_field :user, 'billing_street_address'
+  <br>
+  = label :user, :billing_city, 'Billing City'
+  = text_field :user, 'billing_city'
+  <br>
+  = label :user, :billing_state, 'Billing State'
+  = text_field :user, 'billing_state'
+  <br>
+  = label :user, :billing_zip_code, 'Billing Zip Code'
+  = text_field :user, 'billing_zip_code'
+  <br>
+  = label :user, :credit_card, 'Credit Card Number'
+  = text_field :user, 'credit_card_number'
+  <br>
+  = label :user, :first_name, 'First Name'
+  = text_field :user, 'first_name'
+  <br>
+  = label :user, :last_name, 'Last Name'
+  = text_field :user, 'last_name'
+  <br>
+  = label :user, :expiration_date, 'Expiration Date'
+  = text_field :user, 'expiration_date'
+  <br>
+  = label :user, :cvv, 'CVV'
+  = text_field :user, 'cvv'
+  <br>
+  <br>

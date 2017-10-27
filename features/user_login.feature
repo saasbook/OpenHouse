@@ -14,8 +14,7 @@ Scenario: Host can log in with correct credentials
     Given I am on the login page
     And I fill in "Email" with "aladdin@agrabah.com"
     And I fill in "Password" with "12341001"
-    When I press "Log in" 
-    # Then I should be logged in as user with email "dave@gmail.com"
+    When I press "Log In" 
     Then I should see "Edit Profile"
     And I should not see "Log In"
     And I should see "Log Out"
@@ -23,31 +22,31 @@ Scenario: Host can log in with correct credentials
 Scenario: Host cannot log in with incorrect email
     Given I am on the login page
     And I fill in "Email" with "jonathan@gmail.com"
-    When I press "Log in" 
+    When I press "Log In" 
     Then I should see an error message
-    And I should see "Log in"
+    And I should see "Log In"
     And I should not see "Log Out"
     
 Scenario: Host cannot log in with incorrect password
     Given I am on the login page
     And I fill in "Password" with "12345679"
-    When I press "Log in" 
+    When I press "Log In" 
     Then I should see an error message
-    And I should see "Log in"
+    And I should see "Log In"
     And I should not see "Log Out"
 
 Scenario: Host cannot log in with incorrect email and password
     Given I am on the login page
     And I fill in "Email" with "jonathan@gmail.com"
     And I fill in "Password" with "12345679"
-    When I press "Log in"
+    When I press "Log In"
     Then I should see "Invalid email/password combination"
-    And I should see "Log in"
+    And I should see "Log In"
     And I should not see "Log Out"
 
 Scenario: Host cannot log in if already logged in
     Given I am on the login page
     And I fill in "Email" with "aladdin@agrabah.com"
     And I fill in "Password" with "12341001"
-    When I press "Log in" 
+    When I press "Log In" 
     Then I should not see "Log In"

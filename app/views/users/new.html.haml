@@ -12,6 +12,12 @@
   <br>
   <br>
   %h4 Enter your billing information below.
+  = label :user, :first_name, 'First Name'
+  = text_field :user, 'first_name'
+  <br>
+  = label :user, :last_name, 'Last Name'
+  = text_field :user, 'last_name'
+  <br>
   = label :user, :billing_street_address, 'Billing Street Address'
   = text_field :user, 'billing_street_address'
   <br>
@@ -27,12 +33,6 @@
   = label :user, :credit_card, 'Credit Card Number'
   = text_field :user, 'credit_card_number'
   <br>
-  = label :user, :first_name, 'First Name'
-  = text_field :user, 'first_name'
-  <br>
-  = label :user, :last_name, 'Last Name'
-  = text_field :user, 'last_name'
-  <br>
   = label :user, :expiration_date, 'Expiration Date'
   = text_field :user, 'expiration_date'
   <br>
@@ -41,4 +41,7 @@
   <br>
   <br>
   = submit_tag 'Submit'
+  
+<br>
+= link_to "Back to Main Page", root_path
   
