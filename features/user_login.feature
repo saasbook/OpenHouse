@@ -11,25 +11,43 @@ Background: a user has been created in the database
       | dave@gmail.com | 12345678 | 2700 Mars      | Berkeley     | California    | 94720    | Dave       | Schiller  | 12341234123412341234 | 6/22            | 511 |
 
 Scenario: Host can log in with correct credentials
-    Given I am not logged in
-    And username "Joe" with password "pass" exists
-    And I am on the OpenHouse main page
-    When I fill in username with "Joe"
-    And I fill in password with "pass"
-    And I press "Log In"
-    Then I should be logged in
+    Given I am on the login page
+    And I fill in "Email" with "dave@gmail.com"
+    And I fill in "Password" with "12345678"
+    When I press "Log in" 
+    # Then I should be logged in as user with email "dave@gmail.com"
+    Then I should see "Edit Profile"
+    And I should not see "Log In"
+    And I should see "Log Out"
 
-Scenario: Host cannot log in with incorrect credentials
-    Given I am not logged in
-    And username "Joe" with password "pass" does not exist
-    And I am on the OpenHouse main page
-    When I fill in username with "Joe"
-    And I fill in password with "pass"
-    And I press the "Log In"
-    Then I should see "Invalid Username or Password"
+Scenario: Host cannot log in with incorrect email
+    Given I am on the login page
+    And I fill in "Email" with "jonathan@gmail.com"
+    When I press "Log in" 
+    Then I should see an error message
+    And I should see "Log in"
+    And I should not see "Log Out"
+    
+Scenario: Host cannot log in with incorrect password
+    Given I am on the login page
+    And I fill in "Password" with "12345679"
+    When I press "Log in" 
+    Then I should see an error message
+    And I should see "Log in"
+    And I should not see "Log Out"
+
+Scenario: Host cannot log in with incorrect email and password
+    Given I am on the login page
+    And I fill in "Email" with "jonathan@gmail.com"
+    And I fill in "Password" with "12345679"
+    When I press "Log in"
+    Then I should see "Invalid email/password combination"
+    And I should see "Log in"
+    And I should not see "Log Out"
 
 Scenario: Host cannot log in if already logged in
-    Given username "Joe" with password "pass" exists
-    And I am logged in
-    And I am on the OpenHouse home page
+    Given I am on the login page
+    And I fill in "Email" with "dave@gmail.com"
+    And I fill in "Password" with "12345678"
+    When I press "Log in" 
     Then I should not see "Log In"
