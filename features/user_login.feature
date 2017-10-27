@@ -13,7 +13,7 @@ Background: a user has been created in the database
 Scenario: Host can log in with correct credentials
     Given I am on the login page
     And I fill in "Email" with "aladdin@agrabah.com"
-    And I fill in "Password" with "12345678"
+    And I fill in "Password" with "12341001"
     When I press "Log in" 
     # Then I should be logged in as user with email "dave@gmail.com"
     Then I should see "Edit Profile"
