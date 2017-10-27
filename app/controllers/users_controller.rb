@@ -19,7 +19,6 @@ class UsersController < ApplicationController
             end
             flash[:notice] = msg[0..-3]
         end
-        
         redirect_to next_path
     end
     
