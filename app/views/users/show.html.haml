@@ -1,7 +1,14 @@
-%h1= "USER " + @user.username
+%h1= "USER " + @user.first_name + " " + @user.last_name
 
-%p= @user.email
-%p= @user.address
+%p= "EMAIL: " + @user.email
+
+%p Address:
+%ul 
+    %li 
+        = @user.billing_street_address 
+    %li 
+        = @user.billing_city + ", " + @user.billing_state + ", " + @user.billing_zip_code
 
 %br
-= link_to "Edit Profile", edit_user_path(User.where({username: session["username"]}).first.id)
+= link_to "Edit Profile", edit_user_path
+= link_to "Home", root_path

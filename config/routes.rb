@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -57,10 +58,13 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  resources :users
-  get '/', to: 'main#show', as: 'root'
-  get '/logout', to: 'main#logout', as: 'logout'
-  get '/login', to: 'main#login_page', as: 'login_page'
-  post '/login', to: 'main#login', as: 'login'
   
+  get '/', to: 'main#show', as: 'root'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+  get 'sessions/new'
+  get '/users/edit', to: 'users#edit', as: 'edit_user'
+  get '/users/show', to: 'users#show', as: 'show_user'
+  resources :users, :except => [:edit, :show]
 end

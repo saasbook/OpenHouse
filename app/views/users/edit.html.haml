@@ -1,0 +1,40 @@
+%p= flash[:notice] if flash[:notice]
+%h1 Create New User
+
+= form_tag user_path(@user), :method => :patch do
+
+  = label :user, :email, 'E-mail Address'
+  = text_field :user, 'email', :value=>@user.email
+
+  = label :user, :billing_street_address, 'Billing Street Address'
+  = text_field :user, 'billing_street_address', :value=>@user.billing_street_address
+
+  = label :user, :billing_city, 'Billing City'
+  = text_field :user, 'billing_city', :value=>@user.billing_city
+
+  = label :user, :billing_state, 'Billing State'
+  = text_field :user, 'billing_state', :value=>@user.billing_state
+
+  = label :user, :billing_zip_code, 'Billing Zip Code'
+  = text_field :user, 'billing_zip_code', :value=>@user.billing_zip_code
+
+  = label :user, :first_name, 'First Name'
+  = text_field :user, 'first_name', :value=>@user.first_name
+
+  = label :user, :last_name, 'Last Name'
+  = text_field :user, 'last_name', :value=>@user.last_name
+
+  = label :user, :credit_card, 'Credit Card'
+  = text_field :user, 'credit_card_number', :value=>@user.credit_card_number
+  
+  = label :user, :expiration_date, 'Expiration Date'
+  = text_field :user, 'expiration_date', :value=>@user.expiration_date
+  
+  = label :user, :cvv, 'CVV'
+  = text_field :user, 'cvv', :value=>@user.cvv
+
+  = submit_tag 'Submit'
+  
+= button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
+= link_to "Back to main page", root_path
+
