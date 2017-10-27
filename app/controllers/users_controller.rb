@@ -77,5 +77,8 @@ class UsersController < ApplicationController
     #        return false;
     #    end
     #end
+    def show
+        @user = current_user#User.where({username: session["username"]}).first
+    end
 end
 
