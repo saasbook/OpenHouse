@@ -3,6 +3,12 @@ Feature: User Login
     So that I can manage my account
     And interact with OpenHouse
     I want to be able to log in
+    And I don't want others to log in
+    
+Background: a user has been created in the database
+    Given the following accounts exist:
+      | email          | password | street_address | city         | state         | zip_code | first_name | last_name | credit_card_number   | expiration_date | cvv |
+      | dave@gmail.com | 12345678 | 2700 Mars      | Berkeley     | California    | 94720    | Dave       | Schiller  | 12341234123412341234 | 6/22            | 511 |
 
 Scenario: Host can log in with correct credentials
     Given I am not logged in

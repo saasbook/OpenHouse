@@ -2,22 +2,59 @@ Feature: Account Creation
     As a human
     So that I can start using OpenHouse
     I want to create an OpenHouse account
-Scenario: Human can create an account with an unused username
-    GIVEN I am not logged in
-    AND I am on the OpenHouse home page
-    WHEN I click "Create New Account"
-    AND I fill in an unused username
-    AND I fill in the rest of the details
-    WHEN I press "Create Account"
-    THEN my new account should exist
-    THEN I should see a confirmation message
 
-Scenario: Human cannot create an account with a used username
-    GIVEN I am not logged in
-    AND I am on the OpenHouse home page
-    WHENI click "Create New Account"
-    AND I fill in a used username
-    AND I fill in the rest of the details
-    WHENI press "Create Account"
-    THEN my account should not exist
-    THEN I should see an error message
+Background: movies have been added to database
+  Given the following accounts exist:
+    | email                   | password | billing_street_address | billing_city | billing_state  | billing_zip_code | first_name | last_name | credit_card_number | expiration_date | cvv |
+    | aladdin@agrabah.com     | 12341001 | Agrabah Dessert        | Agrabah      | Middle East    | 10101            | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 |
+    | terminator@future.com   | password | 1234 Robots Factory    | New Berkeley | New California | 76767            | Terminator | T-800     | 2222222222222222   | 26-Oct-2017     | 222 |
+
+Scenario: Human can create an account with an unused email
+    Given I am on the home page
+    When I follow "Log In"
+    When I follow "Sign up now!"
+    And I fill in "E-mail Address" with "dave101@gmail.com"
+    And I fill in "Password" with "12345678"
+    Then I press "Submit"
+    Then I should see "dave101@gmail.com was successfully created."
+    And account with email "dave101@gmail.com" should exist
+
+Scenario: Human cannot create an account with a used email
+    Given I am on the home page
+    When I follow "Log In"
+    When I follow "Sign up now!"
+    And I fill in "E-mail Address" with "aladdin@agrabah.com"
+    And I fill in "Password" with "12345678"
+    Then I press "Submit"
+    Then I should see "email has already been taken"
+    And account with email "aladdin@agrabah.com" should exist
+
+Scenario: Human cannot create an account with a blank email
+    Given I am on the home page
+    When I follow "Log In"
+    When I follow "Sign up now!"
+    And I fill in "E-mail Address" with ""
+    And I fill in "Password" with "12345678"
+    Then I press "Submit"
+    Then I should see "email can't be blank"
+
+Scenario: Human cannot create an account with a short password
+    Given I am on the home page
+    When I follow "Log In"
+    When I follow "Sign up now!"
+    And I fill in "E-mail Address" with "aladdin@agrabah.com"
+    And I fill in "Password" with "1234"
+    Then I press "Submit"
+    Then I should see "password is too short"
+    And account with email "aladdin@agrabah.com" should not exist
+    
+Scenario: Multiple errors
+    Given I am on the home page
+    When I follow "Log In"
+    When I follow "Sign up now!"
+    And I fill in "Password" with "1234"
+    Then I press "Submit"
+    Then I should see "email can't be blank"
+    Then I should see "password is too short"
+
+  

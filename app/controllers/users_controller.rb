@@ -7,18 +7,20 @@ class UsersController < ApplicationController
     end
     
     def create
-        if email_exists(params[:user][:email])
-            flash[:notice] = "An account with that e-mail address already exists."
-            redirect_to new_user_path
-        elsif not email_valid(params[:user][:email])
-            flash[:notice] = "Please enter a valid e-mail address."
-            redirect_to new_user_path
-        else
-            @user = User.create!(user_params)
+        @user = User.create(user_params)
+        next_path = new_user_path
+        if @user.errors.empty?
+            next_path = login_path
             flash[:notice] = "#{@user.email} was successfully created."
-            session[:email] = @user.email
-            redirect_to login_path
+        else
+            msg = ""
+            @user.errors.keys.each do |var|
+                msg = msg + "#{var} #{@user.errors[var][0]}, "
+            end
+            flash[:notice] = msg[0..-3]
         end
+        
+        redirect_to next_path
     end
     
     def edit
