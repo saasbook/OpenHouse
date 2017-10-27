@@ -28,6 +28,9 @@
     %li Zip Code:
     = @user.billing_zip_code
 %br
+
+= image_tag google_map_static_helper(center: @user.billing_street_address)
+
 %br
 = link_to "Edit Profile", edit_user_path
 %br
