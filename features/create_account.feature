@@ -3,7 +3,7 @@ Feature: Account Creation
     So that I can start using OpenHouse
     I want to create an OpenHouse account
 
-Background: movies have been added to database
+Background: accounts have been added to database
   Given the following accounts exist:
     | email                   | password | billing_street_address | billing_city | billing_state  | billing_zip_code | first_name | last_name | credit_card_number | expiration_date | cvv |
     | aladdin@agrabah.com     | 12341001 | Agrabah Dessert        | Agrabah      | Middle East    | 10101            | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 |

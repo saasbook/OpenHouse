@@ -11,15 +11,12 @@ Background: a user has been created in the database
     | terminator@future.com   | password | 1234 Robots Factory    | New Berkeley | New California | 76767            | Terminator | T-800     | 2222222222222222   | 26-Oct-2017     | 222 |
 
 Scenario: delete account
-  Given I am logged in as user with email "aladdin@agrabah.com"
+  Given I am on the login page
+  And I fill in "Email" with "aladdin@agrabah.com"
+  And I fill in "Password" with "12341001"
+  When I press "Log In"
+  And I follow "Edit Profile"
   And I am on the edit page
   When I press "Delete Profile"
-  And I press "Are you sure?"
-  Then account with email "aladdin@agrabah.com" should not exist in the database
-  
-Scenario: delete account
-  Given I am logged in as user with email "aladdin@agrabah.com"
-  And I am on the edit page
-  When I press "Delete Profile"
-  And I press "Are you sure?"
-  Then account with email "aladdin@agrabah.com" should exist in the database
+  Then I should see "Your account has been deleted."
+  And account with email "aladdin@agrabah.com" should not exist in the database

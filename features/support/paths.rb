@@ -20,6 +20,12 @@ module NavigationHelpers
 
     when /^the login page$/
       return login_path
+      
+    when /^the edit page$/
+      return edit_user_path
+    
+    when /^the user profile page$/
+      return show_user_path
 
     when /^the edit page$/
       return edit_user_path
