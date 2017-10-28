@@ -35,12 +35,12 @@ Scenario: Edit Profile Information
   And I fill in "Billing Zip Code" with "77877"
   And I fill in "First Name" with "Reyal"
   And I fill in "Last Name" with "Pearson"
-  And I fill in "Credit Card" with "7777777777777777"
+  And I fill in "Credit Card Number" with "7777777777777777"
   And I fill in "Expiration Date" with "31-Dec-9999"
   And I fill in "CVV" with "777"
+  And I press "Submit"
   
-  Then I follow "Back to Profile" 
-  And I should be on the user profile page
+  And I go to the user profile page
   Then I should see "fakenews@totallyrealnews.com"
   Then I should see "Reyal"
   Then I should see "Pearson"
