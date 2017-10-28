@@ -14,7 +14,7 @@ end
 Then /I should not be logged in/ do
     steps %Q{
         Given I am on the home page
-        Then I should see "Log In"
+        Then I should see "Log In"gi
     }
 end
 
