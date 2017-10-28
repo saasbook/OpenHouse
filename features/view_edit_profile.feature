@@ -51,3 +51,4 @@ Scenario: Edit Profile Information
   Then I should see "7777777777777777"
   Then I should see "31-Dec-9999"
   Then I should see "777"
+  And account with email "aladdin@agrabah.com" should not exist
