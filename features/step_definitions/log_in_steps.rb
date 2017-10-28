@@ -11,6 +11,13 @@ Then /I should be logged in as user with email "(.*)"/ do |e|
     expect(user.email == session[:email])
 end
 
+Then /I should not be logged in/ do
+    steps %Q{
+        Given I am on the home page
+        Then I should see "Log In"
+    }
+end
+
 Then /I should see an error message/ do
     step %{I should see "Invalid email/password combination"}
 end

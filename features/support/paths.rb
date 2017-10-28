@@ -29,6 +29,7 @@ module NavigationHelpers
 
     when /^the edit page$/
       return edit_user_path
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
