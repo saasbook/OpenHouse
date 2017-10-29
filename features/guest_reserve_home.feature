@@ -4,6 +4,6 @@ Feature: Guest can reserve a home
   when I am interested in a place
   I would like to be able to reserve it
   
-Scenario: Press the reserve button
-  When I follow "Reserve"
-  Then I should see "Success!"
+#Scenario: Press the reserve button
+#  When I follow "Reserve"
+#  Then I should see "Success!"
