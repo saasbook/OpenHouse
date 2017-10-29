@@ -1,14 +1,28 @@
-%h1 Profile Information
+=image_tag('logo', height: '80', width: '170',align:"left")
 %br
-%p= "Email: #{@user.email}"
+- if @user == @current_user
+    = link_to "Edit Profile", edit_user_path, style: 'color:#79b8d1;font-weight: bold;', class: 'css_class',align: "right"
 %br
-%p= "First Name: #{@user.first_name}"
+= link_to "Back to Main Page", root_path, style: 'color:#79b8d1;font-weight: bold;', class: 'css_class', align: "right"
 %br
-%p= "Last Name: #{@user.last_name}"
+%h2 Profile
 %br
-= image_tag "user_images/#{@user.email}/profile_picture.jpg"
+= image_tag('user', height: '150', weight: '20',hspace: '150', vspace: '10')
 %br
-%p Billing Address Information:
+%p2
+    %strong First Name: 
+    = + @user.first_name
+%br
+%p2
+    %strong Last Name: 
+    = + @user.last_name
+%br
+%p2
+    %strong Email: 
+    = + @user.email
+%br
+%p2 
+    %strong Billing Address Information:
 %ul 
     %li Street:
     = @user.billing_street_address 
@@ -19,7 +33,8 @@
     %li Zip Code:
     = @user.billing_zip_code
 %br
-%p Credit Card Information
+%p2 
+    %strong Credit Card Information
 %ul 
     %li Number:
     = @user.credit_card_number
@@ -28,11 +43,4 @@
     %li CVV:
     = @user.cvv
 %br
-
-= image_tag google_map_static_helper(center: @user.billing_street_address)
-
-%br
-- if @user == @current_user
-    = link_to "Edit Profile", edit_user_path
-%br
-= link_to "Back to Main Page", root_path
+= image_tag(google_map_static_helper(center: @user.billing_street_address),hspace: '150', vspace: '10')
