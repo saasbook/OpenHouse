@@ -7,9 +7,6 @@ class UsersController < ApplicationController
     end
     
     def create
-        if not email_valid user_params[:email]
-            print "HJELP ASDFASDFDF"
-        end
         @user = User.create(user_params)
         next_path = new_user_path
         if @user.errors.empty?
@@ -70,10 +67,6 @@ class UsersController < ApplicationController
 
     def email_exists(email)
         User.find_by(email: email)
-    end
-
-    def email_valid(email)
-        return email =~ /[a-zA-Z_\.0-9]+@[a-zA-Z_\.0-9]+\.[a-zA-Z_\.0-9]+/
     end
 
     def update
