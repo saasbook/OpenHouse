@@ -10,6 +10,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         next_path = new_user_path
         if @user.errors.empty?
+            Dir.mkdir(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email))
             next_path = new_user_billing_path
             log_in @user
             flash[:notice] = "#{@user.email} was successfully created."
@@ -71,9 +72,13 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        profile_picture = params[:user][:profile_picture]
-        File.open(Rails.root.join('app', 'assets', 'images', @user.email, 'profile_picture'), 'wb') do |file|
-            file.write(profile_picture.read)
+        if params[:user][:profile_picture] != nil
+            File.open(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'profile_picture.jpg'), 'wb') do |file|
+                file.write(params[:user][:profile_picture].read)
+            end
+            flash[:notice] = "Your picture has been updated!"
+            redirect_to edit_user_path
+            return
         end
         # TODO: This should probably be changed to something
         # cleaner like @user.update_attributes(user_params)

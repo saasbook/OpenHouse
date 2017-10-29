@@ -78,12 +78,15 @@
       = submit_tag 'Save Changes'
 
     <br>
-    <br>
+    %h4 Upload a profile picture here
     = form_for @user do |f|
       = f.file_field :profile_picture
       = submit_tag 'Upload'
 
+    <br>
+    = image_tag "user_images/#{@user.email}/profile_picture.jpg"
 
+    <br>
     <br>  
     = button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
     <br>
