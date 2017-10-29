@@ -38,9 +38,9 @@
   = submit_tag 'Submit'
 
 <br>  
-= button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
+= button_to 'Delete Profile', user_path @user, :method => :delete, :confirm => "Are you sure?"
 <br>
-= link_to "Back to Profile", show_user_path
+= link_to "Back to Profile", user_path(@user)
 <br>
 = link_to "Back to Main Page", root_path
 

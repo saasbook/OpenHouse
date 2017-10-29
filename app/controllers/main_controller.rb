@@ -4,6 +4,7 @@ class MainController < ApplicationController
     end
 
     def show
+        @user = current_user
     end
 
     def logout
@@ -24,5 +25,6 @@ class MainController < ApplicationController
         #     @users = User.all
         # end
         @users = User.all
+        @user = current_user
     end
 end

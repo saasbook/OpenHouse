@@ -20,14 +20,14 @@
         %td Descriptive text
         %td $10 p/hour
         %td Insert Cute Picture
-        %td See More
+        %td= link_to "See More", user_path(user)
 
 <br>
 
 = link_to 'Back to Main Page', root_path
 <br>
 - if logged_in?
-  = link_to "View Profile", show_user_path
+  = link_to "View Profile", user_path(@user)
   <br>
   = link_to 'Edit Profile', edit_user_path
   <br>
