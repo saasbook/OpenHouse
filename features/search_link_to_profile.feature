@@ -12,3 +12,26 @@ Scenario: user clicks on search result to learn more
   And I follow "See More"
   Then I should see "aladdin@agrabah.com"
   
+
+Scenario: user cannot edit a profile that is not theirs (or if they aren't logged in)
+  Given the following accounts exist:
+    | email                   | password | billing_street_address | billing_city | billing_state  | billing_zip_code | first_name | last_name | credit_card_number | expiration_date | cvv |
+    | aladdin@agrabah.com     | 12341001 | Agrabah Dessert        | Agrabah      | Middle East    | 10101            | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 |
+  And I am on the home page
+  When I press "Search"
+  And I follow "See More"
+  Then I should see "aladdin@agrabah.com"
+  And I should not see "Edit Profile"
+  
+Scenario: user can edit a profile result if it is theirs and they are logged in
+  Given the following accounts exist:
+    | email                   | password | billing_street_address | billing_city | billing_state  | billing_zip_code | first_name | last_name | credit_card_number | expiration_date | cvv |
+    | aladdin@agrabah.com     | 12341001 | Agrabah Dessert        | Agrabah      | Middle East    | 10101            | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 |
+  And I am on the login page
+  And I fill in "Email" with "aladdin@agrabah.com"
+  And I fill in "Password" with "12341001"
+  And I press "Log In"
+  When I press "Search"
+  And I follow "See More"
+  Then I should see "aladdin@agrabah.com"
+  And I should see "Edit Profile"
