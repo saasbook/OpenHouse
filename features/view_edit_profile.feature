@@ -1,7 +1,7 @@
 Feature: User can view and edit profile information
   As a user
   So I can see what other users see on my profile
-  I want to be able to view my profile
+  I want to be able to view and edit my profile
   
 Background: user accounts have been added to database
     Given the following accounts exist:

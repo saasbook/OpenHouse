@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
     def user_params
-        params.require(:user).permit(:email, :password, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :first_name, :last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :profile_picture, :personal_description, :house_picture, :house_description)
+        params.require(:user).permit(:email, :password, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :first_name, :last_name, 
+                                        :credit_card_number, :expiration_date, :cvv, 
+                                        :home_street_address, :home_city, :home_state, :home_zip_code, :house_picture, :house_description, 
+                                        :profile_picture, :personal_description,
+                                        :searchable)
     end
 
     def new
@@ -56,6 +60,7 @@ class UsersController < ApplicationController
         @user.update_attribute(:personal_description, user_params[:personal_description])
         @user.update_attribute(:house_picture, user_params[:house_picture])
         @user.update_attribute(:house_description, user_params[:house_description])
+        @user.update_attribute(:searchable, params[:searchable]) #possible values: true, nil
         @user.save
         # @user.update_attributes!(:address => user_params[:address])
         flash[:notice] = "Your account has been updated!"

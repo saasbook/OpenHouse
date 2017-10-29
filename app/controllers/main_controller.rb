@@ -23,6 +23,6 @@ class MainController < ApplicationController
         # else
         #     @users = User.all
         # end
-        @users = User.all
+        @users = User.where(searchable: true)
     end
 end

@@ -35,6 +35,11 @@
   = text_field :user, 'cvv', :value=>@user.cvv
   <br>
   <br>
+  %h4 Advanced Settings
+  = "Allow this profile to be searched"
+  = check_box_tag "searchable", true, @user.searchable
+  <br>
+  <br>
   = submit_tag 'Submit'
 
 <br>  

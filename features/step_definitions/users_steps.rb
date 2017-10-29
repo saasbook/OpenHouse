@@ -18,3 +18,12 @@ Then /account with email "(.*)" should( not)? exist/ do |e, should_not_exist|
       expect(user.email == e)
   end
 end
+
+Given /account with email "(.*)" is( not)? searchable/ do |e, not_searchable|
+  user = User.find_by(email: e)
+  if not_searchable
+    user.update_attribute(:searchable, nil)
+  else
+    user.update_attribute(:searchable, true)
+  end
+end
