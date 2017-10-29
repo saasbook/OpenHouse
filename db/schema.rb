@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029053019) do
+ActiveRecord::Schema.define(version: 20171029224023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,11 @@ ActiveRecord::Schema.define(version: 20171029053019) do
     t.string  "expiration_date"
     t.string  "cvv"
     t.string  "password_digest"
-    t.string  "profile_picture"
     t.text    "personal_description"
     t.string  "home_street_address"
     t.string  "home_city"
     t.string  "home_state"
     t.string  "home_zip_code"
-    t.string  "house_picture"
     t.text    "house_description"
     t.boolean "searchable"
     t.string  "billing_first_name"

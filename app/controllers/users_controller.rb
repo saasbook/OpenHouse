@@ -73,16 +73,19 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        puts "ASDFASDFASDFASDFASDFASDF"
-        puts params[:user]
-        puts params[:user][:profile_picture]
-        puts params[:user][:profile_picture] == nil
-        puts params[:user][:profile_picture] != nil
         if params[:user][:profile_picture] != nil
             File.open(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'profile_picture.jpg'), 'wb') do |file|
                 file.write(params[:user][:profile_picture].read)
             end
-            flash[:notice] = "Your picture has been updated!"
+            flash[:notice] = "Your picture has been updated."
+            redirect_to edit_user_path
+            return
+        end
+        if params[:user][:house_picture] != nil
+            File.open(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'house_picture.jpg'), 'wb') do |file|
+                file.write(params[:user][:house_picture].read)
+            end
+            flash[:notice] = "Your picture has been updated."
             redirect_to edit_user_path
             return
         end

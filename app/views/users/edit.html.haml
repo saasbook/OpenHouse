@@ -62,9 +62,6 @@
       = label :user, :home_zip_code, "Location's Zip"
       = text_field :user, :home_zip_code, :value=>@user.home_zip_code
       <br>
-      = label :user, :house_picture, "Location's Pictures"
-      = text_field :user, :house_picture, :value=>@user.house_picture
-      <br>
       = label :user, :house_description, "Location's Description"
       = text_field :user, :house_description, :value=>@user.house_description
       <br>
@@ -73,6 +70,14 @@
       <br>
       <br>
       = submit_tag 'Save Changes'
+    <br>
+    %h4 Upload a picture of your house here
+    = form_for @user do |f|
+      = f.file_field :house_picture
+      = submit_tag 'Upload'
+
+    <br>
+    = image_tag "user_images/#{@user.email}/house_picture.jpg"
 
     <br>
     %h4 Upload a profile picture here
