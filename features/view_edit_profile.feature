@@ -13,7 +13,7 @@ Background: user accounts have been added to database
 
 Scenario: View Profile Information
   Given I follow "View Profile"
-  Then I should be on the user profile page
+  Then I should be on the user profile page for user "aladdin@agrabah.com"
   Then I should see "aladdin@agrabah.com"
   Then I should see "Ali"
   Then I should see "Ababwa"
@@ -37,9 +37,9 @@ Scenario: Edit Profile Information
   And I fill in "Credit Card Number" with "7777777777777777"
   And I fill in "Expiration Date" with "31-Dec-9999"
   And I fill in "CVV" with "777"
-  And I press "Submit"
+  And I press "Save Changes"
   
-  And I go to the user profile page
+  And I go to the user profile page for "aladdin@agrabah.com"
   Then I should see "Reyal"
   Then I should see "Pearson"
   Then I should see "Real Address"

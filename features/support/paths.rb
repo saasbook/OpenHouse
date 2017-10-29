@@ -10,7 +10,7 @@ module NavigationHelpers
   #
   # step definition in web_steps.rb
   #
-  def path_to(page_name)
+  def path_to(page_name, user=nil)
     case page_name
 
     when /^the home\s?page$/
@@ -26,10 +26,10 @@ module NavigationHelpers
       
     when /^the edit page$/
       return edit_user_path
-    
-    when /^the user profile page$/
-      return show_user_path
 
+    when /^the user profile page for (?:user )?"(.*)"$/
+        return user_path(User.find_by(email: $1))
+    
     when /^the edit page$/
       return edit_user_path
       
