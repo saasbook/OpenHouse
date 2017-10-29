@@ -30,6 +30,7 @@
 = image_tag google_map_static_helper(center: @user.billing_street_address)
 
 %br
-= link_to "Edit Profile", edit_user_path
+- if @user == @current_user
+    = link_to "Edit Profile", edit_user_path
 %br
 = link_to "Back to Main Page", root_path

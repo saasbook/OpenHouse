@@ -9,7 +9,7 @@
 <br>
 
 - if logged_in?
-  = link_to "View Profile", show_user_path
+  = link_to "View Profile", user_path(@user)
   <br>
   = link_to 'Edit Profile', edit_user_path
   <br>

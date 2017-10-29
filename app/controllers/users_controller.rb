@@ -84,7 +84,8 @@ class UsersController < ApplicationController
     #    end
     #end
     def show
-        @user = current_user#User.where({username: session["username"]}).first
+        @user = User.find params[:id]
+        @current_user = current_user
     end
 end
 
