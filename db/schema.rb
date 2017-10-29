@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029055115) do
+ActiveRecord::Schema.define(version: 20171029053019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 20171029055115) do
     t.string  "home_zip_code"
     t.string  "house_picture"
     t.text    "house_description"
+    t.boolean "searchable"
     t.string  "billing_first_name"
     t.string  "billing_last_name"
-    t.boolean "searchable"
   end
 
 end
