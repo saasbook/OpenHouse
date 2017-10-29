@@ -71,14 +71,16 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        # params[:user][:password] = @user.password
-        # @user.update_attributes(user_params)
-        @user.update_attribute(:email, user_params[:email])
+        profile_picture = params[:user][:profile_picture]
+        File.open(Rails.root.join('app', 'assets', 'images', @user.email, 'profile_picture'), 'wb') do |file|
+            file.write(profile_picture.read)
+        end
+        # TODO: This should probably be changed to something
+        # cleaner like @user.update_attributes(user_params)
+        @user.update_attribute(:email, @user.email)
+        @user.update_attribute(:personal_description, user_params[:personal_description])
         @user.update_attribute(:first_name, user_params[:first_name])
         @user.update_attribute(:last_name, user_params[:last_name])
-        @user.update_attribute(:profile_picture, user_params[:profile_picture])
-        @user.update_attribute(:personal_description, user_params[:personal_description])
-        
         @user.update_attribute(:billing_street_address, user_params[:billing_street_address])
         @user.update_attribute(:billing_city, user_params[:billing_city])
         @user.update_attribute(:billing_state, user_params[:billing_state])
@@ -88,7 +90,6 @@ class UsersController < ApplicationController
         @user.update_attribute(:credit_card_number, user_params[:credit_card_number])
         @user.update_attribute(:expiration_date, user_params[:expiration_date])
         @user.update_attribute(:cvv, user_params[:cvv])
-        
         @user.update_attribute(:home_street_address, user_params[:home_street_address])
         @user.update_attribute(:home_city, user_params[:home_city])
         @user.update_attribute(:home_state, user_params[:home_state])
@@ -96,9 +97,8 @@ class UsersController < ApplicationController
         @user.update_attribute(:house_picture, user_params[:house_picture])
         @user.update_attribute(:house_description, user_params[:house_description])
         @user.update_attribute(:searchable, user_params[:searchable])
-        
-        @user.save
-        # @user.update_attributes!(:address => user_params[:address])
+
+        @user.save!
         flash[:notice] = "Your account has been updated!"
         redirect_to root_path
         # redirect_to user_path
@@ -111,14 +111,7 @@ class UsersController < ApplicationController
         flash[:notice] = "Your account has been deleted."
         redirect_to root_path
     end
-    #def authenticate(email, password)
-    #    if email_exists
-    #        User.find_by(email: email).password == password
-    #    else
-    #        flash[:notice] = "An account with that e-mail address does not exist."
-    #        return false;
-    #    end
-    #end
+
     def show
         @user = User.find params[:id]
         @current_user = current_user

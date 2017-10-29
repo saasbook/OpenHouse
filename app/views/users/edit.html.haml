@@ -1,88 +1,92 @@
-%p= flash[:notice] if flash[:notice]
-%h1 Edit Profile Information
-<br>
-%h4 Edit any of the fields below.
-= form_tag user_path(@user), :method => :patch do
+%html
+  %body
+    %p= flash[:notice] if flash[:notice]
+    %h1 Edit Profile Information
+    <br>
+    %h4 Edit any of the fields below.
+    = form_tag user_path(@user), :method => :patch do
+      <br>
+      %h5 Personal Information
+      = label :user, :email, 'E-mail Address'
+      = @user.email
+      <br>
+      = label :user, :first_name, 'First Name'
+      = text_field :user, 'first_name', :value=>@user.first_name
+      <br>
+      = label :user, :last_name, 'Last Name'
+      = text_field :user, 'last_name', :value=>@user.last_name
+      <br>
+      = label :user, :profile_picture, 'Profile Picture'
+      = text_field :user, 'profile_picture', :value=>@user.profile_picture
+      <br>
+      = label :user, :personal_description, 'Personal Description'
+      = text_field :user, 'personal_description', :value=>@user.personal_description
+      <br>
+      <br>
+      %h5 Billing Information
+      = label :user, :billing_first_name, 'Billing First Name'
+      = text_field :user, 'billing_first_name', :value=>@user.billing_first_name
+      <br>
+      = label :user, :billing_last_name, 'Billing Last Name'
+      = text_field :user, 'billing_last_name', :value=>@user.billing_last_name
+      <br>
+      = label :user, :billing_street_address, 'Billing Street Address'
+      = text_field :user, 'billing_street_address', :value=>@user.billing_street_address
+      <br>
+      = label :user, :billing_city, 'Billing City'
+      = text_field :user, 'billing_city', :value=>@user.billing_city
+      <br>
+      = label :user, :billing_state, 'Billing State'
+      = text_field :user, 'billing_state', :value=>@user.billing_state
+      <br>
+      = label :user, :billing_zip_code, 'Billing Zip Code'
+      = text_field :user, 'billing_zip_code', :value=>@user.billing_zip_code
+      <br>
+      = label :user, :credit_card_number, 'Credit Card Number'
+      = text_field :user, 'credit_card_number', :value=>@user.credit_card_number
+      <br>  
+      = label :user, :expiration_date, 'Expiration Date'
+      = text_field :user, 'expiration_date', :value=>@user.expiration_date
+      <br>  
+      = label :user, :cvv, 'CVV'
+      = text_field :user, 'cvv', :value=>@user.cvv
+      <br>
+      <br>
+      %h5 Hosting Information
+      = label :user, :home_street_address, "Location's Street Address"
+      = text_field :user, :home_street_address, :value=>@user.home_street_address
+      <br>
+      = label :user, :home_city, "Location's City"
+      = text_field :user, :home_city, :value=>@user.home_city
+      <br>
+      = label :user, :home_state, "Location's State"
+      = text_field :user, :home_state, :value=>@user.home_state
+      <br>
+      = label :user, :home_zip_code, "Location's Zip"
+      = text_field :user, :home_zip_code, :value=>@user.home_zip_code
+      <br>
+      = label :user, :house_picture, "Location's Pictures"
+      = text_field :user, :house_picture, :value=>@user.house_picture
+      <br>
+      = label :user, :house_description, "Location's Description"
+      = text_field :user, :house_description, :value=>@user.house_description
+      <br>
+      = label :user, :searchable, "Would you like your location to be searchable?"
+      = check_box :user, :searchable, :value=>@user.searchable
+      <br>
+      <br>
+      = submit_tag 'Save Changes'
 
-  <br>
-  %h5 Personal Information
-  = label :user, :email, 'E-mail Address'
-  = text_field :user, 'email', :value=>@user.email
-  <br>
-  = label :user, :password, 'Password'
-  = text_field :user, 'password', :value=>@user.password
-  <br>
-  = label :user, :first_name, 'First Name'
-  = text_field :user, 'first_name', :value=>@user.first_name
-  <br>
-  = label :user, :last_name, 'Last Name'
-  = text_field :user, 'last_name', :value=>@user.last_name
-  <br>
-  = label :user, :profile_picture, 'Profile Picture'
-  = text_field :user, 'profile_picture', :value=>@user.profile_picture
-  <br>
-  = label :user, :personal_description, 'Personal Description'
-  = text_field :user, 'personal_description', :value=>@user.personal_description
-  <br>
-  <br>
-  %h5 Billing Information
-  = label :user, :billing_first_name, 'Billing First Name'
-  = text_field :user, 'billing_first_name', :value=>@user.billing_first_name
-  <br>
-  = label :user, :billing_last_name, 'Billing Last Name'
-  = text_field :user, 'billing_last_name', :value=>@user.billing_last_name
-  <br>
-  = label :user, :billing_street_address, 'Billing Street Address'
-  = text_field :user, 'billing_street_address', :value=>@user.billing_street_address
-  <br>
-  = label :user, :billing_city, 'Billing City'
-  = text_field :user, 'billing_city', :value=>@user.billing_city
-  <br>
-  = label :user, :billing_state, 'Billing State'
-  = text_field :user, 'billing_state', :value=>@user.billing_state
-  <br>
-  = label :user, :billing_zip_code, 'Billing Zip Code'
-  = text_field :user, 'billing_zip_code', :value=>@user.billing_zip_code
-  <br>
-  = label :user, :credit_card_number, 'Credit Card Number'
-  = text_field :user, 'credit_card_number', :value=>@user.credit_card_number
-  <br>  
-  = label :user, :expiration_date, 'Expiration Date'
-  = text_field :user, 'expiration_date', :value=>@user.expiration_date
-  <br>  
-  = label :user, :cvv, 'CVV'
-  = text_field :user, 'cvv', :value=>@user.cvv
-  <br>
-  <br>
-  %h5 Hosting Information
-  = label :user, :home_street_address, "Location's Street Address"
-  = text_field :user, :home_street_address, :value=>@user.home_street_address
-  <br>
-  = label :user, :home_city, "Location's City"
-  = text_field :user, :home_city, :value=>@user.home_city
-  <br>
-  = label :user, :home_state, "Location's State"
-  = text_field :user, :home_state, :value=>@user.home_state
-  <br>
-  = label :user, :home_zip_code, "Location's Zip"
-  = text_field :user, :home_zip_code, :value=>@user.home_zip_code
-  <br>
-  = label :user, :house_picture, "Location's Pictures"
-  = text_field :user, :house_picture, :value=>@user.house_picture
-  <br>
-  = label :user, :house_description, "Location's Description"
-  = text_field :user, :house_description, :value=>@user.house_description
-  <br>
-  = label :user, :searchable, "Would you like your location to be searchable?"
-  = check_box :user, :searchable, :value=>@user.searchable
-  <br>
-  <br>
-  = submit_tag 'Save Changes'
+    <br>
+    <br>
+    = form_for @user do |f|
+      = f.file_field :profile_picture
+      = submit_tag 'Upload'
 
-<br>  
-= button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
-<br>
-= link_to "Back to Profile", user_path(@user)
-<br>
-= link_to "Back to Main Page", root_path
 
+    <br>  
+    = button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
+    <br>
+    = link_to "Back to Profile", show_user_path
+    <br>
+    = link_to "Back to Main Page", root_path
