@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     end
     
     def create
+        if not email_valid user_params[:email]
+            print "HJELP ASDFASDFDF"
+        end
         @user = User.create(user_params)
         next_path = new_user_path
         if @user.errors.empty?
