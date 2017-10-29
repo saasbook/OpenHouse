@@ -11,7 +11,8 @@ class UsersController < ApplicationController
         next_path = new_user_path
         if @user.errors.empty?
             next_path = login_path
-            Dir.mkdir(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email))
+            path = Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)
+            Dir.mkdir path unless File.exists? path
             flash[:notice] = "#{@user.email} was successfully created."
         else
             msg = ""
