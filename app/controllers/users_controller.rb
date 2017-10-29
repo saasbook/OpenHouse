@@ -103,7 +103,6 @@ class UsersController < ApplicationController
         @user.update_attribute(:house_picture, user_params[:house_picture])
         @user.update_attribute(:house_description, user_params[:house_description])
         @user.update_attribute(:searchable, user_params[:searchable])
-
         @user.save!
         flash[:notice] = "Your account has been updated!"
         redirect_to root_path
