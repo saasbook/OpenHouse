@@ -4,6 +4,9 @@ class MainController < ApplicationController
     end
     
     def search
+        if params[:search] == nil
+            params[:search] = {query: ""}
+        end
         @query = params[:search][:query]
         # if @query
         #     @users = User.search(@query) # NOT YET IMPLEMENTED
