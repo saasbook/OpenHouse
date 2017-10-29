@@ -18,6 +18,9 @@ module NavigationHelpers
     
     #when /^the home page$/ then '/'#"/users/#{User.where(username: $1).first.id}"
 
+    when /^the search results page$/
+        return search_path
+
     when /^the login page$/
       return login_path
       
