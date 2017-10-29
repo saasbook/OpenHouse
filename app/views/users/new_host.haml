@@ -1,0 +1,34 @@
+%h2 Hosting Information
+<br>
+%p If you would like to host, please fill out the following information.
+%p Otherwise, click <em>Skip</em> to proceed to use the site.
+
+= form_tag update_user_host_path(@user), :method => :patch do
+
+  = label :user, :home_street_address, "Location's Street Address"
+  = text_field :user, :home_street_address
+  <br>
+  = label :user, :home_city, "Location's City"
+  = text_field :user, :home_city
+  <br>
+  = label :user, :home_state, "Location's State"
+  = text_field :user, :home_state
+  <br>
+  = label :user, :home_zip_code, "Location's Zip"
+  = text_field :user, :home_zip_code
+  <br>
+  = label :user, :house_picture, "Location's Pictures"
+  = text_field :user, :house_picture
+  <br>
+  = label :user, :house_description, "Location's Description"
+  = text_field :user, :house_description
+  <br>
+
+  <br>
+  = submit_tag 'Submit'
+
+<br>
+= link_to "Skip", login_path  
+<br>
+= link_to "Back to Main Page", root_path
+  
