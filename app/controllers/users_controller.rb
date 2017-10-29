@@ -32,9 +32,15 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        # params[:user][:password] = @user.password
-        # @user.update_attributes(user_params)
-        @user.update_attribute(:email, user_params[:email])
+        puts "ERERRRRERERERERERER"
+        puts params[:user][:profile_picture]
+        profile_picture = params[:user][:profile_picture]
+        File.open(Rails.root.join('app', 'assets', 'images', @user.email, 'profile_picture'), 'wb') do |file|
+            file.write(profile_picture.read)
+        end
+        # TODO: This should probably be changed to something
+        # cleaner like @user.update_attributes(user_params)
+        @user.update_attribute(:email, @user.email)
         @user.update_attribute(:billing_street_address, user_params[:billing_street_address])
         @user.update_attribute(:billing_city, user_params[:billing_city])
         @user.update_attribute(:billing_state, user_params[:billing_state])
@@ -52,8 +58,7 @@ class UsersController < ApplicationController
         @user.update_attribute(:personal_description, user_params[:personal_description])
         @user.update_attribute(:house_picture, user_params[:house_picture])
         @user.update_attribute(:house_description, user_params[:house_description])
-        @user.save
-        # @user.update_attributes!(:address => user_params[:address])
+        @user.save!
         flash[:notice] = "Your account has been updated!"
         redirect_to root_path
         # redirect_to user_path
@@ -66,14 +71,7 @@ class UsersController < ApplicationController
         flash[:notice] = "Your account has been deleted."
         redirect_to root_path
     end
-    #def authenticate(email, password)
-    #    if email_exists
-    #        User.find_by(email: email).password == password
-    #    else
-    #        flash[:notice] = "An account with that e-mail address does not exist."
-    #        return false;
-    #    end
-    #end
+
     def show
         @user = current_user#User.where({username: session["username"]}).first
     end
