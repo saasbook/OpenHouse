@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
     def user_params
-        params.require(:user).permit(:email, :password, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :first_name, :last_name, 
-                                        :credit_card_number, :expiration_date, :cvv, 
-                                        :home_street_address, :home_city, :home_state, :home_zip_code, :house_picture, :house_description, 
-                                        :profile_picture, :personal_description,
-                                        :searchable)
+        params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :profile_picture, :personal_description, :house_picture, :house_description, :searchable)
     end
 
     def new
@@ -14,7 +10,8 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         next_path = new_user_path
         if @user.errors.empty?
-            next_path = login_path
+            next_path = new_user_billing_path
+            log_in @user
             flash[:notice] = "#{@user.email} was successfully created."
         else
             msg = ""
@@ -24,6 +21,44 @@ class UsersController < ApplicationController
             flash[:notice] = msg[0..-3]
         end
         redirect_to next_path
+    end
+    
+    def new_billing
+        @user = current_user
+    end
+    
+    def update_billing
+        @user = current_user
+        @user.update_attribute(:billing_street_address, user_params[:billing_street_address])
+        @user.update_attribute(:billing_city, user_params[:billing_city])
+        @user.update_attribute(:billing_state, user_params[:billing_state])
+        @user.update_attribute(:billing_zip_code, user_params[:billing_zip_code])
+        @user.update_attribute(:billing_first_name, user_params[:billing_first_name])
+        @user.update_attribute(:billing_last_name, user_params[:billing_last_name])
+        @user.update_attribute(:credit_card_number, user_params[:credit_card_number])
+        @user.update_attribute(:expiration_date, user_params[:expiration_date])
+        @user.update_attribute(:cvv, user_params[:cvv])
+        @user.save
+        flash[:notice] = "#{@user.email}\'s billing information has been added."
+        redirect_to new_user_host_path
+    end
+    
+    def new_host
+        @user = current_user
+    end
+    
+    def update_host
+        @user = current_user
+        @user.update_attribute(:home_street_address, user_params[:home_street_address])
+        @user.update_attribute(:home_city, user_params[:home_city])
+        @user.update_attribute(:home_state, user_params[:home_state])
+        @user.update_attribute(:home_zip_code, user_params[:home_zip_code])
+        @user.update_attribute(:house_picture, user_params[:house_picture])
+        @user.update_attribute(:house_description, user_params[:house_description])
+        @user.update_attribute(:searchable, user_params[:searchable])
+        @user.save
+        flash[:notice] = "#{@user.email}\'s hosting information has been added."
+        redirect_to root_path
     end
     
     def edit

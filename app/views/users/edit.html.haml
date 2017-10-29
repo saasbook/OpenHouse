@@ -36,11 +36,11 @@
   <br>
   <br>
   %h4 Advanced Settings
-  = "Allow this profile to be searched"
-  = check_box_tag "searchable", true, @user.searchable
+  = label :user, :searchable, '"Allow this profile to be searched?"'
+  = check_box :user, :searchable, :value=>@user.searchable
   <br>
   <br>
-  = submit_tag 'Submit'
+  = submit_tag 'Save Changes'
 
 <br>  
 = button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
