@@ -28,7 +28,6 @@ Scenario: View Profile Information
 Scenario: Edit Profile Information
   Given I follow "Edit Profile"
   Then I should be on the edit page
-  And I fill in "E-mail Address" with "fakenews@totallyrealnews.com"
   And I fill in "Billing Street Address" with "Real Address"
   And I fill in "Billing City" with "Real City"
   And I fill in "Billing State" with "Liquid State"
@@ -41,7 +40,6 @@ Scenario: Edit Profile Information
   And I press "Submit"
   
   And I go to the user profile page
-  Then I should see "fakenews@totallyrealnews.com"
   Then I should see "Reyal"
   Then I should see "Pearson"
   Then I should see "Real Address"

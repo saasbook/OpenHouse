@@ -10,7 +10,8 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         next_path = new_user_path
         if @user.errors.empty?
-            Dir.mkdir(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email))
+            path = Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)
+            Dir.mkdir path unless File.exists? path
             next_path = new_user_billing_path
             log_in @user
             flash[:notice] = "#{@user.email} was successfully created."
