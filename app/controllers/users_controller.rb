@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def user_params
-        params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :profile_picture, :personal_description, :house_picture, :house_description)
+        params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :profile_picture, :personal_description, :house_picture, :house_description, :searchable)
     end
 
     def new
@@ -55,6 +55,7 @@ class UsersController < ApplicationController
         @user.update_attribute(:home_zip_code, user_params[:home_zip_code])
         @user.update_attribute(:house_picture, user_params[:house_picture])
         @user.update_attribute(:house_description, user_params[:house_description])
+        @user.update_attribute(:searchable, user_params[:searchable])
         @user.save
         flash[:notice] = "#{@user.email}\'s hosting information has been added."
         redirect_to root_path
