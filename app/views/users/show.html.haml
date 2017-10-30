@@ -7,7 +7,10 @@
 %br
 %h2 Profile
 %br
-= image_tag('user', height: '150', weight: '20',hspace: '150', vspace: '10')
+- if File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'profile_picture.jpg')
+    = image_tag "user_images/#{@user.email}/profile_picture.jpg", height: '150', weight: '20', hspace: '150', vspace: '10'
+- else
+    = image_tag('user', height: '150', weight: '20',hspace: '150', vspace: '10')
 %br
 %p2
     %strong First Name: 
