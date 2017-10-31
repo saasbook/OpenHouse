@@ -5,7 +5,7 @@
     <br>
     %h4 Edit any of the fields below.
     
-    %h4 Upload or change the picture of your residence:
+    %h5 Upload or change the picture of your residence:
     = form_for @user do |f|
       = f.file_field :house_picture
       = submit_tag 'Upload'
@@ -14,7 +14,7 @@
     = image_tag "user_images/#{@user.email}/house_picture.jpg"
 
     <br>
-    %h4 Upload or change your profile picture:
+    %h5 Upload or change your profile picture:
     = form_for @user do |f|
       = f.file_field :profile_picture
       = submit_tag 'Upload'
