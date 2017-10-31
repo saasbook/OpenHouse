@@ -72,22 +72,8 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        if params[:user][:profile_picture] != nil
-            File.open(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'profile_picture.jpg'), 'wb') do |file|
-                file.write(params[:user][:profile_picture].read)
-            end
-            flash[:notice] = "Your picture has been updated."
-            redirect_to edit_user_path
-            return
-        end
-        if params[:user][:house_picture] != nil
-            File.open(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'house_picture.jpg'), 'wb') do |file|
-                file.write(params[:user][:house_picture].read)
-            end
-            flash[:notice] = "Your picture has been updated."
-            redirect_to edit_user_path
-            return
-        end
+        return if update_picture(:profile_picture)
+        return if update_picture(:house_picture)
         # TODO: This should probably be changed to something
         # cleaner like @user.update_attributes(user_params)
         # -- Don't think there is a cleaner way to update everything except password, based off of google searches --Jared
