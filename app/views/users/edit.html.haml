@@ -4,6 +4,25 @@
     %h1 Edit Profile Information
     <br>
     %h4 Edit any of the fields below.
+    
+    %h4 Upload or change the picture of your residence:
+    = form_for @user do |f|
+      = f.file_field :house_picture
+      = submit_tag 'Upload'
+
+    <br>
+    = image_tag "user_images/#{@user.email}/house_picture.jpg"
+
+    <br>
+    %h4 Upload or change your profile picture:
+    = form_for @user do |f|
+      = f.file_field :profile_picture
+      = submit_tag 'Upload'
+
+    <br>
+    = image_tag "user_images/#{@user.email}/profile_picture.jpg"
+    <br>
+    
     = form_tag user_path(@user), :method => :patch do
       <br>
       %h5 Personal Information
@@ -67,28 +86,10 @@
       <br>
       = label :user, :searchable, "Would you like your location to be searchable?"
       = check_box :user, :searchable, :value=>@user.searchable
-      <br>
+      <br> 
       <br>
       = submit_tag 'Save Changes'
-    <br>
-    %h4 Upload a picture of your house here
-    = form_for @user do |f|
-      = f.file_field :house_picture
-      = submit_tag 'Upload'
-
-    <br>
-    = image_tag "user_images/#{@user.email}/house_picture.jpg"
-
-    <br>
-    %h4 Upload a profile picture here
-    = form_for @user do |f|
-      = f.file_field :profile_picture
-      = submit_tag 'Upload'
-
-    <br>
-    = image_tag "user_images/#{@user.email}/profile_picture.jpg"
-    <br>
-    <br>  
+ 
     = button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
     <br>
     = link_to "Back to Profile", user_path(@user)

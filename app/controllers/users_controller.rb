@@ -55,7 +55,6 @@ class UsersController < ApplicationController
         @user.update_attribute(:home_city, user_params[:home_city])
         @user.update_attribute(:home_state, user_params[:home_state])
         @user.update_attribute(:home_zip_code, user_params[:home_zip_code])
-        @user.update_attribute(:house_picture, user_params[:house_picture])
         @user.update_attribute(:house_description, user_params[:house_description])
         @user.update_attribute(:searchable, user_params[:searchable])
         @user.save
@@ -91,6 +90,7 @@ class UsersController < ApplicationController
         end
         # TODO: This should probably be changed to something
         # cleaner like @user.update_attributes(user_params)
+        # -- Don't think there is a cleaner way to update everything except password, based off of google searches --Jared
         @user.update_attribute(:email, @user.email)
         @user.update_attribute(:personal_description, user_params[:personal_description])
         @user.update_attribute(:first_name, user_params[:first_name])
@@ -108,7 +108,6 @@ class UsersController < ApplicationController
         @user.update_attribute(:home_city, user_params[:home_city])
         @user.update_attribute(:home_state, user_params[:home_state])
         @user.update_attribute(:home_zip_code, user_params[:home_zip_code])
-        @user.update_attribute(:house_picture, user_params[:house_picture])
         @user.update_attribute(:house_description, user_params[:house_description])
         @user.update_attribute(:searchable, user_params[:searchable])
         @user.save!

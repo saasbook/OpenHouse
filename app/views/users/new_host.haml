@@ -3,6 +3,25 @@
 %p If you would like to host, please fill out the following information.
 %p Otherwise, click <em>Skip</em> to proceed to use the site.
 
+%h4 Please upload a picture of residence:
+= form_for @user do |f|
+  = f.file_field :house_picture
+  = submit_tag 'Upload'
+
+<br>
+= image_tag "user_images/#{@user.email}/house_picture.jpg"
+
+<br>
+%h4 Please upload a profile picture:
+= form_for @user do |f|
+  = f.file_field :profile_picture
+  = submit_tag 'Upload'
+
+<br>
+= image_tag "user_images/#{@user.email}/profile_picture.jpg"
+<br>
+<br> 
+
 = form_tag update_user_host_path(@user), :method => :patch do
 
   = label :user, :home_street_address, "Location's Street Address"
@@ -17,9 +36,6 @@
   = label :user, :home_zip_code, "Location's Zip"
   = text_field :user, :home_zip_code
   <br>
-  = label :user, :house_picture, "Location's Pictures"
-  = text_field :user, :house_picture
-  <br>
   = label :user, :house_description, "Location's Description"
   = text_field :user, :house_description
   <br>
@@ -28,7 +44,10 @@
   <br>
 
   <br>
+  <br>
   = submit_tag 'Submit'
+
+
 
 <br>
 = link_to "Skip", login_path  
