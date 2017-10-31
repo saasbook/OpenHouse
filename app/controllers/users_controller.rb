@@ -77,29 +77,30 @@ class UsersController < ApplicationController
         # TODO: This should probably be changed to something
         # cleaner like @user.update_attributes(user_params)
         # -- Don't think there is a cleaner way to update everything except password, based off of google searches --Jared
-        @user.update_attribute(:email, @user.email)
-        @user.update_attribute(:personal_description, user_params[:personal_description])
-        @user.update_attribute(:first_name, user_params[:first_name])
-        @user.update_attribute(:last_name, user_params[:last_name])
-        @user.update_attribute(:billing_street_address, user_params[:billing_street_address])
-        @user.update_attribute(:billing_city, user_params[:billing_city])
-        @user.update_attribute(:billing_state, user_params[:billing_state])
-        @user.update_attribute(:billing_zip_code, user_params[:billing_zip_code])
-        @user.update_attribute(:billing_first_name, user_params[:billing_first_name])
-        @user.update_attribute(:billing_last_name, user_params[:billing_last_name])
-        @user.update_attribute(:credit_card_number, user_params[:credit_card_number])
-        @user.update_attribute(:expiration_date, user_params[:expiration_date])
-        @user.update_attribute(:cvv, user_params[:cvv])
-        @user.update_attribute(:home_street_address, user_params[:home_street_address])
-        @user.update_attribute(:home_city, user_params[:home_city])
-        @user.update_attribute(:home_state, user_params[:home_state])
-        @user.update_attribute(:home_zip_code, user_params[:home_zip_code])
-        @user.update_attribute(:house_description, user_params[:house_description])
-        @user.update_attribute(:searchable, user_params[:searchable])
+        # I'm pretty sure it worked
+        @user.update_attributes(user_params)
+        #@user.update_attribute(:email, @user.email)
+        #@user.update_attribute(:personal_description, user_params[:personal_description])
+        #@user.update_attribute(:first_name, user_params[:first_name])
+        #@user.update_attribute(:last_name, user_params[:last_name])
+        #@user.update_attribute(:billing_street_address, user_params[:billing_street_address])
+        #@user.update_attribute(:billing_city, user_params[:billing_city])
+        #@user.update_attribute(:billing_state, user_params[:billing_state])
+        #@user.update_attribute(:billing_zip_code, user_params[:billing_zip_code])
+        #@user.update_attribute(:billing_first_name, user_params[:billing_first_name])
+        #@user.update_attribute(:billing_last_name, user_params[:billing_last_name])
+        #@user.update_attribute(:credit_card_number, user_params[:credit_card_number])
+        #@user.update_attribute(:expiration_date, user_params[:expiration_date])
+        #@user.update_attribute(:cvv, user_params[:cvv])
+        #@user.update_attribute(:home_street_address, user_params[:home_street_address])
+        #@user.update_attribute(:home_city, user_params[:home_city])
+        #@user.update_attribute(:home_state, user_params[:home_state])
+        #@user.update_attribute(:home_zip_code, user_params[:home_zip_code])
+        #@user.update_attribute(:house_description, user_params[:house_description])
+        #@user.update_attribute(:searchable, user_params[:searchable])
         @user.save!
         flash[:notice] = "Your account has been updated!"
         redirect_to root_path
-        # redirect_to user_path
     end
     
     def destroy
