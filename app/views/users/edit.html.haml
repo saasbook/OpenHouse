@@ -7,20 +7,21 @@
     
     %h5 Upload or change the picture of your residence:
     = form_for @user do |f|
-      = f.file_field :house_picture
-      = submit_tag 'Upload'
+      = f.file_field :house_picture, accept: "image/*"
+      = submit_tag 'Upload', id: :upload_house_picture
 
     <br>
-    = image_tag "user_images/#{@user.email}/house_picture.jpg", height: '150', weight: '20',hspace: '150', vspace: '10'
+    = image_tag "user_images/#{@user.email}/house_picture.jpg", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
 
     <br>
     %h5 Upload or change your profile picture:
     = form_for @user do |f|
       = f.file_field :profile_picture
-      = submit_tag 'Upload'
+      = submit_tag 'Upload', id: :upload_profile_picture
 
     <br>
-    = image_tag "user_images/#{@user.email}/profile_picture.jpg"
+    = image_tag "user_images/#{@user.email}/profile_picture.jpg", id: :profile_picture
+
     <br>
     
     = form_tag user_path(@user), :method => :patch do

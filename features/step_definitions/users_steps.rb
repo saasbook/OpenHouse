@@ -1,6 +1,8 @@
 Given /the following accounts exist/ do |users_table|
   users_table.hashes.each do |user|
     User.create user
+    path = Rails.root.join('app', 'assets', 'images', 'user_images', user[:email])
+    Dir.mkdir path unless File.exists? path
   end
 end
 

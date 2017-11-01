@@ -27,8 +27,11 @@ module NavigationHelpers
     when /^the edit page$/
       return edit_user_path
 
-    when /^the user profile page for (?:user )?"(.*)"$/
+    when /^the (?:user )?profile page for (?:user )?"(.*)"$/
         return user_path(User.find_by(email: $1))
+
+    when /^the edit profile page for (?:user )?"(.*)"$/
+        return edit_user_path(User.find_by(email: $1))
     
     when /^the edit page$/
       return edit_user_path

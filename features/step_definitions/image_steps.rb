@@ -1,6 +1,9 @@
-When /^I choose an? (.*) to upload/ do |type|
-    # type is the filetype
-    pending
+When /^I upload "(.*)" as my "(.*)"/ do |file, type|
+    attach_file("user[#{type}]", Rails.root.join('app', 'assets', 'images', file))
+end
+
+And /^I press the "(.*)" button/ do |name|
+    click_button name
 end
 
 Then /^I should see pictures of different houses/ do
@@ -15,8 +18,8 @@ Then /^I should see an error with a message containing "([^"]+)"(?: and "([^"]+)
     pending
 end
 
-Then /the image should be added to the post/ do
-    pending
+Then /the "(.*)" should be added to the post/ do |type|
+    expect(page).to have_xpath("//img", id: type)
 end
 
 Then /the file should not be uploaded/ do
