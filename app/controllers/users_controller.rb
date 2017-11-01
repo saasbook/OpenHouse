@@ -53,6 +53,7 @@ class UsersController < ApplicationController
         @user = current_user
     end
 
+    #TODO: remove this unused method
     def email_exists(email)
         User.find_by(email: email)
     end
