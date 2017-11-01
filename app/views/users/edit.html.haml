@@ -6,21 +6,29 @@
     %h4 Edit any of the fields below.
     
     %h5 Upload or change the picture of your residence:
-    = form_for @user do |f|
-      = f.file_field :house_picture, accept: "image/*"
+    -#= form_for @user do |f|
+    -#  = f.file_field :user, :house_picture, accept: "image/*"
+    -#  = submit_tag 'Upload', id: :upload_house_picture
+    = form_tag user_path(@user), method: :put, multipart: true do
+      = file_field :user, 'house_picture', accept: 'image/*'
       = submit_tag 'Upload', id: :upload_house_picture
 
     <br>
-    = image_tag "user_images/#{@user.email}/house_picture.jpg", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
+    - if File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'house_picture.jpg')
+      = image_tag "user_images/#{@user.email}/house_picture.jpg", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
 
     <br>
     %h5 Upload or change your profile picture:
-    = form_for @user do |f|
-      = f.file_field :profile_picture
+    -#= form_for @user do |f|
+    -#  = f.file_field :profile_picture, accept: "image/*"
+    -#  = submit_tag 'Upload', id: :upload_profile_picture
+    = form_tag user_path(@user), method: :put, multipart: true do
+      = file_field :user, 'profile_picture', accept: 'image/*'
       = submit_tag 'Upload', id: :upload_profile_picture
 
     <br>
-    = image_tag "user_images/#{@user.email}/profile_picture.jpg", id: :profile_picture
+    - if File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'profile_picture.jpg')
+      = image_tag "user_images/#{@user.email}/profile_picture.jpg", id: :profile_picture
 
     <br>
     

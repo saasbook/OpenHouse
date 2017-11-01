@@ -16,15 +16,9 @@ Scenario: user uploads images
 
 Scenario: user uploads the wrong type of file
     When I upload "invalid.file" as my "profile_picture"
-    Then I should see an error with a message containing "file type"
-    Then the file should not be uploaded
+    Then I should see an error with a message containing "image file"
+    Then the file should not have been uploaded by "aladdin@agrabah.com"
 
 Scenario: user tries to upload nothing
-    When I press the "upload" button
-    Then I should see an error with a message containing "no" and "selected"
-    Then the profile should remain unchanged
-
-Scenario: user selects a file and forgets to upload it
-    When I choose an image to upload
-    And I press the "back" button
-    Then I should see an error with a message containing "leave"
+    When I press the "upload_house_picture" button
+    Then I should see an error with a message containing "Please select" and "first"
