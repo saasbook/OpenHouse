@@ -1,24 +1,24 @@
 =image_tag('logo', height: '80', width: '170',align:"left")
 %br
-- if @user == @current_user
-    = link_to "Edit Profile", edit_user_path, style: 'color:#79b8d1;font-weight: bold;', class: 'css_class',align: "right"
 %br
-= link_to "Back to Main Page", root_path, style: 'color:#79b8d1;font-weight: bold;', class: 'css_class', align: "right"
+- if @user == @current_user
+    %p4
+    = link_to "Edit Profile", edit_user_path, style: 'color:#79b8d1;font-weight: bold;', class: 'css_class',align: "right"
+%p5
+    = link_to "Back to Main Page", root_path, style: 'color:#79b8d1;font-weight: bold;', class: 'css_class', align: "right"
 %br
 %h2 Profile
+%p3 Profile Photo
 %br
-- if File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'profile_picture.jpg')
-    = image_tag "user_images/#{@user.email}/profile_picture.jpg", height: '150', weight: '20', hspace: '150', vspace: '10'
-- else
-    = image_tag('user', height: '150', weight: '20',hspace: '150', vspace: '10')
+= image_tag('user', height: '150', weight: '20',hspace: '400', vspace: '10', align: "right")
 %br
 %p2
-    %strong First Name: 
-    = + @user.first_name
+    %strong First Name:
+    = +@user.first_name
 %br
 %p2
     %strong Last Name: 
-    = + @user.last_name
+    = +@user.last_name
 %br
 %p2
     %strong Email: 
@@ -38,6 +38,7 @@
 %br
 %p2 
     %strong Credit Card Information
+
 %ul 
     %li Number:
     = @user.credit_card_number
@@ -47,3 +48,4 @@
     = @user.cvv
 %br
 = image_tag(google_map_static_helper(center: @user.billing_street_address),hspace: '150', vspace: '10')
+

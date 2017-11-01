@@ -33,12 +33,24 @@ h2 {
   font-size: 0.5em;
   margin: 0.67em 0;
   margin-left: 100px;
-  margin-top: 1em;
+  margin-top: 8em;
   border-top: 0.5px solid gray
 }
 
 p2 {
   padding-left: 4.5cm;
+  font-size: 1em;
+}
+p3{
+  padding-left: 19.5cm;
+  font-size: 0.9em;
+}
+p4{
+  padding-left: 22cm;
+  font-size: 1em;
+}
+p5{
+  padding-left: 0.5cm;
   font-size: 1em;
 }
 p2,
