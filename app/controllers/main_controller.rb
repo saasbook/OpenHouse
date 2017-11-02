@@ -7,10 +7,16 @@ class MainController < ApplicationController
         @address = params[:location][:address]
         @city = params[:location][:city]
         @state = params[:location][:state]
-        if @address == nil and @city == nil and @state == nil
-            @users = User.all
-        else
-            @users = User.all([:home_street_address => @address, :home_city => @city, :home_state => @state]).where(:searchable => true)
+        
+        @users = User.where(:searchable => true)
+        if @address != ""
+            @users = @users.where(:home_street_address => @address)
+        end
+        if @city != ""
+            @users = @users.where(:home_city => @city)
+        end
+        if @state != ""
+            @users = @users.where(:home_state => @state)
         end
         # @users = @users.sort MAKE SEARCH FUNCTION BASED OFF OF DISTANCE W/GOOGLE MAPS API
         @user = current_user

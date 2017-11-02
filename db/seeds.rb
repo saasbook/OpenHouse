@@ -26,6 +26,7 @@ User.create(email: "vinsenvl@berkeley.edu",
             house_description: "Small, but compact. Perfect for students and not-students alike.",
             searchable: true
     )
+
 User.create(email: "r4z3ng4n@yahoo.co.id",
             password: "hidden",
             first_name: "Steven",
@@ -52,6 +53,7 @@ User.create(email: "r4z3ng4n@yahoo.co.id",
                                 because it’s cozy and clean.",
             searchable: true
     )
+
 User.create(email: "sodapopinski@sodapop.pepsi.co.id",
             password: "v0DK!+-a",
             first_name: "Vodka",
@@ -241,4 +243,3 @@ User.create(email: 'wonderwoman@gmail.com',
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true)
-

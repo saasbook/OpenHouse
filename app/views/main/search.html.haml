@@ -14,16 +14,17 @@
       %th Picture
       %th More Info
   %tbody
-    - @users.each do |user|
-      %tr
-        %td= user.home_street_address
-        %td= user.home_city
-        %td= user.home_state
-        %td Descriptive text
-        %td $10 p/hour
-        %td= user.first_name + " " + user.last_name
-        %td Insert Cute Picture
-        %td= link_to "See More", user_path(user)
+    - if @users != nil
+      - @users.each do |user|
+        %tr
+          %td= user.home_street_address
+          %td= user.home_city
+          %td= user.home_state
+          %td= user.house_description
+          %td $10 p/hour
+          %td= user.first_name + " " + user.last_name
+          %td Insert Cute Picture
+          %td= link_to "See More", user_path(user)
 
 <br>
 
