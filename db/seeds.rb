@@ -5,29 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(email: "vinsenvl@berkeley.edu",
-            password: "hidden",
-            first_name: "Vinsen",
-            last_name: "Liono",
-            personal_description: "I like trains.",
-            billing_first_name: "Vinsen",
-            billing_last_name: "Liono",
-            billing_street_address: "2634 Virginia Street",
-            billing_city: "Berkeley",
-            billing_state: "CA",
-            billing_zip_code: "94709",
-            credit_card_number: "1234567812345678",
-            expiration_date: "09/21",
-            cvv: "580",
-            home_street_address: "2634 Virginia Street",
-            home_city: "Berkeley",
-            home_state: "CA",
-            home_zip_code: "94709",
-            house_description: "Small, but compact. Perfect for students and not-students alike.",
-            searchable: true
-    )
 User.create(email: "r4z3ng4n@yahoo.co.id",
-            password: "hidden",
+            password: "ch1d0r1r41k1r1",
             first_name: "Steven",
             last_name: "Natalius",
             personal_description: "A serious person, seriously up to do things both serious and unserious alike.",
@@ -78,11 +57,11 @@ User.create(email: "sodapopinski@sodapop.pepsi.co.id",
                                 because it’s cozy and clean.",
             searchable: true
     )
-User.create(email: "buzz@toinfinityandbeyond@yahweh.co.id",
-            password: "itsatoiy",
+User.create(email: "buzz@toinfinityandbeyond.yahweh.co.id",
+            password: "spacerangertotherescue",
             first_name: "Buzz",
             last_name: "Lightyear",
-            personal_description: "\"To infinity and beyond!\"",
+            personal_description: "To infinity and beyond!",
             billing_first_name: "Buzz",
             billing_last_name: "Lightyear",
             billing_street_address: "10343 Dawsons Crk Blvd",
@@ -109,6 +88,7 @@ User.create(email: "buzz@toinfinityandbeyond@yahweh.co.id",
                                with mostly grass and a few small trees.",
             searchable: true
     )
+
 User.create(email: "judy@zootopia.com",
             password: "ITZDAPOLIZE",
             first_name: "Judy",
@@ -241,4 +221,26 @@ User.create(email: 'wonderwoman@gmail.com',
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true)
-
+            
+User.create(email: 'notwonderwoman@gmail.com', 
+            password: 'boondogle', 
+            first_name: 'Diane', 
+            last_name: 'Amazon', 
+            personal_description: 'I am not Womderwoman.', 
+            billing_first_name: 'Diana', 
+            billing_last_name: 'Amazon', 
+            billing_street_address: '2760 Hearst Avenue', 
+            billing_city: 'Berkeley', 
+            billing_state: 'CA', 
+            billing_zip_code: '94709', 
+            credit_card_number: '1122112211221122', 
+            expiration_date: '05/22', 
+            cvv: '125', 
+            home_street_address: '41a Kirkland Rd', 
+            home_city: 'Silver City', 
+            home_state: 'NM', 
+            home_zip_code: '88061', 
+            house_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat.',
+            searchable: true)
