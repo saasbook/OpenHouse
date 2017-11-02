@@ -19,6 +19,7 @@ class MainController < ApplicationController
             @users = @users.where(:home_state => @state)
         end
         # @users = @users.sort MAKE SEARCH FUNCTION BASED OFF OF DISTANCE W/GOOGLE MAPS API
+
         @user = current_user
     end
 end
