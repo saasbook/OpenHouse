@@ -7,6 +7,7 @@
     %tr
       %th Street
       %th City
+      %th State
       %th Description
       %th Price
       %th Owner
@@ -15,10 +16,12 @@
   %tbody
     - @users.each do |user|
       %tr
-        %td= user.billing_street_address
-        %td= user.billing_city
+        %td= user.home_street_address
+        %td= user.home_city
+        %td= user.home_state
         %td Descriptive text
         %td $10 p/hour
+        %td= user.first_name + " " + user.last_name
         %td Insert Cute Picture
         %td= link_to "See More", user_path(user)
 
