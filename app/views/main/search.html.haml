@@ -1,0 +1,38 @@
+%h2 Search Results
+
+<br>
+
+%table#results
+  %thead
+    %tr
+      %th Street
+      %th City
+      %th Description
+      %th Price
+      %th Owner
+      %th Picture
+      %th More Info
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.billing_street_address
+        %td= user.billing_city
+        %td Descriptive text
+        %td $10 p/hour
+        %td Insert Cute Picture
+        %td= link_to "See More", user_path(user)
+
+<br>
+
+= link_to 'Back to Main Page', root_path
+<br>
+- if logged_in?
+  = link_to "View Profile", user_path(@user)
+  <br>
+  = link_to 'Edit Profile', edit_user_path
+  <br>
+  = link_to 'Log Out', logout_path, method: :delete
+- else
+  = link_to 'Log In', login_path
+  <br>
+  = link_to 'Sign Up', new_user_path

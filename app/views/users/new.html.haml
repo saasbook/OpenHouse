@@ -1,41 +1,26 @@
 %p= flash[:notice] if flash[:notice]
-%h1 Create New User
-
+%h1 Create Your Account
+<br>
+%h4 Enter your new account information below.
 = form_tag users_path do
 
   = label :user, :email, 'E-mail Address'
   = text_field :user, 'email'
-
+  <br>
   = label :user, :password, 'Password'
   = text_field :user, 'password'
-
-  = label :user, :street_address, 'Street Address'
-  = text_field :user, 'street_address'
-
-  = label :user, :city, 'City'
-  = text_field :user, 'city'
-
-  = label :user, :state, 'State'
-  = text_field :user, 'state'
-
-  = label :user, :zip_code, 'Zip Code'
-  = text_field :user, 'zip_code'
-
+  <br>
   = label :user, :first_name, 'First Name'
   = text_field :user, 'first_name'
-
+  <br>
   = label :user, :last_name, 'Last Name'
   = text_field :user, 'last_name'
-
-  = label :user, :credit_card, 'Credit Card'
-  = text_field :user, 'credit_card_number'
-  
-  = label :user, :expiration_date, 'Expiration Date'
-  = text_field :user, 'expiration_date'
-  
-  = label :user, :cvv, 'CVV'
-  = text_field :user, 'cvv'
-
+  <br>
+  = label :user, :personal_description, 'Personal Description'
+  = text_field :user, 'personal_description'
+  <br>
   = submit_tag 'Submit'
-
-
+  
+<br>
+= link_to "Back to Main Page", root_path
+  
