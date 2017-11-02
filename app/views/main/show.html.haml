@@ -4,7 +4,9 @@
 <br>
 %h3 Search for available homes near you
 = form_tag search_path, :method => :get do
-  = text_field :search, 'query'
+  = text_field :location, 'address', :placeholder=>"Address"
+  = text_field :location, 'city', :placeholder=>"City"
+  = text_field :location, 'state', :placeholder=>"State"
   = submit_tag 'Search'
 <br>
 
