@@ -200,29 +200,6 @@ User.create(email: 'superman@gmail.com',
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true)
             
-User.create(email: 'wonderwoman@gmail.com', 
-            password: 'boondogle', 
-            first_name: 'Diana', 
-            last_name: 'Amazon', 
-            personal_description: 'I am Womderwoman.', 
-            billing_first_name: 'Diana', 
-            billing_last_name: 'Amazon', 
-            billing_street_address: '2760 Hearst Avenue', 
-            billing_city: 'Berkeley', 
-            billing_state: 'CA', 
-            billing_zip_code: '94709', 
-            credit_card_number: '1122112211221122', 
-            expiration_date: '05/22', 
-            cvv: '125', 
-            home_street_address: '41a Kirkland Rd', 
-            home_city: 'Silver City', 
-            home_state: 'NM', 
-            home_zip_code: '88061', 
-            house_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat.',
-            searchable: true)
-            
 User.create(email: 'notwonderwoman@gmail.com', 
             password: 'boondogle', 
             first_name: 'Diane', 
