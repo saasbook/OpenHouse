@@ -93,6 +93,9 @@
       = label :user, :house_description, "Location's Description"
       = text_field :user, :house_description, :value=>@user.house_description
       <br>
+      = label :user, :price, "Location's Price (per hour)"
+      = text_field :user, :price, :value=>@user.price
+      <br>
       = label :user, :searchable, "Would you like your location to be searchable?"
       = check_box :user, :searchable, :value=>@user.searchable
       <br> 

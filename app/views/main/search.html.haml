@@ -21,7 +21,7 @@
           %td= user.home_city
           %td= user.home_state
           %td= user.house_description
-          %td= $10 p/hour
+          %td= user.price + " p/hour"
           // user.price + " p/hour"
           %td= user.first_name + " " + user.last_name
           - if File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', user.email, 'house_picture.jpg')
