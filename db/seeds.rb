@@ -23,7 +23,7 @@ User.create(email: "vinsenvl@berkeley.edu",
             home_city: "Berkeley",
             home_state: "CA",
             home_zip_code: "94709",
-            home_description: "Small, but compact. Perfect for students and not-students alike.",
+            house_description: "Small, but compact. Perfect for students and not-students alike.",
             searchable: true
     )
 User.create(email: "r4z3ng4n@yahoo.co.id",
@@ -44,12 +44,12 @@ User.create(email: "r4z3ng4n@yahoo.co.id",
             home_city: "San Mateo",
             home_state: "CA",
             home_zip_code: "94401",
-            home_description: "The house where I live is very big and beautiful. It has eight rooms; two bathrooms, three
-bedrooms, a dining room, a living room and a small kitchen. There is also a garden with a
-swimming pool. I usually swim there in the summer. In the dining room there is a large table for the
-five of us. In the living room there are two sofas and a television. At nights my father and I watch
-TV together. We both like football and quiz shows.
-I really like my house because it’s cozy and clean. .",
+            house_description: "The house where I live is very big and beautiful. It has eight rooms; two bathrooms, three 
+                                bedrooms, a dining room, a living room and a small kitchen. There is also a garden with a 
+                                swimming pool. I usually swim there in the summer. In the dining room there is a large table
+                                for the five of us. In the living room there are two sofas and a television. At nights my
+                                father and I watch TV together. We both like football and quiz shows. I really like my house
+                                because it’s cozy and clean.",
             searchable: true
     )
 User.create(email: "sodapopinski@sodapop.pepsi.co.id",
@@ -70,12 +70,12 @@ User.create(email: "sodapopinski@sodapop.pepsi.co.id",
             home_city: "Fort Wayne",
             home_state: "IN",
             home_zip_code: "46825-1906",
-            home_description: "The house where I live is very big and beautiful. It has eight rooms; two bathrooms, three
-bedrooms, a dining room, a living room and a small kitchen. There is also a garden with a
-swimming pool. I usually swim there in the summer. In the dining room there is a large table for the
-five of us. In the living room there are two sofas and a television. At nights my father and I watch
-TV together. We both like football and quiz shows.
-I really like my house because it’s cozy and clean. .",
+            house_description: "The house where I live is very big and beautiful. It has eight rooms; two bathrooms, three 
+                                bedrooms, a dining room, a living room and a small kitchen. There is also a garden with a 
+                                swimming pool. I usually swim there in the summer. In the dining room there is a large table 
+                                for the five of us. In the living room there are two sofas and a television. At nights my 
+                                father and I watch TV together. We both like football and quiz shows. I really like my house
+                                because it’s cozy and clean.",
             searchable: true
     )
 User.create(email: "buzz@toinfinityandbeyond@yahweh.co.id",
@@ -96,15 +96,17 @@ User.create(email: "buzz@toinfinityandbeyond@yahweh.co.id",
             home_city: "Stockton",
             home_state: "CA",
             home_zip_code: "95202-2706",
-            home_description: "From the outside this house looks cozy. It has been built with oak wood and has white stone decorations. Tall, wide windows add to the overall look of the house and have been added to the house in a mostly asymmetric way.
-
-The house is equipped with a small kitchen and three bathrooms, it also has a cozy living room, four bedrooms, a spacious dining room and a roomy garage.
-
-The building is square shaped. The house is fully surrounded by a garden path.
-The second floor is bigger than the first, which creates a stylish overhang on two sides of the house. This floor has a different style than the floor below.
-
-The roof is high and pyramid shaped and is covered with black roof tiles. Two small chimneys sit at either side of the house. Many smaller windows let in plenty of light to the rooms below the roof.
-The house itself is surrounded by a modest garden, with mostly grass and a few small trees.",
+            house_description: "From the outside this house looks cozy. It has been built with oak wood and has
+                               white stone decorations. Tall, wide windows add to the overall look of the house 
+                               and have been added to the house in a mostly asymmetric way. The house is equipped
+                               with a small kitchen and three bathrooms, it also has a cozy living room, four bedrooms, 
+                               a spacious dining room and a roomy garage. The building is square shaped. The house is 
+                               fully surrounded by a garden path. The second floor is bigger than the first, which creates 
+                               a stylish overhang on two sides of the house. This floor has a different style than the 
+                               floor below.The roof is high and pyramid shaped and is covered with black roof tiles. 
+                               Two small chimneys sit at either side of the house. Many smaller windows let in plenty 
+                               of light to the rooms below the roof. The house itself is surrounded by a modest garden, 
+                               with mostly grass and a few small trees.",
             searchable: true
     )
 User.create(email: "judy@zootopia.com",
@@ -125,51 +127,116 @@ User.create(email: "judy@zootopia.com",
             home_city: "Burlington",
             home_state: "VT",
             home_zip_code: "05401-4394",
-            home_description: "Rabbit's hideout. Just a simple apartment, away from all distractions.",
+            house_description: "Rabbit's hideout. Just a simple apartment, away from all distractions.",
             searchable: true
     )
 
-User.create(email: 'alejandro@gmail.com', password: 'boondogle', first_name: 'Alejandro', last_name: 'Salazar', 
-            personal_description: 'I am a dumb Colombian.', billing_first_name: 'Alejandro', billing_last_name: 'Salazar', 
-            billing_street_address: '2700 Hearst Avenue', billing_city: 'Berkeley', billing_state: 'CA', 
-            billing_zip_code: '94720', credit_card_number: '1234123412341234', expiration_date: '06/22', cvv: '137', 
-            home_street_address: '2520 Ridge Road', home_city: 'Berkeley', home_state: 'CA', home_zip_code: '94709', 
+User.create(email: 'alejandro@gmail.com', 
+            password: 'boondogle', 
+            first_name: 'Alejandro', 
+            last_name: 'Salazar', 
+            personal_description: 'I am a dumb Colombian.', 
+            billing_first_name: 'Alejandro', 
+            billing_last_name: 'Salazar', 
+            billing_street_address: '2700 Hearst Avenue', 
+            billing_city: 'Berkeley', 
+            billing_state: 'CA', 
+            billing_zip_code: '94720', 
+            credit_card_number: '1234123412341234', 
+            expiration_date: '06/22', 
+            cvv: '137', 
+            home_street_address: '2520 Ridge Road', 
+            home_city: 'Berkeley', 
+            home_state: 'CA', 
+            home_zip_code: '94709', 
             house_description: 'A beautiful college property, right in the heart of UC Berkeley, with access to a dirty pool.',
             searchable: true)
             
-User.create(email: 'jared@gmail.com', password: 'boondogle', first_name: 'Jared', last_name: 'Ryan', 
-            personal_description: 'I am an American.', billing_first_name: 'Jared', billing_last_name: 'Ryan', 
-            billing_street_address: '2350 Hearst Avenue', billing_city: 'Berkeley', billing_state: 'CA', 
-            billing_zip_code: '94709', credit_card_number: '4321432143214321', expiration_date: '08/22', cvv: '731', 
-            home_street_address: '2368 Le Cont Avenue', home_city: 'Berkeley', home_state: 'CA', home_zip_code: '94709', 
+User.create(email: 'jared@gmail.com', 
+            password: 'boondogle', 
+            first_name: 'Jared', 
+            last_name: 'Ryan', 
+            personal_description: 'I am an American.', 
+            billing_first_name: 'Jared', 
+            billing_last_name: 'Ryan', 
+            billing_street_address: '2350 Hearst Avenue', 
+            billing_city: 'Berkeley', 
+            billing_state: 'CA', 
+            billing_zip_code: '94709', 
+            credit_card_number: '4321432143214321', 
+            expiration_date: '08/22', 
+            cvv: '731', 
+            home_street_address: '2368 Le Cont Avenue', 
+            home_city: 'Berkeley', 
+            home_state: 'CA', 
+            home_zip_code: '94709', 
             house_description: 'The working Church.',
             searchable: true)
             
-User.create(email: 'batman@gmail.com', password: 'boondogle', first_name: 'Bruce', last_name: 'Wayne', 
-            personal_description: 'I am the Batman.', billing_first_name: 'Wayne', billing_last_name: 'Wayne', 
-            billing_street_address: '2520 Hearst Avenue', billing_city: 'Berkeley', billing_state: 'CA', 
-            billing_zip_code: '94709', credit_card_number: '2222222222222222', expiration_date: '01/22', cvv: '115', 
-            home_street_address: '2151 Pedro Ave', home_city: 'Milpitas', home_state: 'CA', home_zip_code: '95035', 
+User.create(email: 'batman@gmail.com', 
+            password: 'boondogle', 
+            first_name: 'Bruce', 
+            last_name: 'Wayne', 
+            personal_description: 'I am the Batman.', 
+            billing_first_name: 'Wayne', 
+            billing_last_name: 'Wayne', 
+            billing_street_address: '2520 Hearst Avenue', 
+            billing_city: 'Berkeley', 
+            billing_state: 'CA', 
+            billing_zip_code: '94709', 
+            credit_card_number: '2222222222222222', 
+            expiration_date: '01/22', 
+            cvv: '115', 
+            home_street_address: '2151 Pedro Ave', 
+            home_city: 'Milpitas', 
+            home_state: 'CA', 
+            home_zip_code: '95035', 
             house_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true)
             
-User.create(email: 'superman@gmail.com', password: 'boondogle', first_name: 'Clark', last_name: 'Kent', 
-            personal_description: 'I am Superman.', billing_first_name: 'Clark', billing_last_name: 'Kent', 
-            billing_street_address: '2760 Hearst Avenue', billing_city: 'Berkeley', billing_state: 'CA', 
-            billing_zip_code: '94709', credit_card_number: '1122112211221122', expiration_date: '05/22', cvv: '125', 
-            home_street_address: '18 Hallock Dr', home_city: 'Washingtonvle', home_state: 'NY', home_zip_code: '10992', 
+User.create(email: 'superman@gmail.com', 
+            password: 'boondogle', 
+            first_name: 'Clark', 
+            last_name: 'Kent', 
+            personal_description: 'I am Superman.', 
+            billing_first_name: 'Clark', 
+            billing_last_name: 'Kent', 
+            billing_street_address: '2760 Hearst Avenue', 
+            billing_city: 'Berkeley', 
+            billing_state: 'CA', 
+            billing_zip_code: '94709', 
+            credit_card_number: '1122112211221122', 
+            expiration_date: '05/22', 
+            cvv: '125', 
+            home_street_address: '18 Hallock Dr', 
+            home_city: 'Washingtonvle', 
+            home_state: 'NY', 
+            home_zip_code: '10992', 
             house_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true)
             
-User.create(email: 'wonderwoman@gmail.com', password: 'boondogle', first_name: 'Diana', last_name: 'Amazon', 
-            personal_description: 'I am Womderwoman.', billing_first_name: 'Diana', billing_last_name: 'Amazon', 
-            billing_street_address: '2760 Hearst Avenue', billing_city: 'Berkeley', billing_state: 'CA', 
-            billing_zip_code: '94709', credit_card_number: '1122112211221122', expiration_date: '05/22', cvv: '125', 
-            home_street_address: '41a Kirkland Rd', home_city: 'Silver City', home_state: 'NM', home_zip_code: '88061', 
+User.create(email: 'wonderwoman@gmail.com', 
+            password: 'boondogle', 
+            first_name: 'Diana', 
+            last_name: 'Amazon', 
+            personal_description: 'I am Womderwoman.', 
+            billing_first_name: 'Diana', 
+            billing_last_name: 'Amazon', 
+            billing_street_address: '2760 Hearst Avenue', 
+            billing_city: 'Berkeley', 
+            billing_state: 'CA', 
+            billing_zip_code: '94709', 
+            credit_card_number: '1122112211221122', 
+            expiration_date: '05/22', 
+            cvv: '125', 
+            home_street_address: '41a Kirkland Rd', 
+            home_city: 'Silver City', 
+            home_state: 'NM', 
+            home_zip_code: '88061', 
             house_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
