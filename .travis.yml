@@ -13,11 +13,11 @@ before_script:
   - ./cc-test-reporter before-build
   - psql -c 'create database openhousedev;' -U postgres
   - psql -c 'create database openhousetest;' -U postgres
-  - echo $HOME
 script:
   - bundle exec rspec
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - bundle exec rake send_to_codeclimate
+    #- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 before_install:
   - rvm install 2.3.5
   - rvm use 2.3.5
