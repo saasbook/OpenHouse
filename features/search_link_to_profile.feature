@@ -15,7 +15,6 @@ Scenario: user clicks on search result to learn more
   And I follow "See More"
   Then I should see "aladdin@agrabah.com"
   
-
 Scenario: user cannot edit a profile that is not theirs (or if they aren't logged in)
   Given I am on the home page
   When I press "Search"
