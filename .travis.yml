@@ -13,6 +13,7 @@ before_script:
   - ./cc-test-reporter before-build
   - psql -c 'create database openhousedev;' -U postgres
   - psql -c 'create database openhousetest;' -U postgres
+  - echo $HOME
 script:
   - bundle exec rspec
 after_script:
