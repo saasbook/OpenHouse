@@ -23,5 +23,6 @@ ratings:
   - "**.rb"
   - "**.go"
 exclude_paths:
+- app/assets/javascripts/bootstrap.js
 - spec/**/*
 - "**/vendor/**/*"
