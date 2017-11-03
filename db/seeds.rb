@@ -30,7 +30,7 @@ User.create(email: "r4z3ng4n@yahoo.co.id",
                                 father and I watch TV together. We both like football and quiz shows. I really like my house
                                 because it’s cozy and clean.",
             searchable: true,
-            price: 12)
+            price: "12")
 
 User.create(email: "sodapopinski@sodapop.pepsi.co.id",
             password: "v0DK!+-a",
@@ -57,7 +57,7 @@ User.create(email: "sodapopinski@sodapop.pepsi.co.id",
                                 father and I watch TV together. We both like football and quiz shows. I really like my house
                                 because it’s cozy and clean.",
             searchable: true,
-            price: 100)
+            price: "100")
 
 User.create(email: "buzz@toinfinityandbeyond.yahweh.co.id",
             password: "spacerangertotherescue",
@@ -89,7 +89,7 @@ User.create(email: "buzz@toinfinityandbeyond.yahweh.co.id",
                                of light to the rooms below the roof. The house itself is surrounded by a modest garden, 
                                with mostly grass and a few small trees.",
             searchable: true,
-            price: 16)
+            price: "16")
 
 User.create(email: "judy@zootopia.com",
             password: "ITZDAPOLIZE",
@@ -111,7 +111,7 @@ User.create(email: "judy@zootopia.com",
             home_zip_code: "05401-4394",
             house_description: "Rabbit's hideout. Just a simple apartment, away from all distractions.",
             searchable: true,
-            price: 13)
+            price: "13")
 
 User.create(email: 'alejandro@gmail.com', 
             password: 'boondogle', 
@@ -133,7 +133,7 @@ User.create(email: 'alejandro@gmail.com',
             home_zip_code: '94709', 
             house_description: 'A beautiful college property, right in the heart of UC Berkeley, with access to a dirty pool.',
             searchable: true,
-            price: 9)
+            price: "9")
             
 User.create(email: 'jared@gmail.com', 
             password: 'boondogle', 
@@ -155,7 +155,7 @@ User.create(email: 'jared@gmail.com',
             home_zip_code: '94709', 
             house_description: 'The working Church.',
             searchable: true,
-            price: 8)
+            price: "8")
             
 User.create(email: 'batman@gmail.com', 
             password: 'boondogle', 
@@ -179,7 +179,7 @@ User.create(email: 'batman@gmail.com',
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true,
-            price: 22)
+            price: "22")
             
 User.create(email: 'superman@gmail.com', 
             password: 'boondogle', 
@@ -203,7 +203,7 @@ User.create(email: 'superman@gmail.com',
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true,
-            price: 18)
+            price: "18")
             
 User.create(email: 'notwonderwoman@gmail.com', 
             password: 'boondogle', 
@@ -227,4 +227,4 @@ User.create(email: 'notwonderwoman@gmail.com',
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true,
-            price: 20)
+            price: "20")
