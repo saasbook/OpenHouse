@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     end
     
     def destroy
-        @user = current_user
+        @user = User.find params[:id]
         log_out
         @user.destroy
         flash[:notice] = "Your account has been deleted."
