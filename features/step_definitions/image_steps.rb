@@ -1,3 +1,11 @@
+Then /^I should see a default house image/ do
+    expect(page).to have_xpath("//img[contains(@src, '/assets/house-672e50044baea2f22fce12544d9dd1575e8ce89c5a0f0a09a24aa4b79a3d0607.jpg')]")
+end
+
+Then /^I should see a "(.*)" image/ do |img|
+    expect(page).to have_xpath("//img[contains(@src, #{img})]")
+end
+
 When /^I upload "(.*)" as my "(.*)"/ do |file, type|
     attach_file("user[#{type}]", Rails.root.join('app', 'assets', 'images', file))
     click_button "upload_#{type}"
