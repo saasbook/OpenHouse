@@ -24,11 +24,11 @@
 
 %p2
     %strong First Name:
-    = +@user.first_name
+    = +(@user.first_name || "")
 %br
 %p2
     %strong Last Name: 
-    = +@user.last_name
+    = +(@user.last_name || "")
 %br
 %p2
     %strong Email: 
@@ -36,7 +36,7 @@
 %br
 %p2
     %strong Personal Description: 
-    = + @user.personal_description
+    = +(@user.personal_description || "")
 %br
 
 - if @user == @current_user
@@ -44,39 +44,39 @@
         %strong Billing Address Information:
     %ul 
         %li First Name:
-        = + @user.billing_first_name
+        = +(@user.billing_first_name || "")
         %li Last Name:
-        = + @user.billing_last_name
+        = +(@user.billing_last_name || "")
         %li Street:
-        = + @user.billing_street_address 
+        = +(@user.billing_street_address || "")
         %li City:
-        = + @user.billing_city
+        = +(@user.billing_city || "")
         %li State:
-        = + @user.billing_state
+        = +(@user.billing_state || "")
         %li Zip Code:
-        = + @user.billing_zip_code
+        = +(@user.billing_zip_code || "")
     %br
     %p2 
         %strong Credit Card Information
     
     %ul 
         %li Number:
-        = + @user.credit_card_number
+        = +(@user.credit_card_number || "")
         %li Expiration Date:
-        = + @user.expiration_date
+        = +(@user.expiration_date || "")
         %li CVV:
-        = + @user.cvv
+        = +(@user.cvv || "")
     
 %p2 
     %strong Hosting Information:
 %ul 
     %li Street:
-    = +@user.home_street_address 
+    = +(@user.home_street_address || "")
     %li City:
-    = +@user.home_city
+    = +(@user.home_city || "")
     %li State:
-    = +@user.home_state
+    = +(@user.home_state || "")
     %li Zip Code:
-    = +@user.home_zip_code
+    = +(@user.home_zip_code || "")
 %br
 = image_tag(google_map_static_helper(center: @user.billing_street_address),hspace: '150', vspace: '10')
