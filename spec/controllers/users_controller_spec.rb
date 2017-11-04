@@ -149,6 +149,15 @@ describe UsersController do
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
 		end
 	end
+<<<<<<< HEAD
+	describe 'Edit user' do
+		it 'updates the user' do
+			get :edit
+			expect(assigns(:user)).to eq(@updated_user)
+		end
+	end
+=======
+>>>>>>> 9536e093ce664d0b8befd528a02e37bc35088cb4
 end
 
 
