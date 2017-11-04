@@ -150,12 +150,27 @@ describe UsersController do
 		end
 	end
 	describe 'Edit user' do
-		it 'updates the user' do
+		it 'Sets the user' do
 			get :edit
 			@user = User.find_by(:email => "sodapop@pepsi.com")
 			expect(assigns(:user)).to eq(@user)
 		end
 	end
+	describe 'New billing' do
+		it 'Sets the user' do
+			get :new_billing
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(assigns(:user)).to eq(@user)
+		end
+	end
+	describe 'New host' do
+		it 'Sets the user' do
+			get :new_host
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(assigns(:user)).to eq(@user)
+		end
+	end
+	#describe ''
 end
 
 
