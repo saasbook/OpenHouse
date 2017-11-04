@@ -144,6 +144,13 @@ describe UsersController do
 			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
 		end
+		it 'submitting nil images does not change profile pictures' do
+			post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			put :update, :id => @user.id
+			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
+		end
 	end
 	describe 'Edit user' do
 		it 'Sets the user' do
