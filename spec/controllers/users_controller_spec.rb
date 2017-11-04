@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'spec_helper'
+
 describe UsersController do
 	before(:each) do
         @parameters = {
@@ -35,12 +36,12 @@ describe UsersController do
             price: "100"
 		}
 		@image = {
-			house_picture: "/images/sample_home.png",
-			profile_picture: "/images/sample_profile.png"
+			house_picture: "/images/jpeg",
+			profile_picture: "/images/png"
 		}
 		@invalid_image = {
-			house_picture: "/sample_home.exe",
-			profile_picture: "/sample_profile.rb"
+			house_picture: "/text/html",
+			profile_picture: "text/plain"
 		}
 	end
 
@@ -126,7 +127,7 @@ describe UsersController do
 		it 'submitting valid images changes profile pictures' do
 			post :create, :user => @parameters
 			@user = User.find_by(:email => "sodapop@pepsi.com")
-			patch :update_host, :id => @user.id , :user => @image
+			patch :update, :id => @user.id , :user => {user: @image[:house_picture]}
 			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
 			expect(File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, @image[:house_picture])))
 			expect(File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, @image[:profile_picture])))
@@ -134,7 +135,7 @@ describe UsersController do
 		it 'submitting invalid images does not change profile pictures' do
 			post :create, :user => @parameters
 			@user = User.find_by(:email => "sodapop@pepsi.com")
-			patch :update_host, :id => @user.id , :user => @invalid_image
+			patch :update_host, :id => @user.id , :user => {user: @invalid_image[:house_picture]}
 			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, @invalid_image[:house_picture])))
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, @invalid_image[:profile_picture])))
@@ -142,8 +143,7 @@ describe UsersController do
 		it 'submitting nil images does not change profile pictures' do
 			post :create, :user => @parameters
 			@user = User.find_by(:email => "sodapop@pepsi.com")
-			nil_images = {}
-			patch :update_host, :id => @user.id , :user => @host_params
+			patch :update, :id => @user.id , :user => {user: nil}
 			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
