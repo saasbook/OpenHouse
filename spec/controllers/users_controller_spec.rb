@@ -34,6 +34,9 @@ describe UsersController do
             searchable: true,
             price: "100"
 		}
+		@image = {
+			house_picture: "/images/home.png"
+		}
 	end
 
 # 	describe 'edit' do
@@ -114,6 +117,13 @@ describe UsersController do
 			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
 			expect(@updated_user.home_city).to eq("Fort Wayne")
 			expect(@updated_user.home_state).to eq("IN")
+		end
+		it 'submitting house picture changes profile picture' do
+			post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			patch :update_host, :id => @user.id , :user => @image
+			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, @image[:house_picture])))
 		end
 	end
 
