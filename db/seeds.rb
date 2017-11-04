@@ -24,8 +24,8 @@ User.create(email: "vinsenvl@berkeley.edu",
             home_state: "CA",
             home_zip_code: "94709",
             house_description: "Small, but compact. Perfect for students and not-students alike.",
-            searchable: true
-    )
+            searchable: true)
+            
 User.create(email: "r4z3ng4n@yahoo.co.id",
             password: "hidden",
             first_name: "Steven",
@@ -50,8 +50,8 @@ User.create(email: "r4z3ng4n@yahoo.co.id",
                                 for the five of us. In the living room there are two sofas and a television. At nights my
                                 father and I watch TV together. We both like football and quiz shows. I really like my house
                                 because it’s cozy and clean.",
-            searchable: true
-    )
+            searchable: true)
+            
 User.create(email: "sodapopinski@sodapop.pepsi.co.id",
             password: "v0DK!+-a",
             first_name: "Vodka",
@@ -76,8 +76,8 @@ User.create(email: "sodapopinski@sodapop.pepsi.co.id",
                                 for the five of us. In the living room there are two sofas and a television. At nights my 
                                 father and I watch TV together. We both like football and quiz shows. I really like my house
                                 because it’s cozy and clean.",
-            searchable: true
-    )
+            searchable: true)
+            
 User.create(email: "buzz@toinfinityandbeyond@yahweh.co.id",
             password: "itsatoiy",
             first_name: "Buzz",
@@ -107,8 +107,8 @@ User.create(email: "buzz@toinfinityandbeyond@yahweh.co.id",
                                Two small chimneys sit at either side of the house. Many smaller windows let in plenty 
                                of light to the rooms below the roof. The house itself is surrounded by a modest garden, 
                                with mostly grass and a few small trees.",
-            searchable: true
-    )
+            searchable: true)
+            
 User.create(email: "judy@zootopia.com",
             password: "ITZDAPOLIZE",
             first_name: "Judy",
@@ -128,8 +128,7 @@ User.create(email: "judy@zootopia.com",
             home_state: "VT",
             home_zip_code: "05401-4394",
             house_description: "Rabbit's hideout. Just a simple apartment, away from all distractions.",
-            searchable: true
-    )
+            searchable: true)
 
 User.create(email: 'alejandro@gmail.com', 
             password: 'boondogle', 
@@ -223,7 +222,7 @@ User.create(email: 'wonderwoman@gmail.com',
             password: 'boondogle', 
             first_name: 'Diana', 
             last_name: 'Amazon', 
-            personal_description: 'I am Womderwoman.', 
+            personal_description: 'I am Wonderwoman.', 
             billing_first_name: 'Diana', 
             billing_last_name: 'Amazon', 
             billing_street_address: '2760 Hearst Avenue', 
@@ -241,4 +240,3 @@ User.create(email: 'wonderwoman@gmail.com',
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true)
-
