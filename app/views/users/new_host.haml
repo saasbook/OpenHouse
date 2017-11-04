@@ -10,7 +10,7 @@
   = submit_tag 'Upload'
 
 <br>
-= image_tag "user_images/#{@user.email}/house_picture.jpg"
+= image_tag "user.png", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
 
 <br>
 %h5 Please upload a profile picture:
@@ -19,7 +19,7 @@
   = submit_tag 'Upload'
 
 <br>
-= image_tag "user_images/#{@user.email}/profile_picture.jpg"
+= image_tag "house.jpg", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
 <br>
 <br> 
 
@@ -40,7 +40,10 @@
   = label :user, :house_description, "Location's Description"
   = text_field :user, :house_description
   <br>
-  = label :user, :searchable, "Would you like your location to be searchable?"
+  = label :user, :price, "Location's Price (per hour)"
+  = text_field :user, :price
+  <br>
+  = label :user, :searchable, "Would you like to host? Checking this box makes your location searchable."
   = check_box :user, :searchable
   <br>
 
@@ -51,7 +54,7 @@
 
 
 <br>
-= link_to "Skip", login_path  
+= link_to "Skip", root_path  
 <br>
 = link_to "Back to Main Page", root_path
   

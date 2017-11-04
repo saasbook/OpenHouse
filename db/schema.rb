@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029224023) do
+ActiveRecord::Schema.define(version: 20171102212129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20171029224023) do
     t.boolean "searchable"
     t.string  "billing_first_name"
     t.string  "billing_last_name"
+    t.string  "price"
   end
 
 end

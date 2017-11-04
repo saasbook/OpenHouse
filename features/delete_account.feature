@@ -1,4 +1,4 @@
-
+# Pivotal Tracker ID: 151973839
 Feature: User deletes account
   As a OpenHouse User
   So that I can stop using OpenHouse
@@ -16,7 +16,7 @@ Scenario: delete account
   And I fill in "Password" with "12341001"
   When I press "Log In"
   And I follow "Edit Profile"
-  And I am on the edit page
+  And I should be on the edit page
   When I press "Delete Profile"
   Then I should see "Your account has been deleted."
   And account with email "aladdin@agrabah.com" should not exist in the database

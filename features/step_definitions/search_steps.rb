@@ -1,5 +1,3 @@
-When /^I execute a search$/ do
-    pending
+And /I click the first "(.*)"/ do |l|
+    first(:link, l).click
 end
-
-# maybe do something like "When I search for XX with filter XX"

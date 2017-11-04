@@ -1,3 +1,4 @@
+# Pivotal Tracker ID: 151973900
 Feature: Guest wants to see list of spaces available near him or her
 
     As a Guest,

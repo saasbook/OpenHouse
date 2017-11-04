@@ -5,29 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(email: "vinsenvl@berkeley.edu",
-            password: "hidden",
-            first_name: "Vinsen",
-            last_name: "Liono",
-            personal_description: "I like trains.",
-            billing_first_name: "Vinsen",
-            billing_last_name: "Liono",
-            billing_street_address: "2634 Virginia Street",
-            billing_city: "Berkeley",
-            billing_state: "CA",
-            billing_zip_code: "94709",
-            credit_card_number: "1234567812345678",
-            expiration_date: "09/21",
-            cvv: "580",
-            home_street_address: "2634 Virginia Street",
-            home_city: "Berkeley",
-            home_state: "CA",
-            home_zip_code: "94709",
-            house_description: "Small, but compact. Perfect for students and not-students alike.",
-            searchable: true)
-            
 User.create(email: "r4z3ng4n@yahoo.co.id",
-            password: "hidden",
+            password: "ch1d0r1r41k1r1",
             first_name: "Steven",
             last_name: "Natalius",
             personal_description: "A serious person, seriously up to do things both serious and unserious alike.",
@@ -50,8 +29,9 @@ User.create(email: "r4z3ng4n@yahoo.co.id",
                                 for the five of us. In the living room there are two sofas and a television. At nights my
                                 father and I watch TV together. We both like football and quiz shows. I really like my house
                                 because it’s cozy and clean.",
-            searchable: true)
-            
+            searchable: true,
+            price: "12")
+
 User.create(email: "sodapopinski@sodapop.pepsi.co.id",
             password: "v0DK!+-a",
             first_name: "Vodka",
@@ -76,13 +56,14 @@ User.create(email: "sodapopinski@sodapop.pepsi.co.id",
                                 for the five of us. In the living room there are two sofas and a television. At nights my 
                                 father and I watch TV together. We both like football and quiz shows. I really like my house
                                 because it’s cozy and clean.",
-            searchable: true)
-            
-User.create(email: "buzz@toinfinityandbeyond@yahweh.co.id",
-            password: "itsatoiy",
+            searchable: true,
+            price: "100")
+
+User.create(email: "buzz@toinfinityandbeyond.yahweh.co.id",
+            password: "spacerangertotherescue",
             first_name: "Buzz",
             last_name: "Lightyear",
-            personal_description: "\"To infinity and beyond!\"",
+            personal_description: "To infinity and beyond!",
             billing_first_name: "Buzz",
             billing_last_name: "Lightyear",
             billing_street_address: "10343 Dawsons Crk Blvd",
@@ -107,8 +88,9 @@ User.create(email: "buzz@toinfinityandbeyond@yahweh.co.id",
                                Two small chimneys sit at either side of the house. Many smaller windows let in plenty 
                                of light to the rooms below the roof. The house itself is surrounded by a modest garden, 
                                with mostly grass and a few small trees.",
-            searchable: true)
-            
+            searchable: true,
+            price: "16")
+
 User.create(email: "judy@zootopia.com",
             password: "ITZDAPOLIZE",
             first_name: "Judy",
@@ -128,7 +110,8 @@ User.create(email: "judy@zootopia.com",
             home_state: "VT",
             home_zip_code: "05401-4394",
             house_description: "Rabbit's hideout. Just a simple apartment, away from all distractions.",
-            searchable: true)
+            searchable: true,
+            price: "13")
 
 User.create(email: 'alejandro@gmail.com', 
             password: 'boondogle', 
@@ -149,7 +132,8 @@ User.create(email: 'alejandro@gmail.com',
             home_state: 'CA', 
             home_zip_code: '94709', 
             house_description: 'A beautiful college property, right in the heart of UC Berkeley, with access to a dirty pool.',
-            searchable: true)
+            searchable: true,
+            price: "9")
             
 User.create(email: 'jared@gmail.com', 
             password: 'boondogle', 
@@ -170,7 +154,8 @@ User.create(email: 'jared@gmail.com',
             home_state: 'CA', 
             home_zip_code: '94709', 
             house_description: 'The working Church.',
-            searchable: true)
+            searchable: true,
+            price: "8")
             
 User.create(email: 'batman@gmail.com', 
             password: 'boondogle', 
@@ -193,7 +178,8 @@ User.create(email: 'batman@gmail.com',
             house_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
-            searchable: true)
+            searchable: true,
+            price: "22")
             
 User.create(email: 'superman@gmail.com', 
             password: 'boondogle', 
@@ -216,13 +202,14 @@ User.create(email: 'superman@gmail.com',
             house_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
-            searchable: true)
+            searchable: true,
+            price: "18")
             
-User.create(email: 'wonderwoman@gmail.com', 
+User.create(email: 'notwonderwoman@gmail.com', 
             password: 'boondogle', 
-            first_name: 'Diana', 
+            first_name: 'Diane', 
             last_name: 'Amazon', 
-            personal_description: 'I am Wonderwoman.', 
+            personal_description: 'I am not Womderwoman.', 
             billing_first_name: 'Diana', 
             billing_last_name: 'Amazon', 
             billing_street_address: '2760 Hearst Avenue', 
@@ -239,4 +226,5 @@ User.create(email: 'wonderwoman@gmail.com',
             house_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat.',
-            searchable: true)
+            searchable: true,
+            price: "20")

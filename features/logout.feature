@@ -1,3 +1,4 @@
+# Pivotal Tracker ID: 151973802
 Feature: User Logout
     As a User
     So that I can have a life

@@ -7,8 +7,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :google_map_static_helper
 
+  # MAP HAS NOT YET BEEN FULLY IMPLEMENTED, SO THIS HAS BEEN COMMENTED OUT.
+  
   # Takes address or coordinate pair
-  def google_map_static_helper(center)
-    "https://maps.googleapis.com/maps/api/staticmap?center=#{center}&size=300x300&zoom=17"
-  end
+  # def google_map_static_helper(center)
+  #   "https://maps.googleapis.com/maps/api/staticmap?center=#{center}&size=300x300&zoom=17"
+  # end
 end
