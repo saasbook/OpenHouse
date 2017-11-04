@@ -35,7 +35,12 @@ describe UsersController do
             price: "100"
 		}
 		@image = {
-			house_picture: "/images/home.png"
+			house_picture: "/images/sample_home.png",
+			profile_picture: "/images/sample_profile.png"
+		}
+		@invalid_image = {
+			house_picture: "/sample_home.exe",
+			profile_picture: "/sample_profile.rb"
 		}
 	end
 
@@ -118,20 +123,41 @@ describe UsersController do
 			expect(@updated_user.home_city).to eq("Fort Wayne")
 			expect(@updated_user.home_state).to eq("IN")
 		end
-		it 'submitting house picture changes profile picture' do
+		it 'submitting valid images changes profile pictures' do
 			post :create, :user => @parameters
 			@user = User.find_by(:email => "sodapop@pepsi.com")
 			patch :update_host, :id => @user.id , :user => @image
 			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
 			expect(File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, @image[:house_picture])))
+			expect(File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, @image[:profile_picture])))
+		end
+		it 'submitting invalid images does not change profile pictures' do
+			post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			patch :update_host, :id => @user.id , :user => @invalid_image
+			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, @invalid_image[:house_picture])))
+			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, @invalid_image[:profile_picture])))
+		end
+		it 'submitting nil images does not change profile pictures' do
+			post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			nil_images = {}
+			patch :update_host, :id => @user.id , :user => @host_params
+			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
+			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
 		end
 	end
+<<<<<<< HEAD
 	describe 'Edit user' do
 		it 'updates the user' do
 			get :edit
 			expect(assigns(:user)).to eq(@updated_user)
 		end
 	end
+=======
+>>>>>>> 9536e093ce664d0b8befd528a02e37bc35088cb4
 end
 
 
