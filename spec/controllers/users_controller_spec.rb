@@ -61,6 +61,11 @@ describe UsersController do
 			expect(response).to redirect_to(new_user_billing_path)
 			expect(flash[:notice]).to eq("sodapop@pepsi.com was successfully created.")
 		end
+		it 'creating a new profile assigns @user to that profile' do
+			post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(assigns(:user)).to eq(@user)
+		end
 		it 'creating a new profile improperly refreshes the page' do
 		    @parameters[:password] = "1234"
 			post :create, :user => @parameters
@@ -79,6 +84,13 @@ describe UsersController do
 			patch :update_billing, :id => @user.id , :user => @bill_params
 			expect(response).to redirect_to(new_user_host_path)
 			expect(flash[:notice]).to eq("sodapop@pepsi.com's billing information has been added.")
+		end
+		it 'adding billing info and continuing on assigns @user to current user' do
+			post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			patch :update_billing, :id => @user.id , :user => @bill_params
+			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(assigns(:user)).to eq(@updated_user)
 		end
 		it 'adding billing info updates that info of the user' do
 		    post :create, :user => @parameters
