@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+require 'spec_helper'
 describe UsersController do
 	before(:each) do
         @parameters = {
@@ -43,13 +43,7 @@ describe UsersController do
 # 		end
 # 	end
 	
-# 	describe 'destroy' do
-# 		it 'destroys' do
-# 			delete :destroy, :id => @movie
-# 			expect(assigns(:movie)).to eq(@movie)
-# 			expect(response).to redirect_to movies_path
-# 		end
-# 	end
+
 	
 	describe 'Create new' do 
 		it 'goes to the new user page' do
@@ -110,6 +104,7 @@ describe UsersController do
 			expect(@updated_user.home_state).to eq("IN")
 		end
 	end
+
 end
 
 
