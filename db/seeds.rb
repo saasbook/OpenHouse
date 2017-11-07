@@ -31,7 +31,7 @@ User.create(email: "r4z3ng4n@yahoo.co.id",
                                 because it’s cozy and clean.",
             searchable: true,
             price: "12")
-
+            
 User.create(email: "sodapopinski@sodapop.pepsi.co.id",
             password: "v0DK!+-a",
             first_name: "Vodka",
@@ -228,3 +228,8 @@ User.create(email: 'notwonderwoman@gmail.com',
                                 laboris nisi ut aliquip ex ea commodo consequat.',
             searchable: true,
             price: "20")
+            
+User.all().each do |user|
+    path = Rails.root.join('app', 'assets', 'images', 'user_images', user.email)
+    Dir.mkdir path unless File.exists? path
+end

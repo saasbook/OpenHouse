@@ -28,7 +28,7 @@
 
     <br>
     - if File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, 'profile_picture.jpg')
-      = image_tag "user_images/#{@user.email}/profile_picture.jpg", id: :profile_picture
+      = image_tag "user_images/#{@user.email}/profile_picture.jpg", height: '150', weight: '20',hspace: '150', vspace: '10', id: :profile_picture
 
     <br>
     
