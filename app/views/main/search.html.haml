@@ -2,25 +2,47 @@
 
 %div(style='width: 800px;')
   %div(id="map" style="width: 800px; height: 400px;")
-  
+
 :javascript
+    lat = 0
+    lng = 0
+    locs_nearby = []
+    
+    //Check ruby api and attempt to pull valid coordinates
+    curr_loc_lat = '#{@curr_loc_lat}';
+    curr_loc_lng = '#{@curr_loc_lng}';
+    curr_locs_nearby = JSON.parse('#{@nearby_locations.to_json}');
+    //window.alert(curr_locs_nearby);
+
+    if (curr_loc_lat !== "" && curr_loc_lng !== "") {
+      lat = parseFloat(curr_loc_lat);
+      lng = parseFloat(curr_loc_lng);
+      locs_nearby = curr_locs_nearby;
+    }
+    
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers([
-        {
-          "lat": 0,
-          "lng": 0,
-          "picture": {
-            "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
-            "width":  32,
-            "height": 32
-          },
-          "infowindow": "hello!"
-        }
-      ]);
+    
+    // Add initial marker to center selected location
+    center = handler.addMarker({
+      lat: lat,
+      lng: lng
+    });
+    handler.map.centerOn(center);
+
+    nearby_markers = [];
+    for (var i = 0; i < locs_nearby.length; i++) {
+      nearby_markers.push({
+        lat: parseFloat(locs_nearby[i][0]),
+        lng: parseFloat(locs_nearby[i][1])
+      });
+    }
+    if (nearby_markers.length > 0) {
+      markers = handler.addMarkers(nearby_markers);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-    });
+    }
+  });
 
 <br>
 
