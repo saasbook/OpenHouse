@@ -27,9 +27,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # use haml preprocessor
 gem 'haml'
 
+# for boostrap support
+gem 'rails-assets-tether'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# For google maps integration
+gem 'gmaps4rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
