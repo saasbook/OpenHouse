@@ -41,7 +41,7 @@ module UsersHelper
     return if update_picture(:more_picture)
     @user.update_attributes(user_params)
     @user.save!
-    flash[:notice] = "Your account has been updated!"
+    flash[:notice] = "Your account has been updated."
   end
   
   # Dependent on being called only by :profile_picture and :house_picture

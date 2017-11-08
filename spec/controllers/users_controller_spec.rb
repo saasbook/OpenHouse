@@ -105,7 +105,7 @@ describe UsersController do
 			@user = User.find_by(:email => "sodapop@pepsi.com")
 			patch :update_billing, :id => @user.id , :user => @bill_params
 			expect(response).to redirect_to(new_user_host_path)
-			expect(flash[:notice]).to eq("sodapop@pepsi.com's billing information has been added.")
+			expect(flash[:notice]).to eq("Your account has been updated.")
 		end
 		it 'adding billing info and continuing on assigns @user to current user' do
 			post :create, :user => @parameters
@@ -127,7 +127,7 @@ describe UsersController do
 			@user = User.find_by(:email => "sodapop@pepsi.com")
 			patch :update_host, :id => @user.id , :user => @host_params
 			expect(response).to redirect_to(root_path)
-			expect(flash[:notice]).to eq("sodapop@pepsi.com's hosting information has been added.")
+			expect(flash[:notice]).to eq("Your account has been updated.")
  		end
  		it 'submitting all info updates that info of the user' do
             post :create, :user => @parameters
