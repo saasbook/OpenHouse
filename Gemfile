@@ -27,14 +27,22 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # use haml preprocessor
 gem 'haml'
 
+# for boostrap support
+gem 'rails-assets-tether'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# For google maps integration
+gem 'gmaps4rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# for geolocation
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
