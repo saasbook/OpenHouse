@@ -62,6 +62,13 @@
   = label :user, :price, "Location's Price (per hour)"
   = text_field :user, :price
   <br>
+  = label :user, :available_time, "Times Available"
+  /= select_time Time.now, ampm: true
+  <input type="time" name="available_time_start">
+  to
+  /= select_time Time.now, ampm: true, start_hour: 1, end_hour: 12
+  <input type="time" name="available_time_end">
+  <br>
   = label :user, :searchable, "Would you like to host? Checking this box makes your location searchable."
   = check_box :user, :searchable
   <br>
