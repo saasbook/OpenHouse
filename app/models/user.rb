@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
     after_validation :geocode          # auto-fetch coordinates
     
     def full_street_address
+        if self.home_street_address.nil? || self.home_city.nil? || self.home_state.nil? || self.home_zip_code.nil?
+            return " "
+        end
         self.home_street_address + " " + self.home_city + " " + self.home_state + " " + self.home_zip_code
     end
 
