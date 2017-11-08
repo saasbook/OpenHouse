@@ -5,6 +5,52 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+/* CUSTOM CSS FOR OPENHOUSE */
+
+#topbar {
+  min-height: 69px;
+}
+
+#topbar-logo {
+  width: 100px;
+  margin-top: -2px;
+}
+
+#topbar-login-link {
+  padding-top: 25px;
+  vertical-align: middle;
+}
+
+#topbar-login-link:hover {
+  background-color: #fff;
+  color: #2fa6c2 !important;
+}
+
+.topbar-link {
+  color: #fff !important;
+  min-height: 69px;
+}
+
+#openhouse-svg {
+  fill: #fff;
+}
+
+#user-icon {
+  width:28px; 
+  margin-top:5px;
+}
+
+.login-box {
+  padding: 50px;
+  width: 1000px;
+  margin: auto;
+}
+
+.login-header {
+  text-align: center;
+}
+
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -1083,7 +1129,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
