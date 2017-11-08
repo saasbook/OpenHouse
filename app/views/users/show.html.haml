@@ -113,7 +113,7 @@
     %li Price:
     = +(@user.price || "")
     %li Times Available:
-    = +(@user.available_time || "")
+    = +(range_to_ampm(@user.available_time) || "")
 
 // %br
 // = image_tag(google_map_static_helper(center: @user.billing_street_address),hspace: '150', vspace: '10')
