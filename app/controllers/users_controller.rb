@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def user_params
-        params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :personal_description, :house_description, :searchable, :price)
+        params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :personal_description, :house_description, :searchable, :price, :available_time)
     end
 
     def new
@@ -25,10 +25,20 @@ class UsersController < ApplicationController
         redirect_to next_path
     end
     
+    # TODO: these 3 methods are the same
     def new_billing
         @user = current_user
     end
     
+    def new_host
+        @user = current_user
+    end
+    
+    def edit
+        @user = current_user
+    end
+    
+    # TODO: these 3 methods are the same
     def update_billing
         @user = current_user
         @user.update_attributes(user_params)
@@ -36,21 +46,13 @@ class UsersController < ApplicationController
         flash[:notice] = "#{@user.email}\'s billing information has been added."
         redirect_to new_user_host_path
     end
-    
-    def new_host
-        @user = current_user
-    end
-    
+
     def update_host
         @user = current_user
         @user.update_attributes(user_params)
         @user.save!
         flash[:notice] = "#{@user.email}\'s hosting information has been added."
         redirect_to root_path
-    end
-    
-    def edit
-        @user = current_user
     end
 
     def update
