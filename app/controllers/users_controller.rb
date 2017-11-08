@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
     def user_params
-        params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :personal_description, :house_description, :searchable, :price)
+        unless params[:available_time_start].nil? || params[:available_time_end].nil?
+            params[:user][:available_time] = params[:available_time_start] + '-' + params[:available_time_end]
+        end
+        params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :personal_description, :house_description, :searchable, :price, :available_time)
     end
 
     def new
@@ -29,38 +32,27 @@ class UsersController < ApplicationController
         @user = current_user
     end
     
-    def update_billing
-        @user = current_user
-        @user.update_attributes(user_params)
-        @user.save!
-        flash[:notice] = "#{@user.email}\'s billing information has been added."
-        redirect_to new_user_host_path
-    end
-    
     def new_host
         @user = current_user
-    end
-    
-    def update_host
-        @user = current_user
-        @user.update_attributes(user_params)
-        @user.save!
-        flash[:notice] = "#{@user.email}\'s hosting information has been added."
-        redirect_to root_path
     end
     
     def edit
         @user = current_user
     end
+    
+    def update_billing
+        @user = current_user
+        update_user_fields and redirect_to new_user_host_path
+    end
+
+    def update_host
+        @user = current_user
+        update_user_fields and redirect_to root_path
+    end
 
     def update
         @user = current_user
-        return if update_picture(:profile_picture)
-        return if update_picture(:house_picture)
-        @user.update_attributes(user_params)
-        @user.save!
-        flash[:notice] = "Your account has been updated!"
-        redirect_to root_path
+        update_user_fields and redirect_to root_path
     end
     
     def destroy

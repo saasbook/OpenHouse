@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'spec_helper'
+
 describe UsersController do
 	before(:each) do
         @parameters = {
@@ -34,17 +35,38 @@ describe UsersController do
             searchable: true,
             price: "100"
 		}
+		User.create(email: "buzz@toinfinityandbeyond.yahweh.co.id",
+            password: "spacerangertotherescue",
+            first_name: "Buzz",
+            last_name: "Lightyear",
+            personal_description: "To infinity and beyond!",
+            billing_first_name: "Buzz",
+            billing_last_name: "Lightyear",
+            billing_street_address: "10343 Dawsons Crk Blvd",
+            billing_city: "Fort Wayne",
+            billing_state: "IN",
+            billing_zip_code: "46825-1906",
+            credit_card_number: "1010101010010101",
+            expiration_date: "01/01",
+            cvv: "111",
+            home_street_address: "255 E Weber Ave",
+            home_city: "Stockton",
+            home_state: "CA",
+            home_zip_code: "95202-2706",
+            house_description: "From the outside this house looks cozy. It has been built with oak wood and has
+                               white stone decorations. Tall, wide windows add to the overall look of the house 
+                               and have been added to the house in a mostly asymmetric way. The house is equipped
+                               with a small kitchen and three bathrooms, it also has a cozy living room, four bedrooms, 
+                               a spacious dining room and a roomy garage. The building is square shaped. The house is 
+                               fully surrounded by a garden path. The second floor is bigger than the first, which creates 
+                               a stylish overhang on two sides of the house. This floor has a different style than the 
+                               floor below.The roof is high and pyramid shaped and is covered with black roof tiles. 
+                               Two small chimneys sit at either side of the house. Many smaller windows let in plenty 
+                               of light to the rooms below the roof. The house itself is surrounded by a modest garden, 
+                               with mostly grass and a few small trees.",
+            searchable: true,
+            price: "16")
 	end
-
-# 	describe 'edit' do
-# 		it 'edits' do
-# 			get :edit, :id => @movie
-# 			expect(assigns(:movie)).to eq(@movie)
-# 		end
-# 	end
-	
-
-	
 	describe 'Create new' do 
 		it 'goes to the new user page' do
 			get :new
@@ -115,8 +137,55 @@ describe UsersController do
 			expect(@updated_user.home_city).to eq("Fort Wayne")
 			expect(@updated_user.home_state).to eq("IN")
 		end
+		it 'submitting nil images does not change profile pictures' do
+			post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			put :update, :id => @user.id , :user => @host_params
+			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
+		end
+		it 'submitting nil images does not change profile pictures' do
+			post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			put :update, :id => @user.id
+			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
+		end
 	end
-
+	describe 'Edit user' do
+		it 'Sets the user' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			get :edit
+			expect(assigns(:user)).to eq(@user)
+		end
+	end
+	describe 'New billing' do
+		it 'Sets the user' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			get :new_billing
+			expect(assigns(:user)).to eq(@user)
+		end
+	end
+	describe 'New host' do
+		it 'Sets the user' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			get :new_host
+			expect(assigns(:user)).to eq(@user)
+		end
+	end
+	describe 'Show user' do
+		it 'sets the user and the current user' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			@current_user = @user
+			session[:user_id] = @user.id
+			get :show, :id => @user.id
+			expect(assigns(:user)).to eq(@user)
+			expect(assigns(:current_user)).to eq(@current_user)
+		end
+	end
 end
 
 
