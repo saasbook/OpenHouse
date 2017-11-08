@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
     def user_params
-        unless params[:available_time_start].nil?
-            unless params[:available_time_end].nil?
-                params[:user][:available_time] = params[:available_time_start] + '-' + params[:available_time_end]
-            end
+        unless params[:available_time_start].nil? || params[:available_time_end].nil?
+            params[:user][:available_time] = params[:available_time_start] + '-' + params[:available_time_end]
         end
         params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :personal_description, :house_description, :searchable, :price, :available_time)
     end

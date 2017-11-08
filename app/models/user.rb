@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
     after_initialize :set_defaults
 
     def set_defaults
-        self.available_time = '00:00-00:00'
+        self.available_time ||= '00:00-00:00'
     end
 end
