@@ -30,7 +30,6 @@ class UsersController < ApplicationController
         redirect_to next_path
     end
     
-    # TODO: these 3 methods are the same
     def new_billing
         @user = current_user
     end
@@ -43,32 +42,19 @@ class UsersController < ApplicationController
         @user = current_user
     end
     
-    # TODO: these 3 methods are the same
     def update_billing
         @user = current_user
-        @user.update_attributes(user_params)
-        @user.save!
-        flash[:notice] = "#{@user.email}\'s billing information has been added."
-        redirect_to new_user_host_path
+        update_user_fields and redirect_to new_user_host_path
     end
 
     def update_host
         @user = current_user
-        @user.update_attributes(user_params)
-        @user.save!
-        flash[:notice] = "#{@user.email}\'s hosting information has been added."
-        redirect_to root_path
+        update_user_fields and redirect_to root_path
     end
 
     def update
         @user = current_user
-        return if update_picture(:profile_picture)
-        return if update_picture(:house_picture)
-        return if update_picture(:more_picture)
-        @user.update_attributes(user_params)
-        @user.save!
-        flash[:notice] = "Your account has been updated!"
-        redirect_to root_path
+        update_user_fields and redirect_to root_path
     end
     
     def destroy

@@ -63,11 +63,9 @@
   = text_field :user, :price
   <br>
   = label :user, :available_time, "Times Available"
-  /= select_time Time.now, ampm: true
-  <input type="time" name="available_time_start">
+  %input{type: "time", name:"available_time_start", value: "00:00"}
   to
-  /= select_time Time.now, ampm: true, start_hour: 1, end_hour: 12
-  <input type="time" name="available_time_end">
+  %input{type: "time", name:"available_time_end", value: "00:00"}
   <br>
   = label :user, :searchable, "Would you like to host? Checking this box makes your location searchable."
   = check_box :user, :searchable
