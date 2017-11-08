@@ -56,6 +56,7 @@
       %th Description
       %th Price
       %th Owner
+      %th Times Available
       %th Picture
       %th More Info
   %tbody
@@ -66,11 +67,11 @@
           %td= user.home_city
           %td= user.home_state
           %td= user.house_description
-          %td= user.price + " p/hour"
-          // user.price + " p/hour"
+          %td= "$" + user.price + " /hour"
           %td= user.first_name + " " + user.last_name
-          - if File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', user.email, 'house_picture.jpg')
-            %td= image_tag "user_images/#{user.email}/house_picture.jpg", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
+          %td= range_to_ampm(user.available_time)
+          - if user.house_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', user.email, user.house_picture)
+            %td= image_tag "user_images/#{user.email}/#{user.house_picture}", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
           - else
             %td= image_tag "house.jpg", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
           %td= link_to "See More", user_path(user)

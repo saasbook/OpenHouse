@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107073145) do
+ActiveRecord::Schema.define(version: 20171108004422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 20171107073145) do
     t.string  "price"
     t.float   "latitude"
     t.float   "longitude"
+    t.string  "profile_picture"
+    t.string  "house_picture"
+    t.string  "house_images",           default: [], array: true
+    t.string  "available_time"
   end
 
 end
