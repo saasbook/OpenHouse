@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(version: 20171108004422) do
     t.string  "billing_first_name"
     t.string  "billing_last_name"
     t.string  "price"
-    t.float   "latitude"
-    t.float   "longitude"
     t.string  "profile_picture"
     t.string  "house_picture"
     t.string  "house_images",           default: [], array: true
     t.string  "available_time"
+    t.float   "latitude"
+    t.float   "longitude"
   end
 
 end
