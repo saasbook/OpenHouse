@@ -22,7 +22,7 @@ Scenario: Human can create an account with an unused email
 
 Scenario: Human cannot create an account with a used email
     Given I am on the home page
-    When I follow "Log In"
+    When I follow "Login"
     When I follow "Sign up now!"
     And I fill in "E-mail Address" with "aladdin@agrabah.com"
     And I fill in "Password" with "12345678"
@@ -32,7 +32,7 @@ Scenario: Human cannot create an account with a used email
 
 Scenario: Human cannot create an account with a blank email
     Given I am on the home page
-    When I follow "Log In"
+    When I follow "Login"
     When I follow "Sign up now!"
     And I fill in "E-mail Address" with ""
     And I fill in "Password" with "12345678"
@@ -41,7 +41,7 @@ Scenario: Human cannot create an account with a blank email
 
 Scenario: Human cannot create an account with a short password
     Given I am on the home page
-    When I follow "Log In"
+    When I follow "Login"
     When I follow "Sign up now!"
     And I fill in "E-mail Address" with "aladdin@agrabah.com"
     And I fill in "Password" with "1234"

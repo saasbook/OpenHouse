@@ -28,15 +28,6 @@ Scenario: user can view other user's profile using "See More"
   And I should see "Personal Description"
   And I should not see "Edit Profile"
 
-Scenario: Logged in user can see their own profile in search
-  Given I log in with email "aladdin@agrabah.com" and password "12341001"
-  Given I am on the home page
-  When I press "Search"
-  And I click the first "See More"
-  Then I should be on the user profile page for "aladdin@agrabah.com"
-  And I should see "aladdin@agrabah.com"
-  And I should see "Edit Profile"
-
 Scenario: using the search bar to search (note: not tested heavily because we kinda want to change this behavior later)
   Given I am on the home page
   Given I fill in "Address" with "1234 Robots Factory"
