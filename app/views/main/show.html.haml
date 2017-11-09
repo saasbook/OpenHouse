@@ -1,14 +1,12 @@
-%h1 OpenHouse Homepage
-%p= flash[:notice] if flash[:notice]
-
-<br>
-%h3 Search for available homes near you
-= form_tag search_path, :method => :get do
-  = text_field :location, 'address', :placeholder=>"Address"
-  = text_field :location, 'city', :placeholder=>"City"
-  = text_field :location, 'state', :placeholder=>"State"
-  = submit_tag 'Search'
-<br>
-
-- if not logged_in?
-  = link_to 'Sign Up', new_user_path
+%div{:class => "homepage-box"}
+  %h2{:id => "homepage-header-1"} OpenHouse
+  %h2{:id => "homepage-header-2"} Search for available spaces near you, anywhere, anytime.
+  %p= flash[:notice] if flash[:notice]
+  
+  <br>
+  = form_tag search_path, :method => :get do
+    = text_field :location, 'address', :placeholder=>"Address"
+    = text_field :location, 'city', :placeholder=>"City"
+    = text_field :location, 'state', :placeholder=>"State"
+    = submit_tag 'Search'
+  <br>
