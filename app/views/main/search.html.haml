@@ -79,14 +79,3 @@
 <br>
 
 = link_to 'Back to Main Page', root_path
-<br>
-- if logged_in?
-  = link_to "View Profile", user_path(@user)
-  <br>
-  = link_to 'Edit Profile', edit_user_path
-  <br>
-  = link_to 'Log Out', logout_path, method: :delete
-- else
-  = link_to 'Log In', login_path
-  <br>
-  = link_to 'Sign Up', new_user_path

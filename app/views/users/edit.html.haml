@@ -48,7 +48,7 @@
     
     = form_tag user_path(@user), :method => :patch do
       <br>
-      %h5 Personal Information
+      %h4 Personal Information
       = label :user, :email, 'E-mail Address'
       = @user.email
       <br>
@@ -62,7 +62,7 @@
       = text_field :user, 'personal_description', :value=>@user.personal_description
       <br>
       <br>
-      %h5 Billing Information
+      %h4 Billing Information
       = label :user, :billing_first_name, 'Billing First Name'
       = text_field :user, 'billing_first_name', :value=>@user.billing_first_name
       <br>
@@ -91,7 +91,7 @@
       = text_field :user, 'cvv', :value=>@user.cvv
       <br>
       <br>
-      %h5 Hosting Information
+      %h4 Hosting Information
       = label :user, :home_street_address, "Location's Street Address"
       = text_field :user, :home_street_address, :value=>@user.home_street_address
       <br>
@@ -121,8 +121,7 @@
       <br>
       = submit_tag 'Save Changes'
  
-    = button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
     <br>
-    = link_to "Back to Profile", user_path(@user)
+    = button_to 'Delete Profile', user_path(@user), :method => :delete, :confirm => "Are you sure?"
     <br>
     = link_to "Back to Main Page", root_path
