@@ -1,25 +1,24 @@
 %p= flash[:notice] if flash[:notice]
-%h1 Create Your Account
-<br>
-%h4 Enter your new account information below.
-= form_tag users_path do
-
-  = label :user, :email, 'E-mail Address'
-  = text_field :user, 'email'
+%div{:class => 'signup-box'}
+  %h1{:class => 'signup-header'} Create Your Account
+  %h3{:class => 'signup-subheader'} Enter your new account information below.
   <br>
-  = label :user, :password, 'Password'
-  = text_field :user, 'password'
-  <br>
-  = label :user, :first_name, 'First Name'
-  = text_field :user, 'first_name'
-  <br>
-  = label :user, :last_name, 'Last Name'
-  = text_field :user, 'last_name'
-  <br>
-  = label :user, :personal_description, 'Personal Description'
-  = text_field :user, 'personal_description'
-  <br>
-  = submit_tag 'Submit'
-  
-<br>
-= link_to "Back to Main Page", root_path
+  %div{:class => 'row'}
+    %div{:class => 'col-md-6 col-md-offset-3'}
+      %form{:action => "/users", :method => "post"}
+        %label{:for => "user_email"} Email
+        %input{:type => "text", :name => "user_email", :class => "form-control"}
+        
+        %label{:for => "user_password"} Password
+        %input{:type => "password", :name => "user_password", :class => "form-control"}
+        
+        %label{:for => "user_first_name"} First Name
+        %input{:type => "text", :name => "user_first_name", :class => "form-control"}
+        
+        %label{:for => "user_last_name"} Last Name
+        %input{:type => "text", :name => "user_last_name", :class => "form-control"}
+        
+        %label{:for => "user_personal_description"} Personal Description
+        %input{:type => "text", :name => "user_personal_description", :class => "form-control"}
+        <br>
+        %input{:type => "submit", :name => 'commit', :value => "Submit", :class => "btn btn-primary"}

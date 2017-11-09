@@ -44,12 +44,38 @@
   padding: 50px;
   width: 1000px;
   margin: auto;
+  color: #6e6e6e
 }
 
 .login-header {
   text-align: center;
 }
 
+.homepage-box {
+  width: 650px;
+  padding: 50px;
+  margin: auto;
+  color: #6e6e6e;
+}
+
+#homepage-header-1 {
+  color: #2FB2C2;
+}
+
+.signup-box {
+  padding: 50px;
+  width: 1000px;
+  margin: auto;
+  color: #6e6e6e
+}
+
+.signup-header {
+  text-align: center;
+}
+
+.signup-subheader {
+  text-align: center;
+}
 
 html {
   font-family: sans-serif;
@@ -57,7 +83,7 @@ html {
       -ms-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
+  margin: -1px;
 }
 article,
 aside,
