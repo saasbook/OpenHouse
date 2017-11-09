@@ -24,7 +24,8 @@ Scenario: user can view other user's profile using "See More"
   Given I am on the home page
   When I press "Search"
   And I click the first "See More"
-  Then I should see "terminator@future.com"
+  Then I should see "Hosting Information"
+  And I should see "Personal Description"
   And I should not see "Edit Profile"
 
 Scenario: Logged in user can see their own profile in search
