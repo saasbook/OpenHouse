@@ -14,9 +14,9 @@ class UsersController < ApplicationController
         next_path = new_user_path
         if @user.errors.empty?
             path = Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)
-            puts "THIS IS THE PATH TO THE FOLDER THAT IS SUPPOSED TO BE CREATED"
-            puts path
-            puts ""
+            # puts "THIS IS THE PATH TO THE FOLDER THAT IS SUPPOSED TO BE CREATED"
+            # puts path
+            # puts ""
             Dir.mkdir path unless File.exists? path
             next_path = new_user_billing_path
             log_in @user
