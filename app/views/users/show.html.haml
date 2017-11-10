@@ -60,6 +60,10 @@
     %br
     
     - if @user == @current_user
+        %p2
+        %strong Email: 
+        = +(@user.email || "")
+        %br
         %p2 
             %strong Billing Address Information:
         %ul 
