@@ -40,14 +40,31 @@
   margin-top:5px;
 }
 
-.login-box {
+#profile_picture, #house_picture {
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+
+.login-box, .logout-box, .signup-box {
   padding: 50px;
   width: 1000px;
   margin: auto;
   color: #6e6e6e
 }
 
-.login-header {
+.hosting-box, .edit-box, .show-box {
+  padding: 50px;
+  width: 650px;
+  margin: auto;
+  color: #6e6e6e
+}
+
+.login-header, .logout-box, .signup-header, .signup-subheader, .edit-header, .edit-subheader, .show-header, .show-subheader {
+  text-align: center;
+}
+
+.center {
   text-align: center;
 }
 
@@ -60,21 +77,6 @@
 
 #homepage-header-1 {
   color: #2FB2C2;
-}
-
-.signup-box {
-  padding: 50px;
-  width: 1000px;
-  margin: auto;
-  color: #6e6e6e
-}
-
-.signup-header {
-  text-align: center;
-}
-
-.signup-subheader {
-  text-align: center;
 }
 
 html {
