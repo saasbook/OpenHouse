@@ -12,9 +12,9 @@ Background: user accounts are in the database
 
 Scenario: Click a search result and see its location
   Given I am on the home page
-  And I fill in "City" with "Agrabah"
+  And I fill in "City" with "Berkeley"
   And I press "Search"
   When I follow "See More"
   Then I should see "Personal Description"
-  And I should see a map                      # Not implemented
+  And I should see a map  # Not implemented in the actual code, but is defined in cucumber
   And the location of "Ali" should be correct # Test not implemented correctly, see map_steps.rb
