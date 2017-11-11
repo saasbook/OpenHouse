@@ -6,6 +6,14 @@ Then /^I should see a "(.*)" image/ do |img|
     expect(page).to have_xpath("//img[contains(@src, #{img})]")
 end
 
+Then /^I should see more pictures of the rental space of "(.*)"/ do |img|
+    pending
+end
+
+When /^I click on an image/ do
+    pending
+end
+
 When /^I upload "(.*)" as my "(.*)"/ do |file, type|
     attach_file("user[#{type}]", Rails.root.join('app', 'assets', 'images', file))
     click_button "upload_#{type}"
