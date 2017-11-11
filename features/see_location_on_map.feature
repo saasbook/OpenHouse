@@ -7,8 +7,8 @@ Feature: Guest wants to see location of a search result
   
 Background: user accounts are in the database
   Given the following accounts exist:
-    | email                   | password   | home_street_address | home_city     | home_state  | home_zip_code | house_description   | first_name | last_name | credit_card_number | expiration_date | cvv | searchable | price |
-    | aladdin@agrabah.com     | 12341001   | 101 Agrabah Dessert | Agrabah       | ME          | 10101         | Big and extravagant | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 | true       | 16    |
+    | email                   | password   | home_street_address  | home_city      | home_state  | home_zip_code | house_description   | first_name | last_name | credit_card_number | expiration_date | cvv | searchable | price |
+    | aladdin@agrabah.com     | 12341001   | 2634 Virginia Street | Berkeley       | CA          | 94709         | Big and extravagant | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 | true       | 16    |
 
 Scenario: Click a search result and see its location
   Given I am on the home page
