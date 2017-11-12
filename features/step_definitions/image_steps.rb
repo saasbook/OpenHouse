@@ -6,8 +6,20 @@ Then /^I should see a "(.*)" image/ do |img|
     expect(page).to have_xpath("//img[contains(@src, #{img})]")
 end
 
-Then /^I should see more pictures of the rental space of "(.*)"/ do |img|
-    pending
+Then /^I should see "(.*)" more pictures of the rental space/ do |num|
+    num = num.to_i
+    i = 0
+    while (i < num)  do
+        find("img", id: "more_image_#{i}")
+        i +=1
+    end
+end
+
+Then /^I should not see "(.*)" pictures of the rental space/ do |num|
+    num = num.to_i - 1
+    lambda do
+        find("img", id: "more_image_#{num}")
+    end.should raise_error(Capybara::ElementNotFound)
 end
 
 When /^I click on an image/ do

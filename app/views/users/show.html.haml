@@ -8,20 +8,23 @@
                     %li{"data-slide-to" => "@index.to_s", "data-target" => "#myCarousel"}
                     - @index += 1
             .carousel-inner
-                .item.active
-                    - if @user.house_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.house_picture)
-                        = image_tag "user_images/#{@user.email}/#{@user.house_picture}", size: "200x600", hspace: '50', vspace: '50'
-                        - active = true
-                    - else
-                        - active = false
+                - @index = 0
+                - if @user.house_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.house_picture)
+                    .item.active
+                        = image_tag "user_images/#{@user.email}/#{@user.house_picture}", size: "200x600", hspace: '50', vspace: '50', id: "more_image_#{@index}"
+                    - active = true
+                    - @index += 1
+                - else
+                    - active = false
                 - @user.house_images.each do |image|
                     - if active == false
                         .item.active
-                            = image_tag "user_images/#{@user.email}/#{image}", size: "200x600", hspace: '50', vspace: '50'
+                            = image_tag "user_images/#{@user.email}/#{image}", size: "200x600", hspace: '50', vspace: '50', id: "more_image_#{@index}"
                         - active = true
                     - else 
                         .item
-                            = image_tag "user_images/#{@user.email}/#{image}", size: "200x600", hspace: '50', vspace: '50'
+                            = image_tag "user_images/#{@user.email}/#{image}", size: "200x600", hspace: '50', vspace: '50', id: "more_image_#{@index}"
+                    - @index += 1
         
             %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
                 %span.glyphicon.glyphicon-chevron-left
