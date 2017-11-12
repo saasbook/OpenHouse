@@ -19,6 +19,7 @@ Scenario: Make account searchable
     And I am on the edit page
     Then I check "searchable"
     Then I press "Save Changes"
+    And I am on the homepage
     And I press "Search"
     Then I should see "2700 Mars"
 
@@ -28,5 +29,6 @@ Scenario: Make account not searchable
   And I am on the edit page
   Then I uncheck "searchable"
   Then I press "Save Changes"
+  And I am on the homepage
   And I press "Search"
   Then I should not see "2700 Mars"

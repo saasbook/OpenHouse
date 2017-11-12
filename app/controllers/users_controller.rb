@@ -6,17 +6,19 @@ class UsersController < ApplicationController
         params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :personal_description, :house_description, :searchable, :price, :available_time)
     end
 
+    def amenity_params
+        params.require(:amenity_list).permit(:wifi, :couch, :tv)
+    end
+
     def new
     end
     
     def create
         @user = User.create(user_params)
+        @user.amenity_list = AmenityList.new
         next_path = new_user_path
         if @user.errors.empty?
             path = Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)
-            # puts "THIS IS THE PATH TO THE FOLDER THAT IS SUPPOSED TO BE CREATED"
-            # puts path
-            # puts ""
             Dir.mkdir path unless File.exists? path
             next_path = new_user_billing_path
             log_in @user
@@ -55,7 +57,7 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        update_user_fields and redirect_to root_path
+        update_user_fields and redirect_to user_path(@user)
     end
     
     def destroy

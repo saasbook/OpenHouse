@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
     validates :available_time, format: {with: /\A\d\d:\d\d-\d\d:\d\d\z/ }
     has_secure_password
 
+    has_one :amenity_list
+
     # Geolocation (NOTE: must call save on the object to trigger the coordinate creation)
     geocoded_by :full_street_address   # can also be an IP address
     after_validation :geocode          # auto-fetch coordinates

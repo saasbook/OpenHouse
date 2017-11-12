@@ -32,7 +32,7 @@ User.create(email: "r4z3ng4n@yahoo.co.id",
             searchable: true,
             price: "12",
             available_time: "01:40-06:30")
-            
+
 User.create(email: "sodapopinski@sodapop.pepsi.co.id",
             password: "v0DK!+-a",
             first_name: "Vodka",
@@ -237,8 +237,10 @@ User.create(email: 'notwonderwoman@gmail.com',
             searchable: true,
             price: "20",
             available_time: "10:00-20:00")
-            
+
+random = Random.new(12345678)
 User.all().each do |user|
+    user.amenity_list = AmenityList.create(couch: random.rand > 0.5, tv: random.rand > 0.5, wifi: random.rand > 0.5)
     path = Rails.root.join('app', 'assets', 'images', 'user_images', user.email)
     Dir.mkdir path unless File.exists? path
 end
