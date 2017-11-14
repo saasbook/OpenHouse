@@ -14,7 +14,7 @@
           = text_field :location, 'address', :placeholder=>"Address", style: 'color:#2e2e2e;'
           = text_field :location, 'city', :placeholder=>"City", style: 'color:#2e2e2e;'
           = text_field :location, 'state', :placeholder=>"State", style: 'color:#2e2e2e;'
-          = submit_tag 'Search', style: 'color: white; background-color: #2FB2C2;'
+          = submit_tag 'Search', class: "search-button"
 
   %p= flash[:notice] if flash[:notice]
   / Page Content
