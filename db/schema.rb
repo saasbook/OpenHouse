@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20171202211226) do
     t.string  "billing_first_name"
     t.string  "billing_last_name"
     t.string  "price"
+    t.float   "latitude"
+    t.float   "longitude"
     t.string  "profile_picture"
     t.string  "house_picture"
     t.string  "house_images",           default: [], array: true
@@ -84,6 +86,12 @@ ActiveRecord::Schema.define(version: 20171202211226) do
     t.string  "title"
     t.integer "capacity"
     t.string  "available_time_end"
+    t.string  "house_images",             default: [], array: true
+    t.string  "available_time"
+    t.string  "cloud_profile_picture"
+    t.string  "cloud_profile_picture_id"
+    t.string  "cloud_house_picture"
+    t.string  "cloud_house_picture_id"
   end
 
   add_foreign_key "amenity_lists", "users", on_delete: :cascade

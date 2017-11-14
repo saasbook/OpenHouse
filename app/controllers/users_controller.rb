@@ -58,6 +58,8 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
+        puts(@user.email)
+        puts(@user.house_picture)
         update_user_fields and redirect_to user_path(@user)
     end
     
@@ -94,5 +96,49 @@ class UsersController < ApplicationController
         @user = current_user
         flash[:notice] = "Your account has been created."
         redirect_to user_path(@user)
+    end
+    
+    def update_profile_picture
+        @user = current_user
+        
+        if params[:image_id].present?
+            preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
+            raise "Invalid upload signature" if !preloaded.valid?
+            
+            # Delete previous picture if it exists
+            if @user.cloud_profile_picture_id
+                Cloudinary::Uploader.destroy(@user.cloud_profile_picture_id)
+            end
+            @user.cloud_profile_picture_id = preloaded.identifier
+            puts(@user.cloud_profile_picture_id)
+            @user.save!
+        end
+        redirect_to request.referrer
+    end
+    
+    def update_house_picture
+         @user = current_user
+        
+        if params[:image_id].present?
+            preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
+            raise "Invalid upload signature" if !preloaded.valid?
+            
+            # Delete previous picture if it exists
+            if @user.cloud_house_picture_id
+                Cloudinary::Uploader.destroy(@user.cloud_house_picture_id)
+            end
+            @user.cloud_house_picture_id = preloaded.identifier
+            puts(@user.cloud_house_picture_id)
+            @user.save!
+        end
+        redirect_to request.referrer
+    end
+    
+    def update_multiple_pictures
+        @user = current_user
+        
+        if params[:image_id].present?
+            puts(params[:image_id])
+        end
     end
 end
