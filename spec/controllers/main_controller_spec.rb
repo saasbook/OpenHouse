@@ -13,6 +13,11 @@ describe MainController do
             city: "",
             state: ""
 		}
+		@nowhere_location = {
+		    address: "Agrabah Dessert",
+		    city: "NCA",
+		    state: "Agrabah"
+		}
 		User.create(email: "buzz@toinfinityandbeyond.yahweh.co.id",
             password: "spacerangertotherescue",
             first_name: "Buzz",
@@ -62,7 +67,11 @@ describe MainController do
 		    get :search, :location => @empty_location
 			expect(response).to render_template(:search)
 		end
-		it 'Sets the user' do
+		it 'works with input that points to nowhere' do
+		    get :search, :location => @nowhere_location
+			expect(response).to render_template(:search)
+		end
+		it 'sets the user' do
 			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
 			session[:user_id] = @user.id
 			get :search, :location => @location

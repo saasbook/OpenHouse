@@ -64,6 +64,12 @@ class UsersController < ApplicationController
         @user = current_user
         log_out
         @user.destroy
+        
+        # Remove image files associated with @user
+        if File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)
+            FileUtils.rm_rf Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)
+        end
+        
         flash[:notice] = "Your account has been deleted."
         redirect_to root_path
     end

@@ -153,7 +153,7 @@ describe UsersController do
 		end
 	end
 	describe 'Edit user' do
-		it 'Sets the user' do
+		it 'sets the user' do
 			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
 			session[:user_id] = @user.id
 			get :edit
@@ -161,7 +161,7 @@ describe UsersController do
 		end
 	end
 	describe 'New billing' do
-		it 'Sets the user' do
+		it 'sets the user' do
 			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
 			session[:user_id] = @user.id
 			get :new_billing

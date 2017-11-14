@@ -12,7 +12,7 @@ module UsersHelper
         redirect_to request.referrer || root_path and return true
       end
       
-      delete_picture(type)
+      handle_image_delete(type)
       
       File.open(Rails.root.join('app', 'assets', 'images', 'user_images',
                                 @user.email, image.original_filename), 'wb') do |file|
@@ -39,17 +39,12 @@ module UsersHelper
     return if update_picture(:profile_picture)
     return if update_picture(:house_picture)
     return if update_picture(:more_picture)
-    unless params[:amenity_list].nil?
-        @user.amenity_list.update_attributes(amenity_params)
-        @user.amenity_list.save!
-    end
     @user.update_attributes(user_params)
     @user.save!
     flash[:notice] = "Your account has been updated."
   end
   
-  # Dependent on being called only by :profile_picture and :house_picture
-  def delete_picture(type)
+  def handle_image_delete(type)
     old_picture_name = nil
     if (type == :profile_picture)
       old_picture_name = @user.profile_picture
@@ -58,9 +53,12 @@ module UsersHelper
       old_picture_name = @user.house_picture
       @user.house_picture = nil
     end
-    
-    if old_picture_name and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, old_picture_name)
-      File.delete Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, old_picture_name)
+    delete_picture(old_picture_name)
+  end
+  
+  def delete_picture(picture_name)
+    if picture_name and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, picture_name)
+      File.delete Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, picture_name)
     end
   end
   
