@@ -7,6 +7,10 @@
 
 /* CUSTOM CSS FOR OPENHOUSE */
 
+#openhouse-navbar {
+  margin-bottom: 0px;
+}
+
 #topbar {
   min-height: 69px;
 }
@@ -14,6 +18,10 @@
 #topbar-logo {
   width: 100px;
   margin-top: -2px;
+}
+
+#topbar-logo:hover {
+  background-color: rgba(255,255,255,0.2);
 }
 
 #topbar-login-link {
@@ -31,6 +39,11 @@
   min-height: 69px;
 }
 
+#topbar-login-link:hover {
+  background-color: #fff;
+  color: #2fa6c2 !important;
+}
+
 #openhouse-svg {
   fill: #fff;
 }
@@ -38,6 +51,17 @@
 #user-icon {
   width:28px; 
   margin-top:5px;
+}
+
+.search-button {
+  color: white;
+  background-color: #2fa6c2;
+  display: inline-block;
+}
+
+.search-button:hover {
+  background-color: #fff;
+  color: #2fa6c2
 }
 
 #profile_picture, #house_picture {
@@ -77,6 +101,80 @@
 
 #homepage-header-1 {
   color: #2FB2C2;
+}
+
+.subheader {
+  font-weight: 300;
+}
+
+.signup-box {
+  margin: 70px auto;
+}
+
+.map-box {
+  width: 400px;
+}
+
+#map {
+  width: 40%;
+  height: 100%;
+  position: fixed !important;
+  right: 0px;
+  overflow: hidden !important;
+}
+
+#search-results {
+  width: 60%;
+}
+
+.header-search {
+  position: fixed;
+  width: 100%;
+  padding: 25px;
+  margin-top: 70px;
+  margin-bottom: 0px;
+  color: #6e6e6e;
+  background-color: #fff;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+#listings-box {
+  width: 60%;
+  margin-top: 140px;
+}
+
+.listing-link:hover {
+  text-decoration: none;
+}
+
+.listing {
+  width: 49.5%;
+  padding: 25px;
+  display: inline-block;
+  border-radius: 5px 5px 5px 5px
+}
+
+.listing:hover {
+  background-color: #eeeeee;
+}
+
+.listing-details {
+  padding: 5px;
+}
+
+.listing-details-text {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.listing-address {
+  font-weight: 400;
+  color: #2FB2C2;
+}
+
+.listing-price {
+  font-weight: 200;
+  color: #6e6e6e;
 }
 
 html {
