@@ -186,6 +186,28 @@ describe UsersController do
 			expect(assigns(:current_user)).to eq(@current_user)
 		end
 	end
+	describe 'Remove user' do
+		it 'sets the user' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			get :destroy, :id => @user.id
+			expect(assigns(:user)).to eq(@user)
+		end
+		it 'removes the user from database' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			get :destroy, :id => @user.id
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			expect(@user).to eq(nil)
+		end
+		it 'removes the image folder of user' do 
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			expect(File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)))
+			session[:user_id] = @user.id
+			get :destroy, :id => @user.id
+			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)))
+		end
+	end
 end
 
 
