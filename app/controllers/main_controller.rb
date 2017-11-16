@@ -4,34 +4,33 @@ class MainController < ApplicationController
     end
     
     def search
-        @address = params[:location][:address]
-        @city = params[:location][:city]
-        @state = params[:location][:state]
-        
-        @full_location = @address + " " + @city + " " + @state
+        @query = params[:location][:search]
         
         @users = User.where(:searchable => true)
-        if @address != ""
-            @users = @users.where(:home_street_address => @address)
-        end
-        if @city != ""
-            @users = @users.where(:home_city => @city)
-        end
-        if @state != ""
-            @users = @users.where(:home_state => @state)
-        end
+        
+        # Exact find in users, might want to change to sort
+        # if @address != ""
+        #     @users = @users.where(:home_street_address => @address)
+        # end
+        # if @city != ""
+        #     @users = @users.where(:home_city => @city)
+        # end
+        # if @state != ""
+        #     @users = @users.where(:home_state => @state)
+        # end
+        
+        # Ignore the input, just go to Oakland; for now.
+        @full_location = "Oakland, CA"
         
         # @users = @users.sort MAKE SEARCH FUNCTION BASED OFF OF DISTANCE W/GOOGLE MAPS API
         # Attempt to generate coordinates from the given search location
-        if @full_location != "  "  # 2 spaces intentional, a regex may eventually be preferred
-            result = Geocoder.search(@full_location)[0]
-            if result != nil
-                @curr_loc_lat = result.geometry['location']['lat']
-                @curr_loc_lng = result.geometry['location']['lng']
-            else
-                @curr_loc_lat = ""
-                @curr_loc_lng = ""
-            end
+        if @full_location == "  "  # 2 spaces intentional, a regex may eventually be preferred
+            @full_location = "Oakland, CA"
+        end
+        result = Geocoder.search(@full_location)[0]
+        if result != nil
+            @curr_loc_lat = result.geometry['location']['lat']
+            @curr_loc_lng = result.geometry['location']['lng']
         else
             @curr_loc_lat = ""
             @curr_loc_lng = ""
