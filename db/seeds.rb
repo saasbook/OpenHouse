@@ -33,7 +33,9 @@ Dont hesitate to contact me should you need any further details!",
             available_time: "09:00-17:00",
             amenity_list: AmenityList.create!(wifi: true, coffee: true, printer: true, computer_desk: true),
             profile_picture: "andrew-robles-300868.jpg",
-            house_picture: "jay-wennington-393218.jpg")
+            house_picture: "jay-wennington-393218.jpg",
+            capacity: "3",
+            title: "Cozy flat, downtown Oakland")
 
 User.create!(email: "angello.lopez138917@gmail.com",
             password: "openhouse",
@@ -59,7 +61,9 @@ User.create!(email: "angello.lopez138917@gmail.com",
             available_time: "09:00-17:00",
             amenity_list: AmenityList.create!(wifi: true, coffee: true, computer_desk: true, projector: true, kitchen_access: true, microwave: true),
             profile_picture: "angello-lopez-138917.jpg",
-            house_picture: "sophia-baboolal-86214.jpg")
+            house_picture: "sophia-baboolal-86214.jpg",
+            capacity: "5",
+            title: "Incredible living room with projector")
 
 User.create!(email: "aravind.kumar298640@gmail.com",
             password: "openhouse",
@@ -85,7 +89,9 @@ User.create!(email: "aravind.kumar298640@gmail.com",
             available_time: "09:00-17:00",
             amenity_list: AmenityList.create!(wifi: true, coffee: true, computer_desk: true, piano: true),
             profile_picture: "aravind-kumar-298640.jpg",
-            house_picture: "tatiana-lapina-7683.jpg")
+            house_picture: "tatiana-lapina-7683.jpg",
+            capacity: "8",
+            title: "Huge space with parking in Oakland")
 
 User.create!(email: "hunter.johnson222001@gmail.com",
             password: "openhouse",
@@ -111,7 +117,9 @@ User.create!(email: "hunter.johnson222001@gmail.com",
             available_time: "09:00-17:00",
             amenity_list: AmenityList.create!(wifi: true, coffee: true, computer_desk: true, kitchen_access: true, microwave: true),
             profile_picture: "hunter-johnson-222001.jpg",
-            house_picture: "neonbrand-263851.jpg")
+            house_picture: "neonbrand-263851.jpg",
+            capacity: "3",
+            title: "Comfortable and equipped kitchen with working desk")
 
 User.create!(email: "kyle.peyton220268@gmail.com",
             password: "openhouse",
@@ -137,7 +145,9 @@ User.create!(email: "kyle.peyton220268@gmail.com",
             available_time: "09:00-17:00",
             amenity_list: AmenityList.create!(wifi: true, coffee: true, computer_desk: true, garage: true, art_space: true),
             profile_picture: "kyle-peyton-220268.jpg",
-            house_picture: "mounzer-awad-348688.jpg")
+            house_picture: "mounzer-awad-348688.jpg",
+            capacity: "6",
+            title: "Come co-work in my garage")
 
 User.all().each do |user|
     path = Rails.root.join('app', 'assets', 'images', 'user_images', user.email)
