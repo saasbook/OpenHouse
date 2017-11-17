@@ -24,16 +24,22 @@ class MainController < ApplicationController
         
         # @users = @users.sort MAKE SEARCH FUNCTION BASED OFF OF DISTANCE W/GOOGLE MAPS API
         # Attempt to generate coordinates from the given search location
-        if @full_location == "  "  # 2 spaces intentional, a regex may eventually be preferred
-            @full_location = "Oakland, CA"
-        end
+        
+        # # COMMENTED OUT FOR NOW ##################
+        # if @full_location == "  "  # 2 spaces intentional, a regex may eventually be preferred
+        #     @full_location = "Oakland, CA"
+        # end
+        # # COMMENTED OUT FOR NOW ##################
+        
         result = Geocoder.search(@full_location)[0]
         if result != nil
             @curr_loc_lat = result.geometry['location']['lat']
             @curr_loc_lng = result.geometry['location']['lng']
-        else
-            @curr_loc_lat = ""
-            @curr_loc_lng = ""
+        # # COMMENTED OUT FOR NOW ##################
+        # else
+        #     @curr_loc_lat = ""
+        #     @curr_loc_lng = ""
+        # # COMMENTED OUT FOR NOW ##################
         end
 
         #Populate array of nearby homes to populate the map

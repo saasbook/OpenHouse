@@ -78,4 +78,14 @@ describe MainController do
 			expect(assigns(:user)).to eq(@user)
 		end
     end
+    
+    describe "us page" do
+        it 'sets user to current_user' do
+            @user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			get :us
+            expect(assigns(:user)).to eq(@user)
+        end
+    end
+        
 end
