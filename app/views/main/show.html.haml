@@ -4,14 +4,15 @@
   %header.intro-header
     .container
       .intro-message
-        %h1 Open House
+        = image_tag "/assets/openhousewhite.png", height: '90', weight: '0', hspace: '0', vspace: '0'
         %h3 Work at shared home offices
-        %h2 Find unique coworking spaces near you, anywhere, anytime.
-        %hr.intro-divider/
+        %h2 Find unique coworking spaces near you,
+        %h2 anywhere, anytime.
 
         <br>
         = form_tag search_path, :method => :get do
-          = text_field :location, 'city', :placeholder=>"Try Oakland", style: 'color:#2e2e2e;'
+          = text_field :location, 'city', :placeholder=>"Try Oakland, Portland, current location...",
+          style: 'color:#3F3F3F;background: none;width: 320px;border: 1px solid #545454;-webkit-text-fill-color: #3f3f3f;height: 30px;font-size: 1.2em;'
           = submit_tag 'Search', class: "search-button"
 
   %p= flash[:notice] if flash[:notice]
@@ -24,7 +25,9 @@
   %section.content-section-a
     .container
       .row
-        .col-lg-5.ml-auto
+        .col-md-6
+          = image_tag "/assets/homepage2.jpg", height: '300', weight: '100', hspace: '0', vspace: '20'
+        .col-md-6
           %hr.section-heading-spacer/
           .clearfix
           %h2.section-heading
@@ -35,15 +38,12 @@
             From one hour to one day
             %br>
             New places for new ideas
-        .col-lg-5.mr-auto
-          = image_tag "/assets/homepage2.jpg", height: '300', weight: '100', hspace: '100', vspace: '20'
+
     / /.container
-  %section.content-section-b
+  %section.content-section-a
     .container
       .row
-        .col-md-6
-          = image_tag "/assets/homepage3.jpg", height: '300', weight: '100', hspace: '0', vspace: '20'
-        .col-md-6
+        .col-lg-5.ml-auto
           %hr.section-heading-spacer/
           .clearfix
           %h2.section-heading
@@ -54,11 +54,16 @@
             Wifi, Printer, Coffee,
             %br>
             Kitchen, Backyard.
-        
-  %section.content-section-a
+        .col-lg-5.mr-auto
+          = image_tag "/assets/homepage3.jpg", height: '300', weight: '100', hspace: '100', vspace: '20'
+    / /.container
+    
+  %section.content-section-b
     .container
       .row
-        .col-lg-5.ml-auto
+        .col-md-6
+          = image_tag "/assets/collage.png", height: '300', weight: '100', hspace: '0', vspace: '20'
+        .col-md-6
           %hr.section-heading-spacer/
           .clearfix
           %h2.section-heading
@@ -69,9 +74,12 @@
             From your neighborhood
             %br>
             Help the local community
-        .col-lg-5.mr-auto
-          = image_tag "/assets/homepage4.jpg", height: '300', weight: '100', hspace: '100', vspace: '20'
-    / /.container
+            %br>
+            %br>
+            %h2.section-heading{:style => 'letter-spacing: 20px;font-family: serif;font-weight: 560px'}
+              THRIVE
+        
+
     
   / Footer
   %footer

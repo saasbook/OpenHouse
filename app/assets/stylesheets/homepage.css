@@ -6,27 +6,27 @@ body, html {
 
 body, h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .intro-header {
   padding-top: 50px;
   padding-bottom: 50px;
-  text-align: center;
+  text-align: left;
   color: #f8f8f8;
-  background: url(/assets/homepage.jpg) no-repeat center center;
+  background: url(/assets/background.jpg) no-repeat center center;
   background-size: cover;
 }
 
 .intro-message {
   position: relative;
-  padding-top: 15%;
-  padding-bottom: 15%;
+  padding-top: 7.5%;
+  padding-bottom: 20%;
+  padding-left: 32%;
 }
 
 .intro-message>h1 {
   margin: 0;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
   font-size: 5em;
 }
 
@@ -37,12 +37,15 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .intro-message>h3 {
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+  font-size: 2.25em;
+  font-weight: bolder;
+  color:#545454;
+  
 }
 .intro-message>h2 {
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-  font-size: 1.5em;
-  color: solid #f8f8f8; 
+  font-size: 1.75em;
+  color: #545454;
+  font-weight: 500;
 }
 
 .intro-social-buttons i {
