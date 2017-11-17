@@ -11,16 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112062507) do
+ActiveRecord::Schema.define(version: 20171116225047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "amenity_lists", force: :cascade do |t|
     t.boolean "wifi"
-    t.boolean "couch"
     t.integer "user_id"
-    t.boolean "tv"
+    t.boolean "coffee"
+    t.boolean "computer_desk"
+    t.boolean "printer"
+    t.boolean "projector"
+    t.boolean "microwave"
+    t.boolean "kitchen_access"
+    t.boolean "tv_screen"
+    t.boolean "outdoor_space"
+    t.boolean "piano"
+    t.boolean "art_space"
+    t.boolean "garage"
   end
 
   create_table "users", force: :cascade do |t|
