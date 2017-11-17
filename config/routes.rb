@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   get '/users/new_host', to: 'users#new_host', as: 'new_user_host'
   patch '/users/new_billing/:id', to: 'users#update_billing', as: 'update_user_billing'
   patch '/users/new_host/:id', to: 'users#update_host', as: 'update_user_host'
+  get '/us', to: 'main#us', as: 'us'
   
   resources :users, :except => [:edit]
 end
