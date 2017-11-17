@@ -103,6 +103,8 @@
     = +(range_to_ampm(@user.available_time) || "")
     %li Location:
     = "[INSERT MAP OF THIS LOCATION]"
+    %li House Description:
+    = +(@user.house_description || "")
     %li Amenities:
     %table
       %tbody
