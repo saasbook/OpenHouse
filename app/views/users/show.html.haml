@@ -97,6 +97,10 @@
   %p2 
     %strong Hosting Information:
   %ul 
+    %li Title:
+    = +(@user.title || "")
+    %li Capacity:
+    = +(@user.capacity || "")
     %li Price:
     = +(@user.price || "")
     %li Times Available:

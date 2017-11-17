@@ -108,6 +108,13 @@
         = label :user, :house_description, "Description"
         = text_field :user, :house_description, :value=>@user.house_description
         <br>
+        = label :user, :title, "Title (i.e. \"Cozy flat\")"
+        = text_field :user, :title, value: @user.title
+        <br>
+        = label :user, :capacity, "Capacity"
+        = text_field :user, :capacity, value: @user.capacity
+        people
+        <br>
         = label :user, :price, "Price (per day)"
         = text_field :user, :price, :value=>@user.price
         <br>
