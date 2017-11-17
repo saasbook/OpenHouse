@@ -56,7 +56,7 @@
           - else
             %td= image_tag "house.jpg", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
           %div.listing-details
-            %h5.listing-location.listing-details-text= user.home_city + ", " + user.home_state
+            %h5.listing-location.listing-details-text= user.home_city.to_s + ", " + user.home_state.to_s
             %h4.listing-address.listing-details-text= user.home_street_address
-            %h4.listing-price.listing-details-text= "$" + user.price + " per day"
+            %h4.listing-price.listing-details-text= "$" + user.price.to_s + " per day"
         

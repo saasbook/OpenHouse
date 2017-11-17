@@ -15,12 +15,12 @@ Background: user accounts have been added to database
 Scenario: Edit Profile Information
   Given I follow "Edit Profile"
   Then I should be on the edit page
-  And I fill in "Billing Street Address" with "Real Address"
-  And I fill in "Billing City" with "Real City"
-  And I fill in "Billing State" with "Liquid State"
-  And I fill in "Billing Zip Code" with "77877"
-  And I fill in "First Name" with "Reyal"
-  And I fill in "Last Name" with "Pearson"
+  And I fill in "user_billing_street_address" with "Real Address"
+  And I fill in "user_billing_city" with "Real City"
+  And I fill in "user_billing_state" with "Liquid State"
+  And I fill in "user_billing_zip_code" with "77877"
+  And I fill in "user_billing_first_name" with "Reyal"
+  And I fill in "user_billing_last_name" with "Pearson"
   And I fill in "Credit Card Number" with "7777777777777777"
   And I fill in "Expiration Date" with "31-Dec-9999"
   And I fill in "CVV" with "777"

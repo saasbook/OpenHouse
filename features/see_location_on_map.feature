@@ -12,7 +12,7 @@ Background: user accounts are in the database
 
 Scenario: Click a search result and see its location
   Given I am on the home page
-  And I fill in "City" with "Berkeley"
+  And I fill in "location_city" with "Berkeley"
   And I press "Search"
   When I follow "See More"
   Then I should see "Personal Description"
