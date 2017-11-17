@@ -1,7 +1,7 @@
 Given /the following accounts exist/ do |users_table|
   users_table.hashes.each do |user_hash|
     user = User.create user_hash
-    user.amenity_list = AmenityList.create(couch: true, tv: true, wifi: true)
+    user.amenity_list = AmenityList.create(wifi: true, coffee: true, computer_desk: true, printer: true, projector: true, microwave: true, kitchen_access: true, tv_screen: true, outdoor_space: true, piano: true, art_space: true, garage: true)
     path = Rails.root.join('app', 'assets', 'images', 'user_images', user_hash[:email])
     Dir.mkdir path unless File.exists? path
   end
