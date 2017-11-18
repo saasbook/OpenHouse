@@ -11,7 +11,7 @@
 
         <br>
         = form_tag search_path, :method => :get do
-          = text_field :location, 'city', :placeholder=>"Try Oakland, Portland, current location...",
+          = text_field :location, 'city', :placeholder=>"Try Oakland...",
           style: 'color:#3F3F3F;background: none;width: 320px;border: 1px solid #545454;-webkit-text-fill-color: #3f3f3f;height: 30px;font-size: 1.2em;'
           = submit_tag 'Search', class: "search-button"
 
