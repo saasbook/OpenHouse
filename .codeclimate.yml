@@ -23,6 +23,7 @@ ratings:
   - "**.rb"
   - "**.go"
 exclude_paths:
+- app/helpers/users_helper.rb
 - app/assets/javascripts/bootstrap.js
 - app/assets/stylesheets/bootstrap.css
 - lib/**/*
