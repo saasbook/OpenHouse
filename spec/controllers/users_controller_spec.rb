@@ -78,6 +78,13 @@ describe UsersController do
 			expect(@user.first_name).to eq("Vodka")
 			expect(@user.last_name).to eq("Drunkenski")
 		end
+		it 'test that if no availability, it will create one for you' do
+			@parameters[:available_time_start] = nil
+			@parameters[:available_time_end] = nil
+			post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+			expect(@user.available_time).to eq("00:00-00:00")
+		end
 		it 'creating a new profile takes you to billing info page' do
 			post :create, :user => @parameters
 			expect(response).to redirect_to(new_user_billing_path)
