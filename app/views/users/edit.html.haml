@@ -119,9 +119,9 @@
         = text_field :user, :price, :value=>@user.price
         <br>
         = label :user, :available_time, "Times Available"
-        %input{type: "time", name:"available_time_start", value: @user.available_time[0..4]}
+        %input{type: "time", name: "user[available_time_start]", value: @user.available_time[0..4]}
         to
-        %input{type: "time", name:"available_time_end", value: @user.available_time[6..10]}
+        %input{type: "time", name: "user[available_time_end]", value: @user.available_time[6..10]}
         <br>
         = label :user, :searchable, "Would you like your location to be searchable?"
         = check_box :user, :searchable, :value=>@user.searchable
