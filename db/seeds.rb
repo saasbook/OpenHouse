@@ -25,8 +25,8 @@ User.create!(email: 'andrew.robles3000868@gmail.com',
              home_city: 'Oakland',
              home_state: 'CA',
              home_zip_code: '94612',
-             house_description: "Come to experience a very productive and peaceful working environment. My flat is close to the 19th street Oakland BART Station. 
-             Fantastic natural light all day long. The living room benefits from floor-to-ceiling windows that can be opened to make you feel like you're outside. 
+             house_description: "Come to experience a very productive and peaceful working environment. My flat is close to the 19th street Oakland BART Station.
+             Fantastic natural light all day long. The living room benefits from floor-to-ceiling windows that can be opened to make you feel like you're outside.
              Large wooden table which can sit up to 6 people, comfortable corner sofa with coffee table and TV screen. Feel free to use the printer if needed. We also have fast, reliable wifi.
              Unlimited tea & coffee, and there are often cakes or chocolate around!
 Dont hesitate to contact me should you need any further details!",
@@ -156,7 +156,7 @@ User.create!(email: 'kyle.peyton220268@gmail.com',
              capacity: '6',
              title: 'Come co-work in my garage')
 
-User.all().each do |user|
-    path = Rails.root.join('app', 'assets', 'images', 'user_images', user.email)
-    Dir.mkdir path unless File.exist? path
+User.all.each do |user|
+  path = Rails.root.join('app', 'assets', 'images', 'user_images', user.email)
+  Dir.mkdir path unless File.exist? path
 end

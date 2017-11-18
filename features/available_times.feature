@@ -15,8 +15,8 @@ Background: user accounts have been added to database
 Scenario: host can go to edit space availability
   Given I follow "Edit Profile"
   Then I should be on the edit page
-  And I fill in "available_time_start" with "12"
-  And I fill in "available_time_end" with "5"
+  And I fill in "available_time_start" with "12:00"
+  And I fill in "available_time_end" with "5:00"
   And I press "Save Changes"
   And I am on the home page
   When I press "Search"
