@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get 'sessions/new'
+  get '/users/skip', to: 'users#skip', as: "skip"
   get '/users/edit', to: 'users#edit', as: 'edit_user'
   # get '/users/show', to: 'users#show', as: 'show_user'
   get '/users/new_billing', to: 'users#new_billing', as: 'new_user_billing'
