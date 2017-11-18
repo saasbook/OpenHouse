@@ -19,6 +19,18 @@ Scenario: host can go to edit space availability
   And I press "Save Changes"
   Then I should see "12:00 p.m. - 5:00 p.m."
   
+Scenario: when users create a post, it will ask for space availability
+  Given I should not be logged in
+  And I am on the OpenHouse home page
+  When I click "Create New Account"
+  And I fill in "email" with "myemail"
+  And I fill in "password" with "mypassword"
+  And I input "house" into "Rental Space"
+  Then I input "availability" in the availability field
+  Then I click "Publish"
+  Then I should go to the "List of Rental Spaces"
+  And I should see "availability" in the availability field for "Post".
+
 Scenario: User can create an account with account with availability information
   Given I am on the home page
   When I follow "Sign Up"
@@ -34,3 +46,4 @@ Scenario: User can create an account with account with availability information
   And I press "Submit"
   Then I should be on the home page
   And account with email "dave101@gmail.com" should exist
+
