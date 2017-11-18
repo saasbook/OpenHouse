@@ -28,5 +28,5 @@ exclude_paths:
 - lib/**/*
 - spec/**/*
 #because we plan on removing this file
-- 'app/helpers/users_helper.rb'
+- "app/helpers/users_helper.rb"
 - "**/vendor/**/*"
