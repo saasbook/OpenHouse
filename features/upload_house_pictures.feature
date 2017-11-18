@@ -31,3 +31,8 @@ Scenario: user tries to upload nothing to house picture
 Scenario: user tries to upload nothing to profile picture
   When I press the "upload_profile_picture" button
   Then I should see an error with a message containing "Please select" and "first"
+
+Scenario: user replace old photo
+  When I upload "user.png" as my "house_picture"
+  And I upload "house.jpg" as my "house_picture"
+  Then the "house_picture" should be added to the post

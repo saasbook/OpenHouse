@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117193828) do
+ActiveRecord::Schema.define(version: 20171118051637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,12 +58,13 @@ ActiveRecord::Schema.define(version: 20171117193828) do
     t.string  "profile_picture"
     t.string  "house_picture"
     t.string  "house_images",           default: [], array: true
-    t.string  "available_time"
+    t.string  "available_time_start"
     t.float   "latitude"
     t.float   "longitude"
     t.integer "amenity_list_id"
     t.string  "title"
     t.integer "capacity"
+    t.string  "available_time_end"
   end
 
   add_foreign_key "amenity_lists", "users", on_delete: :cascade
