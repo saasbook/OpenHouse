@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     def user_params
         # Do a better check and for weird times, as you can really mess with them..
-        unless params[:available_time_start].nil? || params[:available_time_end].nil? || params[:available_time_start].include?(":") || params[:available_time_end].include?(":")
+        if params[:available_time_start].nil? || params[:available_time_end].nil? || params[:available_time_start].include?("-") || params[:available_time_end].include?("-")
             params[:user][:available_time] = "00:00-00:00"
         else
             params[:user][:available_time] = params[:available_time_start] + "-" + params[:available_time_end]
