@@ -23,7 +23,7 @@ Scenario: user can search all profiles by not inputting anything
 Scenario: user can view other user's profile using "See More"
   Given I am on the home page
   When I press "Search"
-  And I click the first "See More"
+  And I click a post with id "link_101 Agrabah Dessert"
   Then I should see "Hosting Information"
   And I should see "Personal Description"
   And I should not see "Edit Profile"
