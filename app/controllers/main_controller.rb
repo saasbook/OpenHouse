@@ -57,4 +57,7 @@ class MainController < ApplicationController
     def us
         @user = current_user
     end
+    def about
+        @user = current_user
+    end
 end
