@@ -1,6 +1,7 @@
 # Helper functions relating to users
 
 ########### THIS IS BEING PHASED OUT FOR CLOUDINARY ##############
+# :nocov:
 
 module UsersHelper
   def update_picture(type)
@@ -108,4 +109,5 @@ module UsersHelper
   
 end
 
+# :nocov:
 ########### THIS IS BEING PHASED OUT FOR CLOUDINARY ##############
