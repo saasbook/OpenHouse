@@ -128,7 +128,7 @@
 }
 
 .header-search {
-  position: fixed;
+  position: static;
   width: 100%;
   padding: 25px;
   margin-top: 70px;
@@ -172,7 +172,7 @@
   color: #2FB2C2;
 }
 
-.listing-price {
+.listing-price, .listing-availability {
   font-weight: 200;
   color: #6e6e6e;
 }
