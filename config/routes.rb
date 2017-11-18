@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   get '/search', to: 'main#search', as: 'search'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   get 'sessions/new'
   get '/users/edit', to: 'users#edit', as: 'edit_user'
   # get '/users/show', to: 'users#show', as: 'show_user'
