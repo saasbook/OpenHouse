@@ -11,7 +11,6 @@ Background: user accounts have been added to database
     | terminator@future.com   | password | 1234 Robots Factory    | New Berkeley | New California | 76767            | Terminator | T-800     | 2222222222222222   | 26-Oct-2017     | 222 |
     And I log in with email "aladdin@agrabah.com" and password "12341001"
     And I am on the home page
-    
 Scenario: host can go to edit space availability
   Given I follow "Edit Profile"
   Then I should be on the edit page
