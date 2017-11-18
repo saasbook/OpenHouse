@@ -9,24 +9,28 @@ Background: user accounts have been added to database
     | email                   | password | billing_street_address | billing_city | billing_state  | billing_zip_code | first_name | last_name | credit_card_number | expiration_date | cvv |
     | aladdin@agrabah.com     | 12341001 | Agrabah Dessert        | Oakland      | Middle East    | 10101            | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 |
     | terminator@future.com   | password | 1234 Robots Factory    | New Berkeley | New California | 76767            | Terminator | T-800     | 2222222222222222   | 26-Oct-2017     | 222 |
-    And I log in with email "aladdin@agrabah.com" and password "12341001"
     And I am on the home page
     
 Scenario: host can go to edit space availability
-  Given I follow "Edit Profile"
+  Given I log in with email "aladdin@agrabah.com" and password "12341001"
+  And I follow "Edit Profile"
   When I fill in "user[available_time_start]" with "12:00"
   And I fill in "user[available_time_end]" with "17:00"
   And I press "Save Changes"
   Then I should see "12:00 p.m. - 5:00 p.m."
   
-Scenario: when users create a post, it will ask for space availability
-  Given I am not logged in
-  And I am on the OpenHouse home page
-  When I click "Create New Account"
-  And I fill in "email" with "myemail"
-  And I fill in "password" with "mypassword"
-  And I input "house" into "Rental Space"
-  Then I input "availability" in the availability field
-  Then I click "Publish"
-  Then I should go to the "List of Rental Spaces"
-  And I should see "availability" in the availability field for "Post".
+Scenario: User can create an account with account with availability information
+  Given I am on the home page
+  When I follow "Sign Up"
+  And I fill in "E-mail Address" with "dave101@gmail.com"
+  And I fill in "Password" with "12345678"
+  And I press "Submit"
+  And I fill in "user_billing_first_name" with "Davey"
+  And I fill in "user_billing_last_name" with "Dave"
+  And I press "Submit"
+  And I fill in "user_home_city" with "Dave's City"
+  And I fill in "user[available_time_start]" with "12:00"
+  And I fill in "user[available_time_end]" with "17:00"
+  And I press "Submit"
+  Then I should be on the home page
+  And account with email "dave101@gmail.com" should exist
