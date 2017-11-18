@@ -120,7 +120,7 @@ Scenario: Human can create an account with account with billing and hosting info
     And I fill in "user_billing_first_name" with "Davey"
     And I fill in "user_billing_last_name" with "Dave"
     And I press "Submit"
-    And I fill in "Location's City" with "Dave's City"
+    And I fill in "user_home_city" with "Dave's City"
     And I press "Submit"
     Then I should be on the home page
     And account with email "dave101@gmail.com" should exist
