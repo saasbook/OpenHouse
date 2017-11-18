@@ -10,22 +10,22 @@
       
       = form_tag update_user_billing_path(@user), :method => :patch do
       
-        = label :user, :billing_first_name, 'Billing First Name'
+        = label :user, :billing_first_name, 'First Name'
         = text_field :user, 'billing_first_name'
         <br>
-        = label :user, :billing_last_name, 'Billing Last Name'
+        = label :user, :billing_last_name, 'Last Name'
         = text_field :user, 'billing_last_name'
         <br>
-        = label :user, :billing_street_address, 'Billing Street Address'
+        = label :user, :billing_street_address, 'Street Address'
         = text_field :user, 'billing_street_address'
         <br>
-        = label :user, :billing_city, 'Billing City'
+        = label :user, :billing_city, 'City'
         = text_field :user, 'billing_city'
         <br>
-        = label :user, :billing_state, 'Billing State'
+        = label :user, :billing_state, 'State'
         = text_field :user, 'billing_state'
         <br>
-        = label :user, :billing_zip_code, 'Billing Zip Code'
+        = label :user, :billing_zip_code, 'Zip Code'
         = text_field :user, 'billing_zip_code'
         <br>
         = label :user, :credit_card, 'Credit Card Number'

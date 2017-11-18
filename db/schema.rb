@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116225047) do
+ActiveRecord::Schema.define(version: 20171117193828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20171116225047) do
     t.float   "latitude"
     t.float   "longitude"
     t.integer "amenity_list_id"
+    t.string  "title"
+    t.integer "capacity"
   end
 
   add_foreign_key "amenity_lists", "users", on_delete: :cascade
