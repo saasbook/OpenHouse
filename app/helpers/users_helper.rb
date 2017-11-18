@@ -34,13 +34,13 @@ module UsersHelper
     
     # Wrong type of image file
     image = params[:user][type]
-    if (!image.nil?) and (!image.content_type =~ %r{^image\/})
+    if (not image.nil?) and (not image.content_type =~ %r{^image\/})
       flash[:notice] = 'You must choose an image file.'
       return true
     end
     
     # All good
-    false
+    return false
   end
   
   def update_user_fields
@@ -60,27 +60,27 @@ module UsersHelper
     image = params[:user][type]
     # Upload image to database
     File.open(Rails.root.join('app', 'assets', 'images', 'user_images',
-                        @user.email, image.original_filename), 'wb') do |file|
+                              @user.email, image.original_filename), 'wb') do |file|
       file.write(image.read)
     end
   end
   
   def update_user_image_parameters(type)
-
+    image = params[:user][type]
     # Simply update user's attribute
     if type != :more_picture
-      params[:user][type] = params[:user][type].original_filename
-      @user.update_attribute(type, params[:user][type])
-      return
+        params[:user][type] = image.original_filename
+        @user.update_attribute(type, params[:user][type])
+        return
     end
     
-    # :more_images kept as an array, simply append this new 
-    # image name into the array
-    if @user.house_images == nil
-      @user.house_images = []
+    # :more_images kept as an array, simply append this new image name into the array
+    images_array = @user.house_images
+    if images_array == nil
+      images_array = []
     end
-    @user.house_images.push image.original_filename
-    @user.update_attribute(:house_images, @user.house_images)
+    images_array.push image.original_filename
+    @user.update_attribute(:house_images, images_array)
   end
   
   def handle_image_delete(type)
@@ -98,10 +98,8 @@ module UsersHelper
   
   def delete_picture(picture_name)
     # Remove picture file from database
-    if picture_name and File.exists? Rails.root.join('app', 'assets', 'images', 
-        'user_images', @user.email, picture_name)
-      File.delete Rails.root.join('app', 'assets', 'images', 'user_images', 
-        @user.email, picture_name)
+    if picture_name and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, picture_name)
+      File.delete Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, picture_name)
     end
   end
   
