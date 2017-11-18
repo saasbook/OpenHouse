@@ -12,14 +12,13 @@ Background: user accounts have been added to database
 Scenario: availability of profile on search results
   Given I am on the home page
   When I press "Search"
-  When I follow "Aaa"
+  When I follow "Agrabah Dessert"
   Then I should see "Times Available:"
-  And I should see "6:00 a.m. - 6:00 p.m."
+  And I should see "06:00-18:00"
 
 Scenario: availability of profile on the profile page
   Given I am on the home page
   When I press "Search"
-  And I follow "See More"
   Then I should see "Times Available:"
-  And I should see "6:00 a.m. - 6:00 p.m."
+  And I should see "06:00-18:00"
   
