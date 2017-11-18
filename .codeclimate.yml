@@ -27,4 +27,5 @@ exclude_paths:
 - app/assets/stylesheets/bootstrap.css
 - lib/**/*
 - spec/**/*
+- app/helpers/*
 - "**/vendor/**/*"
