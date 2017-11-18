@@ -50,22 +50,29 @@
 
   = form_tag update_user_host_path(@user), :method => :patch do
   
-    = label :user, :home_street_address, "Location's Street Address"
+    = label :user, :home_street_address, "Street Address"
     = text_field :user, :home_street_address
     <br>
-    = label :user, :home_city, "Location's City"
+    = label :user, :home_city, "City"
     = text_field :user, :home_city
     <br>
-    = label :user, :home_state, "Location's State"
+    = label :user, :home_state, "State"
     = text_field :user, :home_state
     <br>
-    = label :user, :home_zip_code, "Location's Zip"
+    = label :user, :home_zip_code, "Zip"
     = text_field :user, :home_zip_code
     <br>
-    = label :user, :house_description, "Location's Description"
+    = label :user, :house_description, "Description"
     = text_field :user, :house_description
     <br>
-    = label :user, :price, "Location's Price (per hour)"
+    = label :user, :title, "Title (i.e. \"Cozy flat\")"
+    = text_field :user, :title
+    <br>
+    = label :user, :capacity, "Capacity"
+    = text_field :user, :capacity
+    people
+    <br>
+    = label :user, :price, "Price (per hour)"
     = text_field :user, :price
     <br>
     = label :user, :available_time, "Times Available"
