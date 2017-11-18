@@ -27,6 +27,4 @@ exclude_paths:
 - app/assets/stylesheets/bootstrap.css
 - lib/**/*
 - spec/**/*
-#because we plan on removing this file
-- "app/helpers/users_helper.rb"
 - "**/vendor/**/*"
