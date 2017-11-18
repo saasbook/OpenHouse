@@ -2,7 +2,7 @@
 Feature: User can see another user's available times
   As a user
   So that I can change rent my space
-  I want to users to be able to see my availability
+  I want users to be able to see my availability
   
 Background: user accounts have been added to database
     Given the following accounts exist:
@@ -12,13 +12,14 @@ Background: user accounts have been added to database
 Scenario: availability of profile on search results
   Given I am on the home page
   When I press "Search"
-  Then I should see "Times Available"
+  When I follow "Aaa"
+  Then I should see "Times Available:"
   And I should see "6:00 a.m. - 6:00 p.m."
 
 Scenario: availability of profile on the profile page
   Given I am on the home page
   When I press "Search"
   And I follow "See More"
-  Then I should see "Times Available"
+  Then I should see "Times Available:"
   And I should see "6:00 a.m. - 6:00 p.m."
   
