@@ -53,6 +53,7 @@ class MainController < ApplicationController
 
         @user = current_user
     end
+    
     def us
         @user = current_user
     end
