@@ -1,12 +1,6 @@
 class UsersController < ApplicationController
     def user_params
-        # Do a better check and for weird times, as you can really mess with them..
-        unless params[:available_time_start].nil? || params[:available_time_end].nil? || params[:available_time_start].include?(":") || params[:available_time_end].include?(":")
-            params[:user][:available_time] = "00:00-00:00"
-        else
-            params[:user][:available_time] = params[:available_time_start] + "-" + params[:available_time_end]
-        end
-        params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :personal_description, :house_description, :searchable, :price, :available_time, :title, :capacity)
+        params.require(:user).permit(:email, :password, :first_name, :last_name, :billing_street_address, :billing_city, :billing_state, :billing_zip_code, :billing_first_name, :billing_last_name, :credit_card_number, :expiration_date, :cvv, :home_street_address, :home_city, :home_state, :home_zip_code, :personal_description, :house_description, :searchable, :price, :available_time_start, :available_time_end, :title, :capacity)
     end
 
     def amenity_params

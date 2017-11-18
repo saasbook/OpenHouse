@@ -34,13 +34,13 @@ module UsersHelper
     
     # Wrong type of image file
     image = params[:user][type]
-    if (not image.nil?) and (not image.content_type =~ %r{^image\/})
+    if !image.nil? and !(image.content_type =~ %r{^image\/})
       flash[:notice] = 'You must choose an image file.'
       return true
     end
     
     # All good
-    return false
+    false
   end
   
   def update_user_fields
