@@ -20,7 +20,7 @@ Scenario: host can go to edit space availability
   Then I should see "12:00 p.m. - 5:00 p.m."
   
 Scenario: when users create a post, it will ask for space availability
-  Given I am not logged in
+  Given I should not be logged in
   And I am on the OpenHouse home page
   When I click "Create New Account"
   And I fill in "email" with "myemail"
