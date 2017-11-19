@@ -5,9 +5,12 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+
 /* ------------------ CUSTOM CSS FOR OPENHOUSE ------------------------ */
 /* -------------------------------------------------------------------- */
-
+* {
+  font-family: 'Cantata One', serif;
+}
 #openhouse-navbar {
   margin-bottom: 0px;
 }
@@ -102,6 +105,10 @@
   text-align: center;
 }
 
+.justify {
+  text-align: justify
+}
+
 .homepage-box {
   width: 650px;
   padding: 50px;
@@ -127,6 +134,12 @@
   position: fixed !important;
   right: 0px;
   overflow: hidden !important;
+}
+
+#map-show {
+  width: 80%;
+  height: 350px;
+  margin: auto;
 }
 
 #search-results {
@@ -6814,6 +6827,12 @@ button.close {
 .visible-lg-inline-block {
   display: none !important;
 }
+
+#us-col {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
 @media (max-width: 767px) {
   .visible-xs {
     display: block !important;
