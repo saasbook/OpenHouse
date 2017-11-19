@@ -42,27 +42,35 @@
   %br
   
   %div#post-page-left-box
-    %h1= @user.title
-    %h3= @user.home_city + ", " + @user.home_state
+    %h2= @user.title
+    %h4= @user.home_city + ", " + @user.home_state
     
-    %div.show-details-box
-      %div [Icon here]
-      %div= @user.capacity.to_s + ' Guests'
-    %div.show-details-box
-      %div Deposit
-      %div= '$' + @user.price.to_s
+    %div#show-grey-border-box
+      %div.show-details-box
+        %div [Icon here]
+        %div= @user.capacity.to_s + ' Guests'
+      %div.show-details-box
+        %div Deposit
+        %div= '$' + @user.price.to_s
+    
+    %div.show-details-border#house-description
+      %div.show-details-header-left#house-description-header Description
+      %p.show-details-right.show-right-text#house-description-text= @user.house_description
       
-    %p= @user.house_description
-    %ul
-      %li Amenities:
-      %table
-        %tbody
-          - @user.amenity_list.attributes.each do |amenity|
-            - unless amenity.first.include? 'id'
-              - if @user.amenity_list[amenity[0]]
-                %tr
-                  %td{align: :center}= image_tag "amenity_icons/#{amenity[0]}", height: '20', weight: '20',hspace: '10', vspace: '10'
-                  %td= amenity[0]
+    %div.show-details-border#amenities
+      %div.show-details-header-left#amenities-header Amenities
+      %div.show-details-right#amenities-right
+        - @user.amenity_list.attributes.each do |amenity|
+          - unless amenity.first.include? 'id'
+            - if @user.amenity_list[amenity[0]]
+              %div.amenity-box
+                = image_tag "amenity_icons/#{amenity[0]}", width: '20', weight: '20',hspace: '10', vspace: '10'
+                - if amenity[0] == 'computer_desk'
+                  Computer Desk
+                - elsif amenity[0] == 'kitchen_access'
+                  Kitchen Access
+                - else
+                  = amenity[0].capitalize
   %div [INSERT MAP OF THIS LOCATION]
   // Insert map of the place's location
   // %br
