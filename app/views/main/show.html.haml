@@ -1,17 +1,23 @@
 // %link{:href => "vendor/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}
 %link{:href => "css/homepage.css", :rel => "stylesheet"}/
 %body{:style => 'overflow-x: hidden;'}
+  
   %header.intro-header
     .container
       .intro-message
         = image_tag "/assets/openhousewhite.png", height: '90', weight: '0', hspace: '0', vspace: '0'
+        %br
+        %br
+        %h4= flash[:notice] if flash[:notice]
         %h3 Work at shared home offices
         %h2 Find unique coworking spaces near you,
         %h2 anywhere, anytime.
+        
+        
 
         <br>
         = form_tag search_path, :method => :get do
-          = text_field :location, 'city', :placeholder=>"Try Oakland, Portland, current location...",
+          = text_field :location, 'city', :placeholder=>"Try Oakland...",
           style: 'color:#3F3F3F;background: none;width: 320px;border: 1px solid #545454;-webkit-text-fill-color: #3f3f3f;height: 30px;font-size: 1.2em;'
           = submit_tag 'Search', class: "search-button"
 
@@ -40,7 +46,7 @@
             New places for new ideas
 
     / /.container
-  %section.content-section-a
+  %section.content-section-b
     .container
       .row
         .col-lg-5.ml-auto
@@ -58,7 +64,7 @@
           = image_tag "/assets/homepage3.jpg", height: '300', weight: '100', hspace: '100', vspace: '20'
     / /.container
     
-  %section.content-section-b
+  %section.content-section-a
     .container
       .row
         .col-md-6

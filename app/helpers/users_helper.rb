@@ -1,4 +1,8 @@
 # Helper functions relating to users
+
+########### THIS IS BEING PHASED OUT FOR CLOUDINARY ##############
+# :nocov:
+
 module UsersHelper
   def update_picture(type)
     # Check for invalid input
@@ -104,3 +108,6 @@ module UsersHelper
   end
   
 end
+
+# :nocov:
+########### THIS IS BEING PHASED OUT FOR CLOUDINARY ##############

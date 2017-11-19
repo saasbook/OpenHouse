@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
     def update_host
         @user = current_user
-        update_user_fields and redirect_to root_path
+        update_user_fields and redirect_to skip_path
     end
 
     def update
@@ -74,5 +74,10 @@ class UsersController < ApplicationController
     def show
         @user = User.find params[:id]
         @current_user = current_user
+    end
+    
+    def skip
+        flash[:notice] = "Your account has been created."
+        redirect_to root_path
     end
 end

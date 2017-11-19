@@ -107,10 +107,6 @@
   font-weight: 300;
 }
 
-.signup-box {
-  margin: 70px auto;
-}
-
 .map-box {
   width: 400px;
 }
@@ -129,10 +125,10 @@
 
 .header-search {
   position: fixed;
-  width: 100%;
   padding: 25px;
-  margin-top: 70px;
+  width: 100%;
   margin-bottom: 0px;
+  margin-top: 70px;
   color: #6e6e6e;
   background-color: #fff;
   border-bottom: 1px solid #e7e7e7;
@@ -172,7 +168,7 @@
   color: #2FB2C2;
 }
 
-.listing-price {
+.listing-price, .listing-availability {
   font-weight: 200;
   color: #6e6e6e;
 }

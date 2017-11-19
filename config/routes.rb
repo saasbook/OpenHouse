@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get 'sessions/new'
+  get '/users/skip', to: 'users#skip', as: "skip"
   get '/users/edit', to: 'users#edit', as: 'edit_user'
   # get '/users/show', to: 'users#show', as: 'show_user'
   get '/users/new_billing', to: 'users#new_billing', as: 'new_user_billing'
@@ -72,6 +73,6 @@ Rails.application.routes.draw do
   patch '/users/new_billing/:id', to: 'users#update_billing', as: 'update_user_billing'
   patch '/users/new_host/:id', to: 'users#update_host', as: 'update_user_host'
   get '/us', to: 'main#us', as: 'us'
-  
+  get '/about', to: 'main#about', as: 'about'
   resources :users, :except => [:edit]
 end
