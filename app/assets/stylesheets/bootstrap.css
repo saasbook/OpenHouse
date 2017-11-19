@@ -5,11 +5,12 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
-/* CUSTOM CSS FOR OPENHOUSE */
+
+/* ------------------ CUSTOM CSS FOR OPENHOUSE ------------------------ */
+/* -------------------------------------------------------------------- */
 * {
   font-family: 'Cantata One', serif;
 }
-
 #openhouse-navbar {
   margin-bottom: 0px;
 }
@@ -77,7 +78,8 @@
   padding: 50px;
   width: 1000px;
   margin: auto;
-  color: #6e6e6e
+  color: #6e6e6e;
+  margin-top: 70px;
 }
 
 .show-box {
@@ -91,7 +93,8 @@
   padding: 50px;
   width: 650px;
   margin: auto;
-  color: #6e6e6e
+  color: #6e6e6e;
+  margin-top: 70px;
 }
 
 .login-header, .logout-box, .signup-header, .signup-subheader, .edit-header, .edit-subheader, .show-header, .show-subheader {
@@ -192,6 +195,74 @@
   font-weight: 200;
   color: #6e6e6e;
 }
+
+#post-page-left-box {
+  width: 600px;
+  text-align: left;
+  margin: 0px 15% auto;
+}
+
+#show-grey-border-box {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.show-details-box {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-left: 1px solid #ddd;
+}
+
+.show-details-border {
+  border-bottom: 1px solid #ddd;
+}
+
+.show-details-header-left {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 25px;
+}
+
+.show-details-right {
+  display: inline-block;
+}
+
+.show-right-text {
+  width: 80%;
+}
+
+#house-description {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+
+#house-description-header {
+}
+
+#house-description-text {
+}
+
+#amenities {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.amenity-box {
+  display: inline-block;
+  padding-right: 20px;
+  width: 165px;
+}
+
+#amenities-right {
+  width: 84%;
+}
+
+/* -------------------------------------------------------------------- */
+/* -------------------------------------------------------------------- */
 
 html {
   font-family: sans-serif;
