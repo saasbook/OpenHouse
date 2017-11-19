@@ -75,7 +75,7 @@
                   Kitchen Access
                 - else
                   = amenity[0].capitalize
-  
+
   - if @user != @current_user
     %div#user-page-right-box
       - if @user.profile_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.profile_picture)

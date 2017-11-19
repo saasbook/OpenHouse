@@ -46,9 +46,10 @@ body, h1, h2, h3, h4, h5, h6 {
   
 }
 .intro-message>h2 {
-  font-size: 1.75em;
   color: #545454;
-  font-weight: 500;
+  font-weight: 300;
+  font-family: open-sans, sans-serif;
+  font-size: 1.75em;;
 }
 
 .intro-message>h4 {
