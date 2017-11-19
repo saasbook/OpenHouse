@@ -1,3 +1,6 @@
+* {
+  font-family: 'Cantata One', serif;
+}
 
 body, html {
   width: 100%;
@@ -5,7 +8,6 @@ body, html {
 }
 
 body, h1, h2, h3, h4, h5, h6 {
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
 }
 
@@ -14,7 +16,11 @@ body, h1, h2, h3, h4, h5, h6 {
   padding-bottom: 50px;
   text-align: left;
   color: #f8f8f8;
-  background: url(/assets/background.jpg) no-repeat center center;
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ), url(/assets/background.jpg) no-repeat center center;
   background-size: cover;
 }
 

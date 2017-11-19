@@ -35,93 +35,85 @@
   
   %br
   %p.center= flash[:notice] if flash[:notice]
-  %h2.center Profile Information
-  %h4.center Profile Photo
-  %br
-  - if @user.profile_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.profile_picture)
-    = image_tag "user_images/#{@user.email}/#{@user.profile_picture}", height: '150', weight: '20',hspace: '150', vspace: '10', id: :profile_picture
-  - else
-    = image_tag "user.png", height: '150', weight: '20',hspace: '400', vspace: '10', id: :profile_picture
-  %h4.center House Photo
-  %br
   - if @user.house_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.house_picture)
-    = image_tag "user_images/#{@user.email}/#{@user.house_picture}", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
+    = image_tag "user_images/#{@user.email}/#{@user.house_picture}", height: '550', hspace: '150', vspace: '10', id: :house_picture
   - else
     = image_tag "house.jpg", height: '150', weight: '20',hspace: '400', vspace: '10', id: :house_picture
   %br
   
-  %p2
-    %strong First Name:
-    = +(@user.first_name || "")
-  %br
-  %p2
-    %strong Last Name: 
-    = +(@user.last_name || "")
-  %br
-  %p2
-    %strong Personal Description: 
-    = +(@user.personal_description || "")
-  %br
-  
-  - if @user == @current_user
-    %p2
-    %strong Email: 
-    = +(@user.email || "")
-    %br
-    %p2 
-      %strong Billing Address Information:
-    %ul 
-      %li First Name:
-      = +(@user.billing_first_name || "")
-      %li Last Name:
-      = +(@user.billing_last_name || "")
-      %li Street:
-      = +(@user.billing_street_address || "")
-      %li City:
-      = +(@user.billing_city || "")
-      %li State:
-      = +(@user.billing_state || "")
-      %li Zip Code:
-      = +(@user.billing_zip_code || "")
-    %br
-    %p2 
-      %strong Credit Card Information
+  %div#user-page-left-box
+    %h2= @user.title
+    %h4= @user.home_city + ", " + @user.home_state
     
-    %ul 
-      %li Number:
-      = +(@user.credit_card_number || "")
-      %li Expiration Date:
-      = +(@user.expiration_date || "")
-      %li CVV:
-      = +(@user.cvv || "")
+    %div#show-grey-border-box
+      %div.show-details-box
+        <svg id="guest-icon" enable-background="new 0 0 59.8 56.1" version="1.1" viewBox="0 0 59.8 56.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+        <path d="m38 9.2c0-5 3.9-9.1 8.8-9.1s8.8 4.1 8.8 9.1-3.9 9.1-8.8 9.1c-4.9-0.1-8.8-4.1-8.8-9.1zm14.5 10.5h-11.4c-0.4 0-0.9 0-1.3 0.1 0.1 0.5 0.1 1 0.1 1.6 0 3.8-2 7.1-5 8.9-0.2 0.1-0.1 0.5 0.1 0.5h0.5c4.8 0 8.7 4 8.7 8.8v4.3h14.7c0.5 0 0.9-0.4 0.9-1v-15.6c0.2-4.2-3.2-7.6-7.3-7.6zm-39.3-1.5c4.9 0 8.8-4.1 8.8-9.1s-3.9-9.1-8.8-9.1-8.8 4.1-8.8 9.1c0 5.1 3.9 9.1 8.8 9.1zm11.1 12.5h0.5c0.2 0 0.3-0.3 0.1-0.5-3-1.8-5-5.1-5-8.9 0-0.5 0-1.1 0.1-1.6-0.4-0.1-0.8-0.1-1.3-0.1h-11.2c-4.2 0-7.5 3.4-7.5 7.6v15.6c0 0.5 0.4 1 0.9 1h14.7v-4.3c0-4.8 3.9-8.8 8.7-8.8zm5.7-0.2c4.9 0 8.8-4.1 8.8-9.1s-3.9-9.1-8.8-9.1-8.8 4.1-8.8 9.1 3.9 9.1 8.8 9.1zm5.7 1.5h-11.4c-4.2 0-7.5 3.4-7.5 7.6v15.5c0 0.5 0.4 1 0.9 1h24.5c0.5 0 0.9-0.4 0.9-1v-15.5c0.1-4.2-3.3-7.6-7.4-7.6z"/>
+        </svg>
+        %h4#guest-capacity= @user.capacity.to_s + ' Guests'
     
-  %p2 
-    %strong Hosting Information:
-  %ul 
-    %li Title:
-    = +(@user.title || "")
-    %li Capacity:
-    = +(@user.capacity || "")
-    %li Price:
-    = +(@user.price || "")
-    %li Times Available:
-    = +(range_to_ampm(@user.available_time) || "")
-    %li Location:
-    = "[INSERT MAP OF THIS LOCATION]"
-    %li House Description:
-    = +(@user.house_description || "")
-    %li Amenities:
-    %table
-      %tbody
+    %div.show-details-border#house-description
+      %div.show-details-header-left#house-description-header Description
+      %p.show-details-right.show-right-text#house-description-text= @user.house_description
+      
+    %div.show-details-border#amenities
+      %div.show-details-header-left#amenities-header Amenities
+      %div.show-details-right#amenities-right
         - @user.amenity_list.attributes.each do |amenity|
           - unless amenity.first.include? 'id'
             - if @user.amenity_list[amenity[0]]
-              %tr
-                %td{align: :center}= image_tag "amenity_icons/#{amenity[0]}", height: '20', weight: '20',hspace: '10', vspace: '10'
-                %td= amenity[0]
-  // Insert map of the place's location
-  // %br
-  // = image_tag(google_map_static_helper(center: @user.billing_street_address),hspace: '150', vspace: '10')
+              %div.amenity-box
+                = image_tag "amenity_icons/#{amenity[0]}", width: '20', weight: '20',hspace: '10', vspace: '10'
+                - if amenity[0] == 'computer_desk'
+                  Computer Desk
+                - elsif amenity[0] == 'kitchen_access'
+                  Kitchen Access
+                - else
+                  = amenity[0].capitalize
+                  
+  %div#user-page-right-box
+    - if @user.profile_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.profile_picture)
+      = image_tag "user_images/#{@user.email}/#{@user.profile_picture}", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
+    - else
+      = image_tag "user.png", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
+    %h5= @user.first_name
+    %h3= '$' + @user.price.to_s + '/hour'
+    %div 
+      %h4 Available
+      %div= +(range_to_ampm(@user.available_time || ''))
+      %h4 Reserve
+      %input#available-time-box{type: "time", name: "user[available_time_start]", value: @user.available_time_start}
+      to
+      %input#available-time-box{type: "time", name: "user[available_time_end]", value: @user.available_time_end}
+      %h4 Guests
+      %select#guest-select
+        - i = 1
+        - while i <= @user.capacity
+          %option{:value => i} #{i}
+          - i += 1
+      %div
+        %input.btn.btn-primary#reserve-button{:value => 'Reserve', :onclick => 'alert("Your reservation had been made.")'}
+
+-if @success == false
+  %div.center
+    %p= "The location was not found."
+
+%div.center#map-show
+:javascript
+  //Check ruby api and attempt to pull valid coordinates
+  curr_loc_lat = '#{@curr_loc_lat}';
+  curr_loc_lng = '#{@curr_loc_lng}';
   
-  %p5
-  = link_to "Back to Main Page", root_path, style: 'color:#79b8d1;font-weight: bold;', class: 'css_class', align: "right"
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map-show'}}, function(){
+  
+  // Add initial marker to center selected location
+  center = handler.addMarker({
+    lat: curr_loc_lat,
+    lng: curr_loc_lng
+  });
+    handler.bounds.extendWith(center);
+    handler.map.centerOn(center);
+    handler.fitMapToBounds();
+  });
+  

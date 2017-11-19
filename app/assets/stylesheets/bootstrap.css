@@ -5,8 +5,12 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
-/* CUSTOM CSS FOR OPENHOUSE */
 
+/* ------------------ CUSTOM CSS FOR OPENHOUSE ------------------------ */
+/* -------------------------------------------------------------------- */
+* {
+  Font-Family: 'Raleway', Sans-Serif;
+}
 #openhouse-navbar {
   margin-bottom: 0px;
 }
@@ -74,14 +78,23 @@
   padding: 50px;
   width: 1000px;
   margin: auto;
-  color: #6e6e6e
+  color: #6e6e6e;
+  margin-top: 70px;
 }
 
-.hosting-box, .edit-box, .show-box {
+.show-box {
+  margin-top: 70px;
+  margin: auto;
+  color: #6e6e6e;
+  text-align: center;
+}
+
+.hosting-box, .edit-box {
   padding: 50px;
   width: 650px;
   margin: auto;
-  color: #6e6e6e
+  color: #6e6e6e;
+  margin-top: 70px;
 }
 
 .login-header, .logout-box, .signup-header, .signup-subheader, .edit-header, .edit-subheader, .show-header, .show-subheader {
@@ -90,6 +103,10 @@
 
 .center {
   text-align: center;
+}
+
+.justify {
+  text-align: justify
 }
 
 .homepage-box {
@@ -119,16 +136,24 @@
   overflow: hidden !important;
 }
 
+#map-show {
+  width: 70%;
+  height: 500px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 #search-results {
   width: 60%;
 }
 
 .header-search {
-  position: static;
-  width: 100%;
+  position: fixed;
   padding: 25px;
-  margin-top: 70px;
+  width: 100%;
   margin-bottom: 0px;
+  margin-top: 70px;
   color: #6e6e6e;
   background-color: #fff;
   border-bottom: 1px solid #e7e7e7;
@@ -172,6 +197,112 @@
   font-weight: 200;
   color: #6e6e6e;
 }
+
+#user-page-left-box {
+  width: 600px;
+  text-align: left;
+  display: inline-block;
+  margin: 0 0 0 -1%;
+}
+
+#user-page-right-box {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+  margin-left: 35px;
+}
+
+#user-profile-img {
+  border-radius: 50%;
+}
+
+#show-grey-border-box {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.show-details-box {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.show-details-border {
+  border-bottom: 1px solid #ddd;
+}
+
+.show-details-header-left {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 25px;
+}
+
+.show-details-right {
+  display: inline-block;
+}
+
+.show-right-text {
+  width: 80%;
+}
+
+#house-description {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+
+#house-description-header {
+}
+
+#house-description-text {
+}
+
+#amenities {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.amenity-box {
+  display: inline-block;
+  padding-right: 20px;
+  width: 165px;
+}
+
+#amenities-right {
+  width: 84%;
+}
+
+#reserve-button {
+  margin-top: 15px;
+  width: 95%;
+  font-size: 1.3em;
+}
+
+#guest-select {
+  width: 95%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#available-time-box {
+  width: 45%;
+}
+
+#guest-icon {
+  display: inline-block;
+  height: 30px;
+  margin-bottom: -10px;
+}
+
+#guest-capacity {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+/* -------------------------------------------------------------------- */
+/* -------------------------------------------------------------------- */
 
 html {
   font-family: sans-serif;
@@ -6736,6 +6867,12 @@ button.close {
 .visible-lg-inline-block {
   display: none !important;
 }
+
+#us-col {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
 @media (max-width: 767px) {
   .visible-xs {
     display: block !important;

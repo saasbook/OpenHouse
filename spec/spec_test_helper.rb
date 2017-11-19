@@ -4,6 +4,6 @@ module SpecTestHelper
   end
 
   def current_user
-    User.find(request.session[:user_id])
+    User.find_by(id: request.session[:user_id])
   end
 end

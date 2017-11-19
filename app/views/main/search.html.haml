@@ -89,6 +89,5 @@
           %div.listing-details
             %h5.listing-location.listing-details-text= user.home_city.to_s + ", " + user.home_state.to_s
             %h4.listing-address.listing-details-text= user.home_street_address
-            %h4.listing-price.listing-details-text= "$" + user.price.to_s + " per day"
-            %h4.listing-availability.listing-details-text= "Available: " + user.available_time
-        
+            %h4.listing-price.listing-details-text= "$" + user.price.to_s + "/hour"
+            %h4.listing-details-text= "Available: " + range_to_ampm(user.available_time)

@@ -61,12 +61,14 @@ class MainController < ApplicationController
            @nearby_locations.push([user.latitude, user.longitude, user.price, user.home_street_address, url])
         end
         print(@nearby_locations.to_json) 
+
         @user = current_user
     end
     
     def us
         @user = current_user
     end
+    
     def about
         @user = current_user
     end
