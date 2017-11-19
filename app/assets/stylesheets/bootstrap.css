@@ -292,6 +292,13 @@
 
 #available-time-box {
   width: 45%;
+  font-family: open-sans, sans-serif;
+  font-weight: 300;
+}
+
+#time-text {
+  font-family: open-sans, sans-serif;
+  font-weight: 300;
 }
 
 #guest-icon {
@@ -4806,7 +4813,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #2FB2C2;
-  border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
   color: #777;

@@ -80,7 +80,7 @@
     %h3#price-tag= '$' + @user.price.to_s + '/hour'
     %div#reservation-box 
       %h4 Available
-      %div= +(range_to_ampm(@user.available_time || ''))
+      %div#time-text= +(range_to_ampm(@user.available_time || ''))
       %h4 Reserve
       %input#available-time-box{type: "time", name: "user[available_time_start]", value: @user.available_time_start}
       to
