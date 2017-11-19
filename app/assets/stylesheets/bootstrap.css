@@ -133,6 +133,12 @@
   overflow: hidden !important;
 }
 
+#map-show {
+  width: 80%;
+  height: 350px;
+  margin: auto;
+}
+
 #search-results {
   width: 60%;
 }
