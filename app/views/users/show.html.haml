@@ -83,10 +83,10 @@
       - else
         = image_tag "user.png", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
       %h5= @user.first_name
-      %h3= '$' + @user.price.to_s + '/hour'
-      %div 
+      %h3#price-tag= '$' + @user.price.to_s + '/hour'
+      %div#reservation-box  
         %h4 Available
-        %div= +(range_to_ampm(@user.available_time || ''))
+        %div#time-text= +(range_to_ampm(@user.available_time || ''))
         %h4 Reserve
         %input#available-time-box{type: "time", name: "user[available_time_start]", value: @user.available_time_start}
         to
@@ -99,7 +99,7 @@
               %option{:value => i} #{i}
               - i += 1
         %div
-          %input.btn.btn-primary#reserve-button{:value => 'Reserve', :onclick => 'alert("Your reservation had been made.")'}
+          %input.btn.btn-warning#reserve-button{:value => 'Reserve', :onclick => 'alert("Your reservation had been made.")'}
 
 -if @success == false
   %div.center
