@@ -6,6 +6,9 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 /* CUSTOM CSS FOR OPENHOUSE */
+* {
+  font-family: 'Cantata One', serif;
+}
 
 #openhouse-navbar {
   margin-bottom: 0px;
