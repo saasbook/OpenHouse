@@ -66,9 +66,16 @@ describe SessionsController do
     end
     
     describe 'log-out' do
-        it 'goes to the log out page' do
+        it 'goes to the home page' do
 			get :destroy
-			expect(response).to render_template(:destroy)
+			expect(response).to redirect_to(root_path)
+		end
+		it 'removes the current_user' do
+		    @user = User.find_by(email: "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			
+			get :destroy
+			expect(current_user).to eq(nil)
 		end
     end
 end

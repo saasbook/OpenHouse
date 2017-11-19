@@ -57,16 +57,36 @@
   margin-top:5px;
 }
 
-.search-button {
+#search-button {
   color: white;
   background-color: #2fa6c2;
+  height: 30px;
+  vertical-align: middle;
+  font-size: 15px;
+  padding-bottom: 2px;
+  padding-top: 3px;
   display: inline-block;
+  margin-top: -5px;
+  border-radius: 0%;
+  border-color: #2fa6c2;
 }
 
-.search-button:hover {
+#search-button:hover {
   background-color: #fff;
   color: #2fa6c2
 }
+
+#search-bar {
+  color:#3F3F3F;
+  background: none;
+  width: 430px;
+  border: 1px solid #545454;
+  -webkit-text-fill-color: #3f3f3f;
+  height: 30px;
+  font-size: 1.2em;
+  display: inline;
+}  
+
 
 #profile_picture, #house_picture {
   text-align: center;

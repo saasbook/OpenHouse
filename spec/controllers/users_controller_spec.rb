@@ -133,7 +133,7 @@ describe UsersController do
             post :create, :user => @parameters
 			@user = User.find_by(:email => "sodapop@pepsi.com")
 			patch :update_host, :id => @user.id , :user => @host_params
-			expect(response).to redirect_to(root_path)
+			expect(response).to redirect_to(skip_path)
 			expect(flash[:notice]).to eq("Your account has been updated.")
  		end
  		it 'submitting all info updates that info of the user' do
