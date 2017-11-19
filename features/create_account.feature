@@ -81,7 +81,7 @@ Scenario: Human can create an account with account without any other information
     And I fill in "Password" with "12345678"
     When I press "Submit"
     And I follow "Skip"
-    Then I should be on the home page
+    Then I should be on the user profile page for "dave101@gmail.com"
     And account with email "dave101@gmail.com" should exist
     
 Scenario: Human can create an account with account with billing information and put in hosting info if desired
@@ -108,7 +108,7 @@ Scenario: Human can create an account with account with billing information and 
     And I fill in "user_billing_last_name" with "Dave"
     When I press "Submit"
     And I follow "Skip"
-    Then I should be on the home page
+    Then I should be on the user profile page for "dave101@gmail.com"
     And account with email "dave101@gmail.com" should exist
 
 Scenario: Human can create an account with account with billing and hosting information
@@ -122,5 +122,5 @@ Scenario: Human can create an account with account with billing and hosting info
     When I press "Submit"
     And I fill in "user_home_city" with "Dave's City"
     When I press "Submit"
-    Then I should be on the home page
+    Then I should be on the user profile page for "dave101@gmail.com"
     And account with email "dave101@gmail.com" should exist

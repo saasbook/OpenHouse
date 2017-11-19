@@ -2,15 +2,42 @@
 
 %div{:id => 'map'}
 
+:coffeescript
+  class @CustomMarkerBuilder extends Gmaps.Google.Builders.Marker
+    create_marker: ->
+      options = _.extend @marker_options(), @rich_marker_options()
+      @serviceObject = new RichMarker options
+
+    rich_marker_options: ->
+      marker = document.createElement("div")
+      marker.setAttribute('class', 'custom_marker_content')
+      marker.innerHTML = this.args.custom_marker
+      { content: marker }
+
+    create_infowindow: ->
+      return null unless _.isString @args.custom_infowindow
+
+      boxText = document.createElement("div")
+      boxText.setAttribute("class", 'custom_infowindow_content')
+      boxText.innerHTML = @args.custom_infowindow
+      @infowindow = new InfoBox(@infobox(boxText))
+
+    infobox: (boxText)->
+      content: boxText
+      pixelOffset: new google.maps.Size(-140, 0)
+      boxStyle:
+        width: "280px"
+
 :javascript
-  lat = 0
-  lng = 0
+  //Defaults to Oakland, CA
+  lat = 37.8044 
+  lng = 122.2711
   locs_nearby = []
   
   //Check ruby api and attempt to pull valid coordinates
   curr_loc_lat = '#{@curr_loc_lat}';
   curr_loc_lng = '#{@curr_loc_lng}';
-  curr_locs_nearby = JSON.parse('#{@nearby_locations.to_json}');
+  curr_locs_nearby = JSON.parse('#{@nearby_locations.to_json}'.replace(/&quot;/g,'"'));
   //window.alert(curr_locs_nearby);
   
   if (curr_loc_lat !== "" && curr_loc_lng !== "") {
@@ -19,27 +46,31 @@
     locs_nearby = curr_locs_nearby;
   }
   
-  handler = Gmaps.build('Google');
+  handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} });
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   
   // Add initial marker to center selected location
-  center = handler.addMarker({
-    lat: lat,
-    lng: lng
-  });
+  //center = handler.addMarker({
+  //  lat: lat,
+  //  lng: lng,
+  //  custom_marker: "",
+  //});
   
   nearby_markers = [];
   for (var i = 0; i < locs_nearby.length; i++) {
+    console.log(locs_nearby[i][4])
     nearby_markers.push({
       lat: parseFloat(locs_nearby[i][0]),
-      lng: parseFloat(locs_nearby[i][1])
+      lng: parseFloat(locs_nearby[i][1]),
+      custom_marker: "$" + locs_nearby[i][2],
+      custom_infowindow: "<a href='" +  locs_nearby[i][4] + "' target='_blank'>"  + locs_nearby[i][3] + "</a>"
     });
   }
   if (nearby_markers.length > 0) {
     markers = handler.addMarkers(nearby_markers);
     handler.bounds.extendWith(markers);
-    handler.bounds.extendWith(center);
-    handler.map.centerOn(center);
+    //handler.bounds.extendWith(center);
+    //handler.map.centerOn(center);
     handler.fitMapToBounds();
   }
   });
@@ -58,5 +89,5 @@
           %div.listing-details
             %h5.listing-location.listing-details-text= user.home_city.to_s + ", " + user.home_state.to_s
             %h4.listing-address.listing-details-text= user.home_street_address
-            %h4.listing-price.listing-details-text= "$" + user.price.to_s + " per day"
-            %h4.listing-details-text= "Times Available: " + user.available_time
+            %h4.listing-price.listing-details-text= "$" + user.price.to_s + "/hour"
+            %h4.listing-details-text= "Available: " + range_to_ampm(user.available_time)

@@ -13,7 +13,8 @@ Scenario: Host can log out after being logged in
     Given I log in with email "dave@gmail.com" and password "12345678"
     And I am on the home page
     When I follow "Log Out"
-    Then I should see "Logged Out"
+    Then I should see "You have been logged out."
+    And I should be on the home page
     And I should not be logged in
 
 # Scenario: Host cannot log out if he already logged out in another tab

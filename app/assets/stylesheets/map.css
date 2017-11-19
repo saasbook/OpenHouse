@@ -1,0 +1,21 @@
+.custom_marker_content {
+    background-color: #ffffff;
+    font-size: 150%;
+    border-style: solid;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+.custom_infowindow_content {
+    background-color: #ffffff;
+    font-size: 150%;
+    border-style: solid;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    text-align: center;
+}
