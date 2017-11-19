@@ -44,13 +44,23 @@ class MainController < ApplicationController
 
         #Populate array of nearby homes to populate the map
         @nearby_locations = []
-        User.near(@full_location).each do |location|
-            @nearby_locations.push([location.latitude, location.longitude])
-        end
+        @nearby_prices = []
+        #User.near(@full_location).each do |location|
+        #    @nearby_locations.push([location.latitude, location.longitude])
+        #end
         #puts(User.near(@full_location)[0].home_street_address)
         #puts(@nearby_locations)
-        print(@nearby_locations.to_json)  
-
+        #print(@nearby_locations.to_json)  
+        #print(@nearby_prices.to_json)
+        
+        #
+        User.near(@full_location).each do |user|
+           #puts(user.price)
+           #puts(user.latitude)
+           url = request.base_url + "/users/" + user.id.to_s
+           @nearby_locations.push([user.latitude, user.longitude, user.price, user.home_street_address, url])
+        end
+        print(@nearby_locations.to_json) 
         @user = current_user
     end
     
