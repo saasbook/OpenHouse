@@ -12,8 +12,8 @@ Background: user accounts have been added to database
 Scenario: availability of profile on search results
   Given I am on the home page
   When I press "Search"
-  When I follow "Agrabah Dessert"
-  Then I should see "Times Available:"
+  And I click a post with id "link_101 Agrabah Dessert"
+  Then I should see "Available:"
   And I should see "06:00-18:00"
 
 Scenario: availability of profile on the profile page

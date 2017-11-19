@@ -32,5 +32,5 @@ Scenario: User can create an account with account with availability information
   And I fill in "user[available_time_start]" with "12:00"
   And I fill in "user[available_time_end]" with "17:00"
   And I press "Submit"
-  Then I should be on the home page
+  Then I should be on the user profile page for "dave101@gmail.com"
   And account with email "dave101@gmail.com" should exist
