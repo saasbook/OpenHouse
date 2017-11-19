@@ -74,10 +74,21 @@ class UsersController < ApplicationController
     def show
         @user = User.find params[:id]
         @current_user = current_user
+        @full_location = @user.home_street_address + " " + @user.home_city + " " + @user.home_state
+        
+        result = Geocoder.search(@full_location)[0]
+        if result == nil
+            @full_location = "Oakland, CA"
+            @success = false
+            result = Geocoder.search(@full_location)[0]
+        end
+        @curr_loc_lat = result.geometry['location']['lat']
+        @curr_loc_lng = result.geometry['location']['lng']
     end
     
     def skip
+        @user = current_user
         flash[:notice] = "Your account has been created."
-        redirect_to root_path
+        redirect_to user_path(@user)
     end
 end

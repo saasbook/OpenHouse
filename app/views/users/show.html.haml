@@ -71,10 +71,30 @@
                   Kitchen Access
                 - else
                   = amenity[0].capitalize
-  %div [INSERT MAP OF THIS LOCATION]
-  // Insert map of the place's location
-  // %br
-  // = image_tag(google_map_static_helper(center: @user.billing_street_address),hspace: '150', vspace: '10')
+
+-if @success == false
+  %div.center
+    %p= "The location was not found."
+
+%div.center#map-show
+:javascript
+  //Check ruby api and attempt to pull valid coordinates
+  curr_loc_lat = '#{@curr_loc_lat}';
+  curr_loc_lng = '#{@curr_loc_lng}';
   
-  %p5
-  = link_to "Back to Main Page", root_path, style: 'color:#79b8d1;font-weight: bold;', class: 'css_class', align: "right"
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map-show'}}, function(){
+  
+  // Add initial marker to center selected location
+  center = handler.addMarker({
+    lat: curr_loc_lat,
+    lng: curr_loc_lng
+  });
+    handler.bounds.extendWith(center);
+    handler.map.centerOn(center);
+    handler.fitMapToBounds();
+  });
+
+%div.center
+  %p5.center
+  = link_to "Back to Main Page", root_path, style: 'color:#79b8d1;font-weight: bold;'
