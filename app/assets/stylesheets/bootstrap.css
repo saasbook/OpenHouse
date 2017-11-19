@@ -9,7 +9,7 @@
 /* ------------------ CUSTOM CSS FOR OPENHOUSE ------------------------ */
 /* -------------------------------------------------------------------- */
 * {
-  font-family: 'Cantata One', serif;
+  Font-Family: 'Raleway', Sans-Serif;
 }
 #openhouse-navbar {
   margin-bottom: 0px;
@@ -137,9 +137,11 @@
 }
 
 #map-show {
-  width: 80%;
-  height: 350px;
+  width: 70%;
+  height: 500px;
   margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 #search-results {
@@ -196,10 +198,22 @@
   color: #6e6e6e;
 }
 
-#post-page-left-box {
+#user-page-left-box {
   width: 600px;
   text-align: left;
-  margin: 0px 15% auto;
+  display: inline-block;
+  margin: 0 0 0 -1%;
+}
+
+#user-page-right-box {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+  margin-left: 35px;
+}
+
+#user-profile-img {
+  border-radius: 50%;
 }
 
 #show-grey-border-box {
@@ -213,7 +227,6 @@
   margin-bottom: 15px;
   padding-right: 10px;
   padding-left: 10px;
-  border-left: 1px solid #ddd;
 }
 
 .show-details-border {
@@ -259,6 +272,33 @@
 
 #amenities-right {
   width: 84%;
+}
+
+#reserve-button {
+  margin-top: 15px;
+  width: 95%;
+  font-size: 1.3em;
+}
+
+#guest-select {
+  width: 95%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#available-time-box {
+  width: 45%;
+}
+
+#guest-icon {
+  display: inline-block;
+  height: 30px;
+  margin-bottom: -10px;
+}
+
+#guest-capacity {
+  display: inline-block;
+  padding-left: 10px;
 }
 
 /* -------------------------------------------------------------------- */
