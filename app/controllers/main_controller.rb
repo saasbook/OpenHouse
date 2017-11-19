@@ -49,7 +49,7 @@ class MainController < ApplicationController
         end
         #puts(User.near(@full_location)[0].home_street_address)
         #puts(@nearby_locations)
-        print(@nearby_locations.to_json)  
+        #print(@nearby_locations.to_json)  
 
         @user = current_user
     end
@@ -57,6 +57,7 @@ class MainController < ApplicationController
     def us
         @user = current_user
     end
+    
     def about
         @user = current_user
     end
