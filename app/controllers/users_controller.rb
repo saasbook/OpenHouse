@@ -77,13 +77,13 @@ class UsersController < ApplicationController
         @full_location = @user.home_street_address + " " + @user.home_city + " " + @user.home_state
         
         result = Geocoder.search(@full_location)[0]
-        if result != nil
-            @curr_loc_lat = result.geometry['location']['lat']
-            @curr_loc_lng = result.geometry['location']['lng']
-        else
-            @curr_loc_lat = 0
-            @curr_loc_lng = 0
+        if result == nil
+            @full_location = "Oakland, CA"
+            @success = false
+            result = Geocoder.search(@full_location)[0]
         end
+        @curr_loc_lat = result.geometry['location']['lat']
+        @curr_loc_lng = result.geometry['location']['lng']
     end
     
     def skip

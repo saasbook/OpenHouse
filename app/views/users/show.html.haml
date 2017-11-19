@@ -63,6 +63,11 @@
                 %tr
                   %td{align: :center}= image_tag "amenity_icons/#{amenity[0]}", height: '20', weight: '20',hspace: '10', vspace: '10'
                   %td= amenity[0]
+
+-if @success == false
+  %div.center
+    %p= "The location was not found."
+
 %div.center#map-show
 :javascript
   //Check ruby api and attempt to pull valid coordinates
