@@ -95,6 +95,10 @@
   text-align: center;
 }
 
+.justify {
+  text-align: justify
+}
+
 .homepage-box {
   width: 650px;
   padding: 50px;
@@ -6739,6 +6743,12 @@ button.close {
 .visible-lg-inline-block {
   display: none !important;
 }
+
+#us-col {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
 @media (max-width: 767px) {
   .visible-xs {
     display: block !important;
