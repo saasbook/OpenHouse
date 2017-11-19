@@ -41,7 +41,7 @@
     = image_tag "house.jpg", height: '150', weight: '20',hspace: '400', vspace: '10', id: :house_picture
   %br
   
-  %div#post-page-left-box
+  %div#user-page-left-box
     %h2= @user.title
     %h4= @user.home_city + ", " + @user.home_state
     
@@ -71,6 +71,28 @@
                   Kitchen Access
                 - else
                   = amenity[0].capitalize
+                  
+  %div#user-page-right-box
+    - if @user.profile_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.profile_picture)
+      = image_tag "user_images/#{@user.email}/#{@user.profile_picture}", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
+    - else
+      = image_tag "user.png", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
+    %h3= '$' + @user.price.to_s + '/hour'
+    %div 
+      %h4 Available
+      %div= +(range_to_ampm(@user.available_time || ''))
+      %h4 Reserve
+      %input#available-time-box{type: "time", name: "user[available_time_start]", value: @user.available_time_start}
+      to
+      %input#available-time-box{type: "time", name: "user[available_time_end]", value: @user.available_time_end}
+      %h4 Guests
+      %select#guest-select
+        - i = 1
+        - while i <= @user.capacity
+          %option{:value => i} #{i}
+          - i += 1
+      %div
+        %input.btn.btn-primary#reserve-button{:value => 'Reserve', :onclick => 'alert("Your reservation had been made.")'}
 
 -if @success == false
   %div.center
@@ -94,7 +116,4 @@
     handler.map.centerOn(center);
     handler.fitMapToBounds();
   });
-
-%div.center
-  %p5.center
-  = link_to "Back to Main Page", root_path, style: 'color:#79b8d1;font-weight: bold;'
+  
