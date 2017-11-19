@@ -77,7 +77,14 @@
   color: #6e6e6e
 }
 
-.hosting-box, .edit-box, .show-box {
+.show-box {
+  margin-top: 70px;
+  margin: auto;
+  color: #6e6e6e;
+  text-align: center;
+}
+
+.hosting-box, .edit-box {
   padding: 50px;
   width: 650px;
   margin: auto;

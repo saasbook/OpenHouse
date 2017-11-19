@@ -12,22 +12,12 @@ Background: user accounts have been added to database
     And I am on the home page
     
 Scenario: host can go to edit space availability
-<<<<<<< HEAD
-  Given I follow "Edit Profile"
-  Then I should be on the edit page
-  And I fill in "available_time_start" with "01:00 PM"
-  And I fill in "available_time_end" with "05:00 PM"
-  And I press "Save Changes"
-  And I am on the Edit Profile page
-  Then I should see "01:00 p.m. - 5:00 p.m."
-=======
   Given I log in with email "aladdin@agrabah.com" and password "12341001"
   And I follow "Edit Profile"
   When I fill in "user[available_time_start]" with "12:00"
   And I fill in "user[available_time_end]" with "17:00"
   And I press "Save Changes"
   Then I should see "12:00 p.m. - 5:00 p.m."
->>>>>>> d862c0e904e49e89cc62f9db77bb437bbbaca3e2
   
 Scenario: User can create an account with account with availability information
   Given I am on the home page
