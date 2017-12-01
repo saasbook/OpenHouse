@@ -26,6 +26,10 @@ class UsersController < ApplicationController
                 msg = msg + "#{var} #{@user.errors[var][0]}, "
             end
             flash[:notice] = msg[0..-3]
+            flash[:email] = @user.email
+            flash[:first_name] = @user.first_name
+            flash[:last_name] = @user.last_name
+            flash[:personal_description] = @user.personal_description
         end
         redirect_to next_path
     end
