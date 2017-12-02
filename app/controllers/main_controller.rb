@@ -37,7 +37,7 @@ class MainController < ApplicationController
         
         if @nearby_locations == []
             @nearby = "false"
-            flash[:notice] = "No spaces were found nearby. Zoom out with the map to find the closest spaces."
+            flash[:notice] = "No spaces were found nearby. Zoom out with the map to find the closest spaces. If you want to learn more about those spaces, perform a new search on that city."
             @all_users.each do |user|
                 url = request.base_url + "/users/" + user.id.to_s
                 @nearby_locations.push([user.latitude, user.longitude, user.price, user.home_street_address, url])
