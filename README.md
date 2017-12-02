@@ -1,25 +1,34 @@
 [![Coverage](https://codeclimate.com/github/jjeremydiaz/OpenHouse/badges/coverage.svg)](https://codeclimate.com/github/jjeremydiaz/OpenHouse/coverage)
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/3bccb3728ff552747b0c/maintainability)](https://codeclimate.com/github/jjeremydiaz/OpenHouse/maintainability)
+
 [![Build Status](https://travis-ci.org/jjeremydiaz/OpenHouse.svg?branch=master)](https://travis-ci.org/jjeremydiaz/OpenHouse)
 
 # OpenHouse
 OpenHouse is a platform for freelancers to connect and share workspaces. Users of the app can rent out their houses by the hour to other users who want places to work and connect with others in the OpenHouse community.
 
-Features the app supports include:
-* Accounts:
-  * creation
-  * login
-  * logout
-  * deletion
-* Search:
-  * Enter address and find nearby offers
+Some of the features the app supports include:
+* Users can create and delete accounts and use them to log in and out.
+* Users can search for nearby available rentals by typing in an address.
+* Users can customize their public-facing profile pages and post information about their rentals.
+* Users can send messages to each other through the app.
+* Users can reserve an open house for a specific day and time range.
 
-## Screencasts
+## Screenshots
+
+![Search Page Image](app/assets/images/screenshot_for_readme_search.png?raw=true "Search Page")
+![Profile Page Image](app/assets/images/screenshot_for_readme_profile.png?raw=true "Profile Page")
+
+## Screencast
+
+Here is a link to a [video][3] of the app being used.
 
 ## Helpful Links
 [Pivotal Tracker][1]
+
 [Heroku App][2]
 
 
+[3]: https://www.google.com/
 [2]: http://openhouse-1.herokuapp.com/
 [1]: https://www.pivotaltracker.com/n/projects/2117895
