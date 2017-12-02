@@ -115,13 +115,12 @@
   handler.buildMap({ provider: {}, internal: {id: 'map-show'}}, function(){
   
   // Add initial marker to center selected location
-  center = handler.addMarker({
-    lat: curr_loc_lat,
-    lng: curr_loc_lng
-  });
+    center = handler.addMarker({
+      lat: curr_loc_lat,
+      lng: curr_loc_lng
+    });
     handler.bounds.extendWith(center);
     handler.map.centerOn(center);
-    //handler.fitMapToBounds();
     handler.getMap().setZoom(18);
   });
   
