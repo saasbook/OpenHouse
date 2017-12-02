@@ -83,7 +83,7 @@
       - else
         = image_tag "user.png", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
       %h5= @user.first_name
-      %h3#price-tag= '$' + @user.price.to_s + '/hour'
+      %h3#price-tag= '$' + @user.price.to_s + '/day'
       %div#reservation-box  
         %h4 Available
         %div#time-text= +(range_to_ampm(@user.available_time || ''))
