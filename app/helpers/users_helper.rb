@@ -55,12 +55,14 @@ module UsersHelper
         @user.amenity_list.update_attributes(amenity_params)		
         @user.amenity_list.save!		
     end
-    if user_params[:available_time_start].include?("-") or user_params[:available_time_end].include?("-") or user_params[:available_time_start] == nil or user_params[:available_time_end] == nil or user_params[:available_time_start] == "" or user_params[:available_time_end] == "" 
-        flash[:notice] = "The input time was invalid."
-        redirect_to :back
-        return
+    unless user_params[:available_time_start].nil?
+      if user_params[:available_time_start].include?("-") or user_params[:available_time_end].include?("-") or user_params[:available_time_start] == nil or user_params[:available_time_end] == nil or user_params[:available_time_start] == "" or user_params[:available_time_end] == "" 
+          flash[:notice] = "The input time was invalid."
+          redirect_to :back
+          return
+      end
     end
-    # byebug
+    ## byebug
     
     @user.update_attributes(user_params)
     @user.save!
