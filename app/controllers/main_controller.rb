@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-    before_action :current_user
+    # before_action :current_user
     
     def show
         @user = current_user
