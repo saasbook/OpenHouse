@@ -1,66 +1,50 @@
 class MainController < ApplicationController
+    before_action :current_user
+    
     def show
         @user = current_user
     end
     
     def search
-        @query = params[:location][:search]
+        @full_location = params[:location][:search]
         
-        @users = User.where(:searchable => true)
-        
-        # Exact find in users, might want to change to sort
-        # if @address != ""
-        #     @users = @users.where(:home_street_address => @address)
-        # end
-        # if @city != ""
-        #     @users = @users.where(:home_city => @city)
-        # end
-        # if @state != ""
-        #     @users = @users.where(:home_state => @state)
-        # end
-        
-        # Ignore the input, just go to Oakland; for now.
-        @full_location = "Oakland, CA"
-        
-        # @users = @users.sort MAKE SEARCH FUNCTION BASED OFF OF DISTANCE W/GOOGLE MAPS API
-        # Attempt to generate coordinates from the given search location
-        
-        # # COMMENTED OUT FOR NOW ##################
-        # if @full_location == "  "  # 2 spaces intentional, a regex may eventually be preferred
-        #     @full_location = "Oakland, CA"
-        # end
-        # # COMMENTED OUT FOR NOW ##################
+        # Cheesing our way into getting search results since 2017
+        @all_users = User.where(:searchable => true)
         
         result = Geocoder.search(@full_location)[0]
         if result != nil
             @curr_loc_lat = result.geometry['location']['lat']
             @curr_loc_lng = result.geometry['location']['lng']
-        # # COMMENTED OUT FOR NOW ##################
-        # else
-        #     @curr_loc_lat = ""
-        #     @curr_loc_lng = ""
-        # # COMMENTED OUT FOR NOW ##################
+            @success = true
+        else
+            # If an error occurs, set default to Oakland
+            @success = false
+            flash[:notice] = "Your location does not exist, so check out Oakland instead :)"
+            @full_location = "Oakland, CA"
+            @curr_loc_lat = 37.8044 
+            @curr_loc_lng = 122.2711
         end
-
+        
         #Populate array of nearby homes to populate the map
         @nearby_locations = []
-        @nearby_prices = []
-        #User.near(@full_location).each do |location|
-        #    @nearby_locations.push([location.latitude, location.longitude])
-        #end
-        #puts(User.near(@full_location)[0].home_street_address)
-        #puts(@nearby_locations)
-        #print(@nearby_locations.to_json)  
-        #print(@nearby_prices.to_json)
+        @users = []
         
-        #
-        User.near(@full_location).each do |user|
-           #puts(user.price)
-           #puts(user.latitude)
-           url = request.base_url + "/users/" + user.id.to_s
-           @nearby_locations.push([user.latitude, user.longitude, user.price, user.home_street_address, url])
+        @all_users.near(@full_location).each do |user|
+            @users.push(user)
+            url = request.base_url + "/users/" + user.id.to_s
+            @nearby_locations.push([user.latitude, user.longitude, user.price, user.home_street_address, url])
         end
-        print(@nearby_locations.to_json) 
+        
+        if @nearby_locations == []
+            @nearby = "false"
+            flash[:notice] = "No spaces were found nearby. Zoom out with the map to find the closest spaces."
+            @all_users.each do |user|
+                url = request.base_url + "/users/" + user.id.to_s
+                @nearby_locations.push([user.latitude, user.longitude, user.price, user.home_street_address, url])
+            end
+        else
+            @nearby = "true"
+        end
 
         @user = current_user
     end

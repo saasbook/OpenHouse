@@ -1,5 +1,5 @@
 %h3{:class => 'header-search'} Search Results
-
+  
 %div{:id => 'map'}
 
 :coffeescript
@@ -29,55 +29,64 @@
         width: "280px"
 
 :javascript
-  //Defaults to Oakland, CA
-  lat = 37.8044 
-  lng = 122.2711
-  locs_nearby = []
-  
   //Check ruby api and attempt to pull valid coordinates
-  curr_loc_lat = '#{@curr_loc_lat}';
-  curr_loc_lng = '#{@curr_loc_lng}';
-  curr_locs_nearby = JSON.parse('#{@nearby_locations.to_json}'.replace(/&quot;/g,'"'));
-  //window.alert(curr_locs_nearby);
+  lat = '#{@curr_loc_lat}';
+  lng = '#{@curr_loc_lng}';
+  nearby = '#{@nearby}'
+  locs_nearby = JSON.parse('#{@nearby_locations.to_json}'.replace(/&quot;/g,'"'));
   
-  if (curr_loc_lat !== "" && curr_loc_lng !== "") {
-    lat = parseFloat(curr_loc_lat);
-    lng = parseFloat(curr_loc_lng);
-    locs_nearby = curr_locs_nearby;
-  }
+  
+  // I think it works up to now
+  
   
   handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} });
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   
-  // Add initial marker to center selected location
-  //center = handler.addMarker({
-  //  lat: lat,
-  //  lng: lng,
-  //  custom_marker: "",
-  //});
-  
-  nearby_markers = [];
-  for (var i = 0; i < locs_nearby.length; i++) {
-    console.log(locs_nearby[i][4])
-    nearby_markers.push({
-      lat: parseFloat(locs_nearby[i][0]),
-      lng: parseFloat(locs_nearby[i][1]),
-      custom_marker: "$" + locs_nearby[i][2],
-      custom_infowindow: "<a href='" +  locs_nearby[i][4] + "' target='_blank'>"  + locs_nearby[i][3] + "</a>"
+    // Add initial marker to center selected location
+    center = handler.addMarker({
+      lat: lat,
+      lng: lng,
+      custom_marker: "",
     });
-  }
-  if (nearby_markers.length > 0) {
-    markers = handler.addMarkers(nearby_markers);
-    handler.bounds.extendWith(markers);
-    //handler.bounds.extendWith(center);
-    //handler.map.centerOn(center);
-    handler.fitMapToBounds();
-  }
+  
+    nearby_markers = [];
+    for (var i = 0; i < locs_nearby.length; i++) {
+      console.log(locs_nearby[i][4])
+      nearby_markers.push({
+        lat: parseFloat(locs_nearby[i][0]),
+        lng: parseFloat(locs_nearby[i][1]),
+        custom_marker: "$" + locs_nearby[i][2],
+        custom_infowindow: "<a href='" +  locs_nearby[i][4] + "' target='_blank'>"  + locs_nearby[i][3] + "</a>"
+      });
+    }
+    if (nearby_markers.length > 0) {
+      center = handler.addMarker({
+        lat: lat,
+        lng: lng,
+        custom_marker: "",
+      });
+      markers = handler.addMarkers(nearby_markers);
+      if (nearby == "false") {
+        handler.bounds.extendWith(center);
+        handler.map.centerOn(center);
+        handler.getMap().setZoom(9);
+      } else {
+        handler.bounds.extendWith(markers);
+        handler.map.centerOn(center);
+        handler.fitMapToBounds();
+      }
+    }
+    else {
+      handler.bounds.extendWith(center);
+      handler.map.centerOn(center);
+      handler.getMap().setZoom(18);
+    }
   });
 
 <br>
 
 %div#listings-box
+  %p.center= flash[:notice] if flash[:notice]
   - if @users != nil
     - @users.each do |user|
       %a.listing-link{:value => user.home_street_address, :href => user_path(user), :id =>"link_#{user.home_street_address}", :target => "_blank"}
@@ -89,5 +98,5 @@
           %div.listing-details
             %h5.listing-location.listing-details-text= user.home_city.to_s + ", " + user.home_state.to_s
             %h4.listing-address.listing-details-text= user.home_street_address
-            %h4.listing-price.listing-details-text= "$" + user.price.to_s + "/hour"
+            %h4.listing-price.listing-details-text= "$" + user.price.to_s + "/day"
             %h4.listing-details-text= "Available: " + range_to_ampm(user.available_time)
