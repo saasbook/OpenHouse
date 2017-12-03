@@ -70,6 +70,8 @@ To stop the server, go into the screen and kill it
 
 `<Ctrl-c>`
 
+`exit`
+
 ## Helpful Links
 [Pivotal Tracker][1]
 
