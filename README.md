@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/jjeremydiaz/OpenHouse.svg?branch=master)](https://travis-ci.org/jjeremydiaz/OpenHouse)
 
 # OpenHouse
-OpenHouse is a platform for freelancers to connect and share workspaces. Users of the app can rent out their houses by the hour to other users who want places to work and connect with others in the OpenHouse community.
+OpenHouse is a platform for freelancers to connect and share workspaces. Users of the app can rent out their houses by the hour or per day to other users who want places to work and connect with others in the OpenHouse community.
 
 Some of the features the app supports include:
 * Users can create and delete accounts and use them to log in and out.
