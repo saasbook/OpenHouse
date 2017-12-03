@@ -56,18 +56,52 @@ Here is a link to a [video][3] of the app being used.
 
 6. Access the app via your web browser (localhost:3000 or whatever your Cloud9 port and ip are).
 
+### Testing
+
+To run cucumber tests, just use
+
+`cucumber`
+
+To run rspec tests, just use
+
+`rspec`
+
 ### Shutdown
 
 To stop the server, go into the screen and kill it
 
-    `screen -r`
+`screen -r`
 
-    `<Ctrl-c>`
+`<Ctrl-c>`
 
 ## Helpful Links
 [Pivotal Tracker][1]
 
 [Heroku App][2]
+
+## Future Tasks
+
+The app is far from complete. There are a lot of things that could be added that would make it much more useable and finished. Here are our ideas:
+
+* User profile page customization
+    * Users should be able to add more photos of their homes and/or themselves
+    * Users should be able to change the order/layout of their photos
+    * Users should be able to use old photos instead of uploading new ones each time they want to make a change
+* Dynamic calendar selection
+    * Instead of selecting starting and ending times for reservation, users should be able to use a more visual interface to select the time they want
+* Users should be able to post more than one house for rent
+* There could be a "friends" feature
+    * It would be good if users could connect a little more than just reserving places and going to them
+* Add more animation to the site overall
+* Make available times show up properly
+    * There ought to be a Gantt chart showing the times that are already rented
+    * It may be useful to show information about who else is renting at those times
+* Tutorial
+    * There really ought to be a tutorial or some instructions somewhere that tell people how to use the site
+    * There could just be little (i) symbols next to things that tell you little blurbs about things
+* Make the app more mobile-friendly
+* Rating system
+    * People might want to leave ublic feedback about other people's houses
 
 
 [3]: https://www.google.com/
