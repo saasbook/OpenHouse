@@ -30,6 +30,39 @@ The bat ar the top of the page also has some useful buttons that can be used to 
 
 Here is a link to a [video][3] of the app being used.
 
+## Instructions
+
+### Setup
+
+Clone the repo.
+
+`git clone https://github.com/jjeremydiaz/OpenHouse.git`
+
+Run Bundler
+
+`bundle install`
+
+Start the Postgres SQL server
+
+`sudo service postgresql restart`
+
+Set up the database
+
+`rake db:reset`
+
+Run the app
+
+`sudo screen -d -m rails s`
+
+Access the app via your web browser (localhost:3000 or whatever your Cloud9 port and ip are).
+
+### Shutdown
+
+To stop the server, go into the screen and kill it
+
+`screen -r`
+`<Ctrl-c>`
+
 ## Helpful Links
 [Pivotal Tracker][1]
 
