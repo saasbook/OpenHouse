@@ -60,14 +60,14 @@ Here is a link to a [video][3] of the app being used.
 
 7. Set up the database
 
-    `rake db:reset`
+    `rake db:setup`
     
-    A common error during this is an encoding problem with the database. If the following error (or a similar one) appears:
+    The following error is common while setting up the database. It concerns an encoding problem with the database:
     
     `Called from /usr/local/rvm/gems/ruby-2.3.5/gems/activesupport-4.2.9/lib/active_support/dependencies.rb:240:in 'load_dependency'
     PG::InvalidParameterValue: ERROR:  new encoding (UTF-8) is incompatible with the encoding of the template database (SQL_ASCII)`
     
-    If this happens, go to OpenHouse -> config -> database.yml, and change the encoding in line 3 to match your database template.
+    If this error occurs, go to OpenHouse -> config -> database.yml, and change the encoding in line 3 to match your database template.
     In the case of the above example, we would change it from the incompatible UTF-8 to SQL_ASCII.
     
     Replace `encoding: UTF-8` with `encoding: SQL_ASCII`
@@ -91,6 +91,7 @@ could not connect to server: Connection refused
     `sudo service postgresql restart`
 * To reset the database if it is giving you issues, run:
     `rake db:reset`
+  In postgresql, this will drop the previous tables, create the required tables, and run all migrations for you as well. If you run `rails server` or an equivalent command after this one, it should work.
   
     
     
