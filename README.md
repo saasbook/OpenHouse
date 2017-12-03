@@ -88,7 +88,7 @@ The app is far from complete. There are a lot of things that could be added that
 * Make available times show up properly
     * There ought to be a Gantt chart showing the times that are already rented
     * It may be useful to show information about who else is renting at those times
-* Pricing fixes--once the user has chosen to rent the space for a certain amount of hours, then the app will charge them for the day instead of per hour
+* Pricing fixes: once the user has chosen to rent the space for a certain amount of hours, then the app will charge them for the day instead of per hour
 * Integration with a 3rd party application for charging or paying a user for a reservation
     * Once this is completed, implement a method within the app to officially confirm the reservation upon billing authentication
 * Dynamic calendar selection
