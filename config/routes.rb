@@ -75,4 +75,8 @@ Rails.application.routes.draw do
   get '/us', to: 'main#us', as: 'us'
   get '/about', to: 'main#about', as: 'about'
   resources :users, :except => [:edit]
+  resources :conversations do
+    resources :messages
+  end
+  get '/request/:id', to: 'conversations#send_request', as: 'send_request'
 end
