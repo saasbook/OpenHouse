@@ -58,13 +58,9 @@ Here is a link to a [video][3] of the app being used.
 
 ### Testing
 
-To run cucumber tests, just use
+To run cucumber tests, just use `cucumber`
 
-`cucumber`
-
-To run rspec tests, just use
-
-`rspec`
+To run rspec tests, just use `rspec`
 
 ### Shutdown
 
@@ -102,7 +98,6 @@ The app is far from complete. There are a lot of things that could be added that
 * Make the app more mobile-friendly
 * Rating system
     * People might want to leave ublic feedback about other people's houses
-
 
 [3]: https://www.google.com/
 [2]: http://openhouse-1.herokuapp.com/
