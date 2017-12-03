@@ -24,7 +24,7 @@ This is what the app looks like when you press "Search." The results are shown o
 
 ![Search Page Image](app/assets/images/screenshot_for_readme_search.png?raw=true "Search Page")
 
-The bat ar the top of the page also has some useful buttons that can be used to navigate the site.
+The bar at the top of the page also has some useful buttons that can be used to navigate the site.
 
 ## Screencast
 
@@ -81,25 +81,26 @@ To stop the server, go into the screen and kill it
 
 The app is far from complete. There are a lot of things that could be added that would make it much more useable and finished. Here are our ideas:
 
+* Make available times show up properly
+    * There ought to be a Gantt chart showing the times that are already rented
+    * It may be useful to show information about who else is renting at those times
+* Integration with a 3rd party application for charging or paying a user for a reservation, as well as creating a method within the app to officially confirm the reservation upon billing authentication
+* Dynamic calendar selection
+    * Instead of selecting starting and ending times for reservation, users should be able to use a more visual interface to select the time they want
+* Users should be able to post more than one house for rent
 * User profile page customization
     * Users should be able to add more photos of their homes and/or themselves
     * Users should be able to change the order/layout of their photos
     * Users should be able to use old photos instead of uploading new ones each time they want to make a change
-* Dynamic calendar selection
-    * Instead of selecting starting and ending times for reservation, users should be able to use a more visual interface to select the time they want
-* Users should be able to post more than one house for rent
 * There could be a "friends" feature
     * It would be good if users could connect a little more than just reserving places and going to them
 * Add more animation to the site overall
-* Make available times show up properly
-    * There ought to be a Gantt chart showing the times that are already rented
-    * It may be useful to show information about who else is renting at those times
 * Tutorial
     * There really ought to be a tutorial or some instructions somewhere that tell people how to use the site
     * There could just be little (i) symbols next to things that tell you little blurbs about things
 * Make the app more mobile-friendly
 * Rating system
-    * People might want to leave ublic feedback about other people's houses
+    * People might want to leave public feedback about other people's houses
 
 [3]: https://www.google.com/
 [2]: http://openhouse-1.herokuapp.com/
