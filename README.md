@@ -37,6 +37,10 @@ Here is a link to a [video][3] of the app being used.
 1. Clone the repo.
 
     `git clone https://github.com/jjeremydiaz/OpenHouse.git`
+    
+2. Navigate to the OpenHouse folder
+
+    `cd OpenHouse`
 
 2. Run Bundler
 
