@@ -138,7 +138,15 @@ class UsersController < ApplicationController
         @user = current_user
         
         if params[:image_id].present?
-            puts(params[:image_id])
+            preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
+            raise "Invalid upload signature" if !preloaded.valid?
+            
+            @user.cloud_house_image_ids.push(preloaded.identifier)
+            #@user.cloud_profile_picture_id = preloaded.identifier
+            #puts(@user.cloud_profile_picture_id)
+            @user.save!
         end
+        puts(@user.cloud_house_image_ids)
+        redirect_to request.referrer
     end
 end
