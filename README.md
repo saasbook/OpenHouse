@@ -70,7 +70,7 @@ Here is a link to a [video][3] of the app being used.
     If this happens, go to OpenHouse -> config -> database.yml, and change the encoding in line 3 to match your database template.
     In the case of the above example, we would change it from the incompatible UTF-8 to SQL_ASCII.
     
-    replace `encoding: UTF-8` with `encoding: SQL_ASCII`
+    Replace `encoding: UTF-8` with `encoding: SQL_ASCII`
 
 8. Run the app
 
