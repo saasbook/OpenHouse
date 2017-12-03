@@ -34,34 +34,35 @@ Here is a link to a [video][3] of the app being used.
 
 ### Setup
 
-Clone the repo.
+1. Clone the repo.
 
-`git clone https://github.com/jjeremydiaz/OpenHouse.git`
+    `git clone https://github.com/jjeremydiaz/OpenHouse.git`
 
-Run Bundler
+2. Run Bundler
 
-`bundle install`
+    `bundle install`
 
-Start the Postgres SQL server
+3. Start the Postgres SQL server
 
-`sudo service postgresql restart`
+    `sudo service postgresql restart`
 
-Set up the database
+4. Set up the database
 
-`rake db:reset`
+    `rake db:reset`
 
-Run the app
+5. Run the app
 
-`sudo screen -d -m rails s`
+    `sudo screen -d -m rails s`
 
-Access the app via your web browser (localhost:3000 or whatever your Cloud9 port and ip are).
+6. Access the app via your web browser (localhost:3000 or whatever your Cloud9 port and ip are).
 
 ### Shutdown
 
 To stop the server, go into the screen and kill it
 
-`screen -r`
-`<Ctrl-c>`
+    `screen -r`
+
+    `<Ctrl-c>`
 
 ## Helpful Links
 [Pivotal Tracker][1]
