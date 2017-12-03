@@ -16,8 +16,15 @@ Some of the features the app supports include:
 
 ## Screenshots
 
-![Search Page Image](app/assets/images/screenshot_for_readme_search.png?raw=true "Search Page")
+This is what a host's public-facing profile page looks like. They have a name and picture for their house, a name and picture for themselves, and some information about their house. They also have a list of amenities that their house has to offer.
+
 ![Profile Page Image](app/assets/images/screenshot_for_readme_profile.png?raw=true "Profile Page")
+
+This is what the app looks like when you press "Search." The results are shown on the left and their corresponding price tags are displayed on the right-side map.
+
+![Search Page Image](app/assets/images/screenshot_for_readme_search.png?raw=true "Search Page")
+
+The bat ar the top of the page also has some useful buttons that can be used to navigate the site.
 
 ## Screencast
 

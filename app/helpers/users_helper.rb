@@ -58,6 +58,9 @@ module UsersHelper
     unless user_params[:available_time_start].nil?
       if user_params[:available_time_start].include?("-") or user_params[:available_time_end].include?("-") or user_params[:available_time_start] == nil or user_params[:available_time_end] == nil or user_params[:available_time_start] == "" or user_params[:available_time_end] == "" 
           flash[:notice] = "The input time was invalid."
+          params[:user].each do |key, value|
+            flash[key] = value
+          end
           redirect_to :back
           return
       end

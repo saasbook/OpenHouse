@@ -54,29 +54,29 @@
   = form_tag update_user_host_path(@user), :method => :patch do
   
     = label :user, :home_street_address, "Street Address"
-    = text_field :user, :home_street_address
+    = text_field :user, :home_street_address, value: flash[:home_street_address]
     <br>
     = label :user, :home_city, "City"
-    = text_field :user, :home_city
+    = text_field :user, :home_city, value: flash[:home_city]
     <br>
     = label :user, :home_state, "State"
-    = text_field :user, :home_state
+    = text_field :user, :home_state, value: flash[:home_state]
     <br>
     = label :user, :home_zip_code, "Zip"
-    = text_field :user, :home_zip_code
+    = text_field :user, :home_zip_code, value: flash[:home_zip_code]
     <br>
     = label :user, :house_description, "Description"
-    = text_field :user, :house_description
+    = text_field :user, :house_description, value: flash[:house_description]
     <br>
     = label :user, :title, "Title (i.e. \"Cozy flat\")"
-    = text_field :user, :title
+    = text_field :user, :title, value: flash[:title]
     <br>
     = label :user, :capacity, "Capacity"
-    = text_field :user, :capacity
+    = text_field :user, :capacity, value: flash[:capacity]
     people
     <br>
     = label :user, :price, "Price (per day)"
-    = text_field :user, :price
+    = text_field :user, :price, value: flash[:price]
     <br>
     = label :user, :available_time, "Times Available"
     %input{type: "time", name: "user[available_time_start]", value: "00:00"}
