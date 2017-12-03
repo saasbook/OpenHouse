@@ -89,9 +89,8 @@ could not connect to server: Connection refused
     
     When this happens, run the following command to solve this problem:
     `sudo service postgresql restart`
-* To reset the database if it is giving you issues, run:
-    `rake db:reset`
-  In postgresql, this will drop the previous tables, create the required tables, and run all migrations for you as well. If you run `rails server` or an equivalent command after this one, it should work.
+* To reset the database if it is giving you issues, run
+    `rake db:reset`. In postgresql, this will drop the previous tables, create the required tables, and run all migrations for you as well. If you run `rails server` or an equivalent command right resetting the database, it should work.
   
     
     
