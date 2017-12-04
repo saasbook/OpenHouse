@@ -118,7 +118,8 @@ class UsersController < ApplicationController
     end
     
     def update_house_picture
-         @user = current_user
+        render :nothing => true
+        @user = current_user
         
         if params[:image_id].present?
             preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
@@ -131,10 +132,13 @@ class UsersController < ApplicationController
             @user.cloud_house_picture_id = preloaded.identifier
             @user.save!
         end
-        redirect_to request.referrer
+        if request.referrer != nil
+            redirect_to request.referrer
+        end
     end
     
     def update_multiple_pictures
+        render :nothing => true
         @user = current_user
         
         if params[:image_id].present?
@@ -144,6 +148,8 @@ class UsersController < ApplicationController
             @user.cloud_house_image_ids.push(preloaded.identifier)
             @user.save!
         end
-        redirect_to request.referrer
+        if request.referrer != nil
+            redirect_to request.referrer
+        end
     end
 end
