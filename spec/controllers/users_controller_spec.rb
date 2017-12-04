@@ -164,10 +164,6 @@ describe UsersController do
 			expect(assigns(:preloaded))
 			@user.stub(:save!).and_return(true)
 			expect { raise "Invalid upload signature" }.to raise_error
-			
-			if request.referrer != nil
-				@user.should redirect_to(request.referrer)
-			end
 		end
 		it 'Updates House Pic' do
 			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
@@ -178,10 +174,6 @@ describe UsersController do
 			expect(assigns(:preloaded))
 			@user.stub(:save!).and_return(true)
 			expect { raise "Invalid upload signature" }.to raise_error
-			
-			if request.referrer != nil
-				@user.should redirect_to(request.referrer)
-			end
 		end
 		it 'Updates Multiple Pics' do
 			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
@@ -192,10 +184,6 @@ describe UsersController do
 			expect(assigns(:preloaded))
 			@user.stub(:save!).and_return(true)
 			expect { raise "Invalid upload signature" }.to raise_error
-			
-			if request.referrer != nil
-				@user.should redirect_to(request.referrer)
-			end
 		end
 	end
 	describe 'Edit user' do
