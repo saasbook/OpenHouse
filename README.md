@@ -28,7 +28,7 @@ The bar at the top of the page also has some useful buttons that can be used to 
 
 ## Screencast
 
-Here is a link to a [video][3] of the app being used.
+Here is a link to a [video][3] highlighting the most important features of the app,
 
 ## Instructions
 
@@ -144,6 +144,6 @@ The app is far from complete. There are a lot of things that could be added that
 * Rating system
     * People might want to leave public feedback about other people's houses
 
-[3]: https://www.google.com/
+[3]: https://youtu.be/rdJszVXbcdU
 [2]: http://openhouse-1.herokuapp.com/
 [1]: https://www.pivotaltracker.com/n/projects/2117895
