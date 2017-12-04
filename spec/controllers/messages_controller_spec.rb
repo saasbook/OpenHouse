@@ -30,7 +30,7 @@ describe MessagesController do
   describe 'making new messages' do
     it 'creates new messages' do
       controller.params[:message] = 'pizza and some pasta'
-      #post :create, conversation_id: 1, message: {body: 'pizza, pasta, put it in a box'}
+      post :create, conversation_id: 1, message: {body: 'pizza, pasta, put it in a box', user_id: 1}
       post :create, conversation_id: 1, message: {body: ''}
     end
   end
