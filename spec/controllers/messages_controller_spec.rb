@@ -24,6 +24,7 @@ describe MessagesController do
     end
     it 'does the :m thing I guess??' do
       get :index, conversation_id: 1, m: true
+      expect(assigns(:over_ten)).to equal(false)
     end
   end
   describe 'making new messages' do

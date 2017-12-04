@@ -25,7 +25,6 @@ class MessagesController < ApplicationController
 
   def create
     # Ignores blank messages when creating a message
-    byebug
     if message_params[:body] == ""
       redirect_to conversation_messages_path(@conversation)
     end
