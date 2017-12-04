@@ -58,8 +58,6 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        puts(@user.email)
-        puts(@user.house_picture)
         update_user_fields and redirect_to user_path(@user)
     end
     

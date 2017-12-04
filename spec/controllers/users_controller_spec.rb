@@ -194,6 +194,15 @@ describe UsersController do
 			expect(assigns(:user)).to eq(@user)
 			expect(assigns(:current_user)).to eq(@current_user)
 		end
+		it 'sets default map to Oakland user' do
+			@user =	User.create(email: "buzz@toin.com",
+            					password: "spacerangertotherescue")
+        	@current_user = @user
+    		session[:user_id] = @user.id
+			get :show, :id => @user.id
+			expect(assigns(:full_location)).to eq("Oakland, CA")
+			expect(assigns(:success)).to eq(false)
+		end
 	end
 	describe 'Remove user' do
 		it 'sets the user' do
