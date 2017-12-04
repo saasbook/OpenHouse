@@ -11,8 +11,7 @@ class ConversationsController < ApplicationController
     
     def create
         if Conversation.between(params[:sender_id],params[:recipient_id]).present?
-            @conversation = Conversation.between(params[:sender_id],
-            params[:recipient_id]).first
+            @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
         else
             @conversation = Conversation.create!(conversation_params)
         end
@@ -20,23 +19,19 @@ class ConversationsController < ApplicationController
     end
     
     def send_request
-        
-        id = params[:id]
-        
-        
-        if Conversation.between(@user.id, id).present?
-            @conversation = Conversation.between(@user.id, id).first
+        @id = params[:id]
+        if Conversation.between(@user.id, @id).present?
+            @conversation = Conversation.between(@user.id, @id).first
         else
-            @conversation = Conversation.create!({sender_id: @user.id, recipient_id: id})
+            @conversation = Conversation.create!({sender_id: @user.id, recipient_id: @id})
         end
         
         # Send a message
-        message_params = {body: "I would like to reserve your place.", user_id: @user.id}
-        @message = @conversation.messages.new(message_params)
-        if @message.save
-            flash[:notice] = "Your request has been sent."
-            redirect_to :back
-        end
+        @message_params = {body: "I would like to reserve your place.", user_id: @user.id}
+        @message = @conversation.messages.new(@message_params)
+        @message.save!
+        flash[:notice] = "Your request has been sent."
+        redirect_to :back
     end
     
 private

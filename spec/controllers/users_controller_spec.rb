@@ -10,6 +10,7 @@ describe UsersController do
             first_name: "Vodka",
             last_name: "Drunkenski",
             personal_description: "Champion of the USSR. Soviet/Russian. Loves soda pops.",
+            image_id: "v1510433109/sample.jpg"
 		}
 		@bill_params = {
 		    billing_first_name: "Vodka",
@@ -151,6 +152,31 @@ describe UsersController do
 			put :update, :id => @user.id , :user => @host_params
 			@updated_user = User.find_by(:email => "sodapop@pepsi.com")
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
+		end
+	end
+	describe 'Upload cloud images' do
+		it 'Updates Profile Pic' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			post :update_profile_picture, :id => @user.id, :user => @parameters
+			expect(assigns(:user)).to eq(@user)
+			
+			expect(assigns(:preloaded))
+			expect { raise "Invalid upload signature" }.to raise_error
+			#preloaded = Cloudinary::PreloadedFile.new(@parameters[:image_id]) 
+			expect(response.status).to eq(200)
+		end
+		it 'Updates House Pic' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			post :update_house_picture, :id => @user.id, :user => @parameters
+			expect(assigns(:user)).to eq(@user)
+		end
+		it 'Updates Multiple Pics' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			post :update_multiple_pictures, :id => @user.id, :user => @parameters
+			expect(assigns(:user)).to eq(@user)
 		end
 	end
 	describe 'Edit user' do

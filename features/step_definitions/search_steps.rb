@@ -3,7 +3,7 @@ And /I click the first "(.*)"/ do |l|
 end
 
 Then /I click a post with id "(.*)"/ do |id|
-    find("a", id: id).click
+    first("a", id: id).click
 end
 
 Then /^I should see a map/ do
