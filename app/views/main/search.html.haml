@@ -83,7 +83,7 @@
 <br>
 
 %div#listings-box
-  %p.center= flash[:notice] if flash[:notice]
+  %p.center= flash[:alert] if flash[:alert]
   - if @users != nil
     - @users.each do |user|
       %a.listing-link{:value => user.home_street_address, :href => user_path(user), :id =>"link_#{user.home_street_address}", :target => "_blank"}
