@@ -97,12 +97,11 @@ class UsersController < ApplicationController
     end
     
     def update_profile_picture
+        render :nothing => true
+        
         @user = current_user
         
-        puts("I like hedgehogs")
-        
         if params[:image_id].present?
-            puts("pie")
             preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
             raise "Invalid upload signature" if !preloaded.valid?
             
@@ -111,14 +110,16 @@ class UsersController < ApplicationController
                 Cloudinary::Uploader.destroy(@user.cloud_profile_picture_id)
             end
             @user.cloud_profile_picture_id = preloaded.identifier
-            puts(@user.cloud_profile_picture_id)
             @user.save!
         end
-        redirect_to request.referrer
+        if request.referrer != nil
+            redirect_to request.referrer
+        end
     end
     
     def update_house_picture
-         @user = current_user
+        render :nothing => true
+        @user = current_user
         
         if params[:image_id].present?
             preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
@@ -129,13 +130,15 @@ class UsersController < ApplicationController
                 Cloudinary::Uploader.destroy(@user.cloud_house_picture_id)
             end
             @user.cloud_house_picture_id = preloaded.identifier
-            puts(@user.cloud_house_picture_id)
             @user.save!
         end
-        redirect_to request.referrer
+        if request.referrer != nil
+            redirect_to request.referrer
+        end
     end
     
     def update_multiple_pictures
+        render :nothing => true
         @user = current_user
         
         if params[:image_id].present?
@@ -143,11 +146,10 @@ class UsersController < ApplicationController
             raise "Invalid upload signature" if !preloaded.valid?
             
             @user.cloud_house_image_ids.push(preloaded.identifier)
-            #@user.cloud_profile_picture_id = preloaded.identifier
-            #puts(@user.cloud_profile_picture_id)
             @user.save!
         end
-        puts(@user.cloud_house_image_ids)
-        redirect_to request.referrer
+        if request.referrer != nil
+            redirect_to request.referrer
+        end
     end
 end
