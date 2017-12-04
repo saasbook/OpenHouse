@@ -34,6 +34,7 @@ class MainController < ApplicationController
             url = request.base_url + "/users/" + user.id.to_s
             @nearby_locations.push([user.latitude, user.longitude, user.price, user.home_street_address, url])
         end
+        byebug
         
         if @nearby_locations == []
             @nearby = "false"
