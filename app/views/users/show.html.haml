@@ -73,34 +73,44 @@
                   Computer Desk
                 - elsif amenity[0] == 'kitchen_access'
                   Kitchen Access
+                - elsif amenity[0] == 'art_space'
+                  Art Space
+                - elsif amenity[0] == 'outdoor_space'
+                  Outdoor Space
+                - elsif amenity[0] == 'tv_screen'
+                  TV Screen
                 - else
                   = amenity[0].capitalize
 
-  - if @user != @current_user
-    %div#user-page-right-box
-      - if @user.profile_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.profile_picture)
-        = image_tag "user_images/#{@user.email}/#{@user.profile_picture}", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
-      - else
-        = image_tag "user.png", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
-      %h5= @user.first_name
-      %h3#price-tag= '$' + @user.price.to_s + '/day'
-      %div#reservation-box  
-        %h4 Available
-        %div#time-text= +(range_to_ampm(@user.available_time || ''))
-        %h4 Reserve
-        %input#available-time-box{type: "time", name: "user[available_time_start]", value: @user.available_time_start}
-        to
-        %input#available-time-box{type: "time", name: "user[available_time_end]", value: @user.available_time_end}
-        - if @user.capacity != nil
-          %h4 Guests
-          %select#guest-select
-            - i = 1
-            - while i <= @user.capacity
-              %option{:value => i} #{i}
-              - i += 1
+
+  %div#user-page-right-box
+    - if @user.profile_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.profile_picture)
+      = image_tag "user_images/#{@user.email}/#{@user.profile_picture}", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
+    - else
+      = image_tag "user.png", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
+    %h5= @user.first_name
+    %h3#price-tag= '$' + @user.price.to_s + '/day'
+    %div#reservation-box  
+      %h4 Available
+      %div#time-text= +(range_to_ampm(@user.available_time || ''))
+      %h4 Reserve
+      %input#available-time-box{type: "time", name: "user[available_time_start]", value: @user.available_time_start}
+      to
+      %input#available-time-box{type: "time", name: "user[available_time_end]", value: @user.available_time_end}
+      - if @user.capacity != nil
+        %h4 Guests
+        %select#guest-select
+          - i = 1
+          - while i <= @user.capacity
+            %option{:value => i} #{i}
+            - i += 1
+      - if @user != @current_user
         %div
           %a{href: send_request_path(@user)}
-            %input.btn.btn-warning#reserve-button{:value => 'Reserve', :onclick => "alert('Your request has been sent.')"}
+            %button.btn.btn-warning#reserve-button{:value => 'Reserve', :onclick => "alert('Your request has been sent.')"}Reserve
+      - else
+        %div
+          %button.btn.btn-warning#reserve-button{:value => 'Reserve'}Reserve
 
 -if @success == false
   %div.center

@@ -22,7 +22,7 @@
           <li><%= link_to "About", about_path, :class => "topbar-link", :id => "topbar-login-link"%></li>
           <li><%= link_to "Us", us_path, :class => "topbar-link", :id => "topbar-login-link"%></li>
           <% if @user.first_name != ""%>
-            <li><%= link_to "Hello " + @user.first_name  + "!", user_path(@user), :class => "topbar-link", :id => "topbar-login-link"%></li>
+            <li><%= link_to "Hello " + @current_user.first_name  + "!", user_path(@current_user), :class => "topbar-link", :id => "topbar-login-link"%></li>
           <% else %>
             <li><%= link_to "Hello User!", user_path(@user), :class => "topbar-link", :id => "topbar-login-link"%></li>
           <% end %>
