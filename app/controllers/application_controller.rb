@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include UsersHelper
   include TimeHelper
-
+  include SearchHelper
   helper_method :google_map_static_helper
 
   # MAP HAS NOT YET BEEN FULLY IMPLEMENTED, SO THIS HAS BEEN COMMENTED OUT.
