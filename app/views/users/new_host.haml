@@ -1,3 +1,25 @@
+= cloudinary_js_config 
+:javascript
+  $(function() {
+    if($.fn.cloudinary_fileupload !== undefined) {
+      $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+    }
+  });
+:javascript
+  $(document).ready(function() {
+    $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {  
+      $('.preview').html(
+        $.cloudinary.image(data.result.public_id, 
+          { format: data.result.format, version: data.result.version, 
+            crop: 'fill', width: 200, height: 150 })
+      );    
+      $('.image_public_id').val(data.result.public_id);    
+      return true;
+    });
+    
+    $('.cloudinary-fileupload').fileupload('option', 'replaceFileInput', false);
+  })
+
 %div.hosting-box
   %p.center= flash[:notice] if flash[:notice]
   %h2.center Hosting Information
@@ -9,46 +31,42 @@
   
   <br>
   %h5 Please upload a profile picture:
-  = form_for @user do |f|
-    = f.file_field :profile_picture
-    <br>
+  = form_tag update_profile_picture_users_path(@user), method: :update_profile_picture do
+    = cl_image_upload_tag :image_id
     = submit_tag 'Upload'
 
-
   <br>
-  - if @user.profile_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.profile_picture)
-    = image_tag "user_images/#{@user.email}/#{@user.profile_picture}", height: '150', weight: '20',hspace: '150', vspace: '10', id: :profile_picture
-  - else
+  -if @user.cloud_profile_picture_id
+    = cl_image_tag @user.cloud_profile_picture_id, :height => 150, :width => 125, :weight => 20, :hspace => 150, :vspace => 10, :id => :profile_picture
+  -else
     = image_tag "user.png", height: '150', weight: '20',hspace: '400', vspace: '10', id: :profile_picture
 
 
   <br>
   %h5 Please upload a picture of residence:
-  = form_for @user do |f|
-    = f.file_field :house_picture
-    <br>
+  = form_tag update_house_picture_users_path(@user), method: :update_house_picture do
+    = cl_image_upload_tag :image_id
     = submit_tag 'Upload'
 
 
   <br>
-  - if @user.house_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.house_picture)
-    = image_tag "user_images/#{@user.email}/#{@user.house_picture}", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
+  - if @user.cloud_house_picture_id
+    = cl_image_tag @user.cloud_house_picture_id, :height => 150, :width => 125, :weight => 20, :hspace => 150, :vspace => 10, :id => :house_picture
   - else
     = image_tag "house.jpg", height: '150', weight: '20',hspace: '400', vspace: '10', id: :house_picture
   
   <br>
 
   %h5 Upload more pictures of your residence!
-  = form_tag user_path(@user), method: :put, multipart: true do
-    = file_field :user, 'more_picture', accept: 'image/*'
-    <br>
-    = submit_tag 'Upload', id: :upload_house_picture
+  = form_tag update_multiple_pictures_users_path(@user), method: :update_multiple_pictures do
+    = cl_image_upload_tag :image_id
+    = submit_tag 'Upload'
 
 
   <br>
-  - if @user.house_images
-    - @user.house_images.each do |image|
-      = image_tag "user_images/#{@user.email}/#{image}", height: '150', weight: '20',hspace: '150', vspace: '10'
+  -if @user.cloud_house_image_ids
+    - @user.cloud_house_image_ids.each do |image|
+      = cl_image_tag image, :height => 150, :width => 125, :weight => 20, :hspace => 150, :vspace => 10
   <br>
 
   = form_tag update_user_host_path(@user), :method => :patch do
