@@ -28,9 +28,11 @@ describe MessagesController do
   end
   describe 'making new messages' do
     it 'creates new messages' do
-      controller.params[:message] = 'pizza and some pasta'
+      conversation = Conversation.find_by(id: 1)
       post :create, conversation_id: 1, message: {body: 'pizza, pasta, put it in a box', user_id: 1}
+      expect(response).to redirect_to(conversation_messages_path(conversation))
       post :create, conversation_id: 1, message: {body: ''}
+      expect(response).to redirect_to(conversation_messages_path(conversation))
     end
   end
 end
