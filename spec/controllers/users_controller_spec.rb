@@ -237,6 +237,15 @@ describe UsersController do
 			patch :update, :id => @user.id , :user => @parameters
 			expect(flash[:notice]).to eq("Your account has been updated.")
 		end
+		it 'yells at you for invalid times' do
+		  post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+      @parameters[:available_time_start] = "12:00"
+      @parameters[:available_time_end] = "--:--"
+      @request.env['HTTP_REFERER'] = root_path
+			patch :update, :id => @user.id , :user => @parameters
+			expect(flash[:notice]).to eq('The input time was invalid.')
+		end
 	end
 end
 
