@@ -11,9 +11,17 @@ describe MessagesController do
   describe 'show messages' do
     it 'shows the messages when you click on a conversation' do
       log_in(@user)
-      session[:user_id] = 1;
       get :index, {conversation_id: 1}
       expect(response).to render_template(:index)
+    end
+    it 'shows only 10 messages when there are more' do
+      conversation = Conversation.find_by(id: 1)
+      for i in 0..11 do
+        Message.create!(body: 'quiero un globo', conversation_id: conversation.id, user_id: 1)
+      end
+      log_in(@user)
+      get :index, conversation_id: 1
+      expect(assigns(:over_ten)).to equal(true)
     end
   end
 end

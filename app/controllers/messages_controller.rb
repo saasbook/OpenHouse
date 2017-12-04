@@ -23,10 +23,6 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new
   end
 
-  def new
-    @message = @conversation.messages.new
-  end
-
   def create
     # Ignores blank messages when creating a message
     if message_params[:body] == ""
