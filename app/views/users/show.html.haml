@@ -1,29 +1,29 @@
 %div.show-box
-  - if @user.house_images != []
+  - if @user.cloud_house_image_ids != []
     #myCarousel.carousel.slide{"data-ride" => "carousel"}
       %ol.carousel-indicators
         %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
         - @index = 0
-        - @user.house_images.each do |image|
+        - @user.cloud_house_image_ids.each do |image|
           %li{"data-slide-to" => "@index.to_s", "data-target" => "#myCarousel"}
           - @index += 1
       .carousel-inner
         - @index = 0
-        - if @user.house_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.house_picture)
+        - if @user.cloud_house_picture_id
           .item.active
-            = image_tag "user_images/#{@user.email}/#{@user.house_picture}", size: "200x600", hspace: '50', vspace: '50'
+            = cl_image_tag @user.cloud_house_picture_id, :width => 200, :height => 600
           - active = true
           - @index += 1
         - else
           - active = false
-        - @user.house_images.each do |image|
+        - @user.cloud_house_image_ids.each do |image|
           - if active == false
             .item.active
-              = image_tag "user_images/#{@user.email}/#{image}", size: "200x600", hspace: '50', vspace: '50', id: "more_image_#{@index}"
+              = cl_image_tag image, :width => 300, :height => 200, :id => "more_image_#{@index}"
             - active = true
           - else 
             .item
-              = image_tag "user_images/#{@user.email}/#{image}", size: "200x600", hspace: '50', vspace: '50', id: "more_image_#{@index}"
+              = cl_image_tag image, :width => 300, :height => 200, :id => "more_image_#{@index}"
           - @index += 1
           
       %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
@@ -35,8 +35,8 @@
   
   %br
   %p.center= flash[:notice] if flash[:notice]
-  - if @user.house_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.house_picture)
-    = image_tag "user_images/#{@user.email}/#{@user.house_picture}", height: '550', hspace: '150', vspace: '10', id: :house_picture
+  - if @user.cloud_house_picture_id
+    = cl_image_tag @user.cloud_house_picture_id, :width => 300, :height => 550
   - else
     = image_tag "house.jpg", height: '550', weight: '20', hspace: '150', vspace: '10', id: :house_picture
   %br
