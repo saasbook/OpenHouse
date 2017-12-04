@@ -162,8 +162,8 @@ describe UsersController do
 			expect(assigns(:user)).to eq(@user)
 			
 			expect(assigns(:preloaded))
+			@user.stub(:save!).and_return(true)
 			expect { raise "Invalid upload signature" }.to raise_error
-			#preloaded = Cloudinary::PreloadedFile.new(@parameters[:image_id]) 
 			expect(response.status).to eq(200)
 		end
 		it 'Updates House Pic' do
@@ -171,12 +171,22 @@ describe UsersController do
 			session[:user_id] = @user.id
 			post :update_house_picture, :id => @user.id, :user => @parameters
 			expect(assigns(:user)).to eq(@user)
+			
+			expect(assigns(:preloaded))
+			@user.stub(:save!).and_return(true)
+			expect { raise "Invalid upload signature" }.to raise_error
+			expect(response.status).to eq(200)
 		end
 		it 'Updates Multiple Pics' do
 			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
 			session[:user_id] = @user.id
 			post :update_multiple_pictures, :id => @user.id, :user => @parameters
 			expect(assigns(:user)).to eq(@user)
+			
+			expect(assigns(:preloaded))
+			@user.stub(:save!).and_return(true)
+			expect { raise "Invalid upload signature" }.to raise_error
+			expect(response.status).to eq(200)
 		end
 	end
 	describe 'Edit user' do
