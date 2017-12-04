@@ -60,11 +60,6 @@
       });
     }
     if (nearby_markers.length > 0) {
-      center = handler.addMarker({
-        lat: lat,
-        lng: lng,
-        custom_marker: "",
-      });
       markers = handler.addMarkers(nearby_markers);
       if (nearby == "false") {
         handler.bounds.extendWith(center);
@@ -77,6 +72,11 @@
       }
     }
     else {
+      center = handler.addMarker({
+        lat: lat,
+        lng: lng,
+        custom_marker: "",
+      });
       handler.bounds.extendWith(center);
       handler.map.centerOn(center);
       handler.getMap().setZoom(18);
