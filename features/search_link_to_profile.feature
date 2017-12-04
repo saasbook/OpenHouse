@@ -12,16 +12,17 @@ Background: user accounts are in the database
     | shyguy@minion.koopa.com | veryshyguy | Bowser's Castle     | Dark Land     | MK          | 67676         | Non-existent        | Shy        | Guy       | 0020030040050060   | 29-Feb-2020     | 676 |            |       |
     | MISSINGNO@blorp.com     | ihavenot   |                     | Pokemon Tower |             |               |                     |            |           |                    |                 |     | true       |       | 
 
-Scenario: user can search all profiles by not inputting anything
-  Given I am on the home page
-  When I press "Search"
-  Then I should see "101 Agrabah Dessert"
-  Then I should see "1234 Robots Factory"
-  Then I should see "Pokemon Tower"
-  Then I should not see "Bowser's Castle"
+# Scenario: user can search all profiles by not inputting anything  <----- Test no longer applicable
+#   Given I am on the home page
+#   When I press "Search"
+#   Then I should see "101 Agrabah Dessert"
+#   Then I should see "1234 Robots Factory"
+#   Then I should see "Pokemon Tower"
+#   Then I should not see "Bowser's Castle"
   
-Scenario: user can view other user's profile using "See More"
+Scenario: user can view other user's profile
   Given I am on the home page
+  And I fill in "search-bar" with "Agrabah"
   When I press "Search"
   And I click a post with id "link_101 Agrabah Dessert"
   Then I should see "Hosting Information"
