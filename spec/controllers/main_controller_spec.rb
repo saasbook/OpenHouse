@@ -87,5 +87,10 @@ describe MainController do
             expect(assigns(:user)).to eq(@user)
         end
     end
-        
+    describe 'about page' do
+      it 'shows the about page' do
+        get :about
+        expect(response).to render_template(:about)
+      end
+    end
 end

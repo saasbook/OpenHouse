@@ -1,5 +1,6 @@
 FactoryGirl.define do
     factory :user do
+        id 1
         email "aladdin@agrabah.com"
         password "12341001"
         billing_street_address "Agrabah Dessert"

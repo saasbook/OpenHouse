@@ -160,3 +160,6 @@ User.all.each do |user|
   path = Rails.root.join('app', 'assets', 'images', 'user_images', user.email)
   Dir.mkdir path unless File.exist? path
 end
+
+conversation = Conversation.create!(sender_id: 1, recipient_id: 2)
+Message.create!(body: 'hello. This is a message.', conversation_id: conversation.id, user_id: 1)
