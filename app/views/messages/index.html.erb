@@ -2,36 +2,43 @@
 <br>
 <br>
 <br>
+<style>
+p {
+  margin: 25px;
+  font-size: 18px;
+
+}
+</style>
 <% if @over_ten %>
    <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
-<div class="ui segment">
+<p class="ui segment">
   <% @messages.each do |message| %>
     <% if message.body %>
       <% user = User.find(message.user_id) %>
-      <div class="item">
-        <div class="content">
-          <div class="header"><strong><%= user.first_name %></strong> <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
+      <p class="item">
+        <p class="content">
+          <p class="header"><strong><%= user.first_name %></strong> <%= message.message_time %></div>
+          <p class="list">
+            <p class="item">
               <i class="right triangle icon"></i>
               <%= message.body %>
-            </div>
-          </div>
-        </div>
-      </div>
+            </p>
+          </p>
+        </p>
+      </p>
     <% end %>
   <% end %>
-</div>
+</p>
 
 <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-  <div class="field">
+  <p class="field">
     <%= f.text_area :body, class: "form-control" %>
-  </div>
+  </p>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
+  <p>
     <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
-  </div>
+  </p>
 
 <% end %>
