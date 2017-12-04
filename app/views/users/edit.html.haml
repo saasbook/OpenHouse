@@ -51,9 +51,6 @@
 
       <br>
       %h5 Upload more pictures of your residence!
-      -#= form_tag user_path(@user), method: :put, multipart: true do
-      -#  = file_field :user, 'more_picture', accept: 'image/*'
-      -#  = submit_tag 'Upload', id: :upload_more_picture
       = form_tag update_multiple_pictures_users_path(@user), method: :update_multiple_pictures do
         = cl_image_upload_tag :image_id
         = submit_tag 'Upload'

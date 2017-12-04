@@ -101,7 +101,10 @@ class UsersController < ApplicationController
     def update_profile_picture
         @user = current_user
         
+        puts("I like hedgehogs")
+        
         if params[:image_id].present?
+            puts("pie")
             preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
             raise "Invalid upload signature" if !preloaded.valid?
             
