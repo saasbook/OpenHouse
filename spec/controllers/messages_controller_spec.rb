@@ -23,8 +23,7 @@ describe MessagesController do
       expect(assigns(:over_ten)).to equal(true)
     end
     it 'does the :m thing I guess??' do
-      controller.params[:m] = true
-      get :index, conversation_id: 1
+      get :index, conversation_id: 1, m: true
     end
   end
   describe 'making new messages' do
