@@ -79,4 +79,18 @@ Rails.application.routes.draw do
     resources :messages
   end
   get '/request/:id', to: 'conversations#send_request', as: 'send_request'
+
+  #patch '/users/:id', to: 'users#update_house_picture', as: 'update_house_picture'
+  #patch '/users/:id', to: 'users#update_house_picture', as: 'update_house_picture'
+  
+  resources :users, :except => [:edit]
+  
+  # Used to differentiate between updating house and profile pictures
+  resources :users do
+    collection do
+      post '/update_house_picture/:id', to: 'users#update_house_picture', as: 'update_house_picture'
+      post '/update_profile_picture/:id', to: 'users#update_profile_picture', as: 'update_profile_picture'
+      post '/update_multiple_pictures/:id', to: 'users#update_multiple_pictures', as: 'update_multiple_pictures'
+    end
+  end
 end
