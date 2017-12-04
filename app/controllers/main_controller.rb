@@ -19,7 +19,7 @@ class MainController < ApplicationController
         else
             # If an error occurs, set default to Oakland
             @success = false
-            flash[:notice] = "Your location does not exist, so check out Oakland instead :)"
+            flash[:alert] = "Your location does not exist, so check out Oakland instead :)"
             @full_location = "Oakland, CA"
             @curr_loc_lat = 37.8044 
             @curr_loc_lng = 122.2711
@@ -37,7 +37,7 @@ class MainController < ApplicationController
         
         if @nearby_locations == []
             @nearby = "false"
-            flash[:notice] = "No spaces were found nearby. Zoom out with the map to find the closest spaces. If you want to learn more about those spaces, perform a new search on that city."
+            flash[:alert] = "No spaces were found nearby. Zoom out with the map to find the closest spaces. If you want to learn more about those spaces, perform a new search on that city."
             @all_users.each do |user|
                 url = request.base_url + "/users/" + user.id.to_s
                 @nearby_locations.push([user.latitude, user.longitude, user.price, user.home_street_address, url])
