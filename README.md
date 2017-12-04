@@ -28,7 +28,7 @@ The bar at the top of the page also has some useful buttons that can be used to 
 
 ## Screencast
 
-Here is a link to a [video][3] highlighting the most important features of the app,
+Here is a link to a [video][3] highlighting the most important features of the app.
 
 ## Instructions
 
