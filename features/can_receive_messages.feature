@@ -1,10 +1,10 @@
-# Pivotal Tracker ID: 151974221
-# Pivotal Tracker ID: 151974213
+# Pivotal Tracker ID: 151974086
+# Pivotal Tracker ID: 151973994
 
 Feature: Users can send each other messages
   As a User
   So that I can communicate with other users
-  I want to be able to send them messages
+  I want to be able to receive messages.
 
 Background: user accounts are in the database
   Given the following accounts exist:
@@ -14,21 +14,22 @@ Background: user accounts are in the database
 
   And I log in with email "terminator@future.com" and password "password"
   And I am on the home page
-
-Scenario: User can send each other messages through the Reserve button
-  Given I fill in "search-bar" with "Oakland"
   And I press "Search"
   And I click a post with id "link_3845 Market Street"
   And I should see "3845 Market Street"
   And I follow "Reserve"
-  And I follow "View Requests"
-  Then I should see "Mailbox"
+  And I follow "Log Out"
+  And I log in with email "aladdin@agrabah.com" and password "12341001"
 
-Scenario: User can make request via the chat
-  Given I fill in "search-bar" with "Oakland"
-  And I press "Search"
-  And I click a post with id "link_3845 Market Street"
-  And I follow "Reserve"
-  And I follow "View Requests"
-  When I follow "Ali"
+Scenario: User can see a request via the chat
+  Given I follow "View Requests"
+  And I follow "Terminator"
   Then I should see "I would like to reserve your place."
+
+Scenario: User can see a request via the chat
+  Given I follow "View Requests"
+  And I follow "Terminator"
+  When I fill in "message_body" with "Too bad."
+  And I press "Add Reply"
+  Then I should see "Too bad."
+
