@@ -16,6 +16,6 @@ Scenario: User can reserve other user's space
   Given I fill in "search-bar" with "Oakland"
   And I press "Search"
   When I click a post with id "link_3845 Market Street"
-  And I should be on the user profile page for "aladdin@agrabah.com"
+  Then I should see "3845 Market Street"
   And I press "Reserve"
   Then I should see a reserve message
