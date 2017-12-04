@@ -164,6 +164,7 @@ describe UsersController do
 			expect(assigns(:preloaded))
 			expect { raise "Invalid upload signature" }.to raise_error
 			#preloaded = Cloudinary::PreloadedFile.new(@parameters[:image_id]) 
+			expect(response.status).to eq(200)
 		end
 		it 'Updates House Pic' do
 			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
