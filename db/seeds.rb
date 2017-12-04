@@ -38,7 +38,9 @@ Dont hesitate to contact me should you need any further details!",
              profile_picture: 'andrew-robles-300868.jpg',
              house_picture: 'jay-wennington-393218.jpg',
              capacity: '3',
-             title: 'Cozy flat, downtown Oakland')
+             title: 'Cozy flat, downtown Oakland',
+             cloud_profile_picture_id: 'v1512374837/andrew-robles-300868_tn1uo5.jpg',
+             cloud_house_picture_id: 'v1512374840/jay-wennington-393218_kcvvpk.jpg')
 
 User.create!(email: 'angello.lopez138917@gmail.com',
              password: 'openhouse',
@@ -67,7 +69,9 @@ User.create!(email: 'angello.lopez138917@gmail.com',
              profile_picture: 'angello-lopez-138917.jpg',
              house_picture: 'sophia-baboolal-86214.jpg',
              capacity: '5',
-             title: 'Incredible living room with projector')
+             title: 'Incredible living room with projector',
+             cloud_profile_picture_id: 'v1512374833/angello-lopez-138917_oocgtu.jpg',
+             cloud_house_picture_id: 'v1512374827/sophia-baboolal-86214_yemad1.jpg')
 
 User.create!(email: 'aravind.kumar298640@gmail.com',
              password: 'openhouse',
@@ -96,7 +100,9 @@ User.create!(email: 'aravind.kumar298640@gmail.com',
              profile_picture: 'aravind-kumar-298640.jpg',
              house_picture: 'tatiana-lapina-7683.jpg',
              capacity: '8',
-             title: 'Huge space with parking in Oakland')
+             title: 'Huge space with parking in Oakland',
+             cloud_profile_picture_id: 'v1512374835/aravind-kumar-298640_clpoy1.jpg',
+             cloud_house_picture_id: 'v1512374828/tatiana-lapina-7683_uzwu8j.jpg')
 
 User.create!(email: 'hunter.johnson222001@gmail.com',
              password: 'openhouse',
@@ -125,7 +131,9 @@ User.create!(email: 'hunter.johnson222001@gmail.com',
              profile_picture: 'hunter-johnson-222001.jpg',
              house_picture: 'neonbrand-263851.jpg',
              capacity: '3',
-             title: 'Comfortable and equipped kitchen with working desk')
+             title: 'Comfortable and equipped kitchen with working desk',
+             cloud_profile_picture_id: 'v1512374827/hunter-johnson-222001_bsxahk.jpg',
+             cloud_house_picture_id: 'v1512374833/neonbrand-263851_keeilx.jpg')
 
 User.create!(email: 'kyle.peyton220268@gmail.com',
              password: 'openhouse',
@@ -154,7 +162,9 @@ User.create!(email: 'kyle.peyton220268@gmail.com',
              profile_picture: 'kyle-peyton-220268.jpg',
              house_picture: 'mounzer-awad-348688.jpg',
              capacity: '6',
-             title: 'Come co-work in my garage')
+             title: 'Come co-work in my garage',
+             cloud_profile_picture_id: 'v1512375560/kyle-peyton-220268_ryazq9.jpg',
+             cloud_house_picture_id: 'v1512375566/mounzer-awad-348688_pzdyhp.jpg')
 
 User.all.each do |user|
   path = Rails.root.join('app', 'assets', 'images', 'user_images', user.email)

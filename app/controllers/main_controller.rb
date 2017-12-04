@@ -8,8 +8,10 @@ class MainController < ApplicationController
     
     def search
         @full_location = params[:location][:search]
+        @all_users = User.where(:searchable => true)
+        
         @success = googleSearch
-        if not @success
+        if @success == false
             flash[:alert] = "Your location does not exist, so check out Oakland instead :)"
         end
         
