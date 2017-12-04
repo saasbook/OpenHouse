@@ -3,6 +3,35 @@ require 'spec_helper'
 
 describe ConversationsController do
   before(:each) do
+    @parameters = {email: 'new.johnson222001@gmail.com',
+                   password: 'openhouse',
+                   first_name: 'Hunter',
+                   last_name: 'Johnson',
+                   personal_description: "Hi, I'm Hunter!",
+                   billing_first_name: 'Hunter',
+                   billing_last_name: 'Johnson',
+                   billing_street_address: '4070 Opal Street',
+                   billing_city: 'Oakland',
+                   billing_state: 'CA',
+                   billing_zip_code: '94609',
+                   credit_card_number: '1234567812345678',
+                   expiration_date: '01/23',
+                   cvv: '123',
+                   home_street_address: '4070 Opal Street',
+                   home_city: 'Oakland',
+                   home_state: 'CA',
+                   home_zip_code: '94609',
+                   house_description: "Hi! I am a software engineer freelancing and working at home most of the time. I have a large and quiet kitchen with a dedicated working desk in a big, newly-refurbished Victorian house. Private, secluded, and with natural light. Five minutes' walk from MacArthur BART Station and parking is easy. It would suit around three people. Feel free to use the renovated and fully equipped kitchen! Otherwise, there are cafes and restaurants a short five minute walk away on Telegraph. Keep in touch should you need any further information!",
+                   searchable: true,
+                   price: "22",
+                   available_time_start: "09:00",
+                   available_time_end: "17:00",
+                   amenity_list: AmenityList.create!(wifi: true, coffee: true, computer_desk: true, kitchen_access: true, microwave: true),
+                   profile_picture: 'hunter-johnson-222001.jpg',
+                   house_picture: 'neonbrand-263851.jpg',
+                   capacity: '3',
+                   title: 'Comfortable and equipped kitchen with working desk'}
+                   
     @sender = User.create!(email: 'bob.johnson222001@gmail.com',
                  password: 'openhouse',
                  first_name: 'Hunter',
@@ -80,6 +109,21 @@ describe ConversationsController do
       expect(assigns(:conversation)).to eq(@conversation)
       expect(response).to redirect_to(conversation_messages_path(@conversation))
     end
-    
+  end
+  describe 'send request' do
+  #   it 'should use an existing conversation if one already exists' do
+  #     post :create, :user => @parameters
+		# 	@sender = User.find_by(:email => "new.johnson222001@gmail.com")
+  #     @conversation = Conversation.create!({sender_id: @sender.id, recipient_id: @recipient.id})
+  #     get :send_request, {id: @recipient.id}
+  #     expect(assigns(:conversation)).to eq(@conversation)
+  #   end
+    # it "should create new conversation if it doesn't exist" do
+    #   post :create, :user => @parameters
+    #   @sender = User.find_by(:email => "new.johnson222001@gmail.com")
+    #   get :send_request, {id: @recipient.id}
+    #   @conversation = Conversation.between(@sender.id, @recipient.id).first
+    #   expect(assigns(:conversation)).to eq(@conversation)
+    # end
   end
 end
