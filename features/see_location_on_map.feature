@@ -12,9 +12,6 @@ Background: user accounts are in the database
 
 Scenario: Click a search result and see its location
   Given I am on the home page
-  And I fill in "location_city" with "Berkeley"
+  And I fill in "search-bar" with "Berkeley"
   And I press "Search"
-  # When I click a post with id "link_2634 Virginia Street" # For future reference
-  # Then I should see "Personal Description" 
-  And I should see a map
-  And the location of "Ali" should be correct # Test not implemented correctly, see map_steps.rb
+  Then I should see "2634 Virginia Street"

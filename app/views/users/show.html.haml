@@ -43,10 +43,10 @@
   
   %div#user-page-left-box
     %h2= @user.title
-    - if @user.home_city != "" and @user.home_state != ""
-      %h4= @user.home_city + ", " + @user.home_state
-    - else
-      %h4= @user.home_city + @user.home_state
+    - if @user.home_city != "" and @user.home_state != "" and @user.home_street_address != ""
+      %h4.post-page-address= @user.home_street_address + ", " + @user.home_city + ", " + @user.home_state
+    - elsif @user.home_city == ""
+      %h4.post-page-address= @user.home_street_address
     
     %div#show-grey-border-box
 
