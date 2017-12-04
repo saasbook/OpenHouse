@@ -113,6 +113,8 @@ class UsersController < ApplicationController
             @user.cloud_profile_picture_id = preloaded.identifier
             puts(@user.cloud_profile_picture_id)
             @user.save!
+        else
+            flash[:notice] = "Please select an image first."
         end
         redirect_to request.referrer
     end
@@ -131,6 +133,8 @@ class UsersController < ApplicationController
             @user.cloud_house_picture_id = preloaded.identifier
             puts(@user.cloud_house_picture_id)
             @user.save!
+        else
+            flash[:notice] = "Please select an image first."
         end
         redirect_to request.referrer
     end
@@ -146,6 +150,8 @@ class UsersController < ApplicationController
             #@user.cloud_profile_picture_id = preloaded.identifier
             #puts(@user.cloud_profile_picture_id)
             @user.save!
+        else
+            flash[:notice] = "Please select an image first."
         end
         puts(@user.cloud_house_image_ids)
         redirect_to request.referrer

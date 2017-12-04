@@ -31,29 +31,29 @@
       
       %h5 Upload or change your profile picture:
       = form_tag update_profile_picture_users_path(@user), method: :update_profile_picture do
-        = cl_image_upload_tag :image_id
-        = submit_tag 'Upload'
+        = cl_image_upload_tag :image_id, id: "img_profile_picture"
+        = submit_tag 'Upload', id: "upload_profile_picture"
     
       -if @user.cloud_profile_picture_id
-        = cl_image_tag @user.cloud_profile_picture_id, :width => 300, :height => 200
+        = cl_image_tag @user.cloud_profile_picture_id, :width => 300, :height => 200,id: "profile_picture"
       
       <br>
       <br>
       
       %h5 Upload or change the picture of your residence:
       = form_tag update_house_picture_users_path(@user), method: :update_house_picture do
-        = cl_image_upload_tag :image_id
-        = submit_tag 'Upload'
+        = cl_image_upload_tag :image_id, id: "img_house_picture"
+        = submit_tag 'Upload', id: "upload_house_picture"
       
       <br>
       -if @user.cloud_house_picture_id
-        = cl_image_tag @user.cloud_house_picture_id, :width => 300, :height => 200
+        = cl_image_tag @user.cloud_house_picture_id, :width => 300, :height => 200, id: "house_picture"
 
       <br>
       %h5 Upload more pictures of your residence!
       = form_tag update_multiple_pictures_users_path(@user), method: :update_multiple_pictures do
-        = cl_image_upload_tag :image_id
-        = submit_tag 'Upload'
+        = cl_image_upload_tag :image_id, id: "img_more_picture"
+        = submit_tag 'Upload', id: "upload_more_picture"
   
       <br>
       -# if @user.house_images

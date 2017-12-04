@@ -26,9 +26,32 @@ When /^I click on an image/ do
     pending
 end
 
-When /^I upload "(.*)" as my "(.*)"/ do |file, type|
-    attach_file("user[#{type}]", Rails.root.join('app', 'assets', 'images', file))
-    click_button "upload_#{type}"
+When /^"(.*)" upload a picture as "(.*)"/ do |name, type|
+    user = User.find_by(first_name: name)
+    # should be a permanent cloudinary id
+    id = "hi4n78j6m/image/upload/v1510433109/sample.jpg"
+    if type == "profile_picture"
+        user.cloud_profile_picture_id = id
+    elsif type == "house_picture"
+        user.cloud_house_picture_id = id
+    else
+        user.cloud_house_image_ids.push(id)
+    end
+    user.save!
+end
+
+When /^"(.*)" upload another picture as "(.*)"/ do |name, type|
+    user = User.find_by(first_name: name)
+    # should be a permanent cloudinary id
+    id = "demo/image/upload/8jsb1xofxdqamu2rzwt9q.jpg"
+    if type == "profile_picture"
+        user.cloud_profile_picture_id = id
+    elsif type == "house_picture"
+        user.cloud_house_picture_id = id
+    else
+        user.cloud_house_image_ids.push(id)
+    end
+    user.save!
 end
 
 And /^I press the "(.*)" button/ do |name|
@@ -41,7 +64,36 @@ Then /^I should see an error with a message containing "([^"]+)"(?: and "([^"]+)
 end
 
 Then /the "(.*)" should be added to the post/ do |type|
-    expect(page).to have_xpath("//img", id: type)
+    # expect(page).to have_xpath("//img", id: type)
+    find("img", id: type)
+end
+
+Then /"(.*)" should have another picture as "(.*)"/ do |name, type|
+    # expect(page).to have_xpath("//img", id: type)
+    # First test, make sure the image exists
+    find("img", id: type)
+    
+    user = User.find_by(first_name: name)
+    
+    #the second permanent image
+    id = "demo/image/upload/8jsb1xofxdqamu2rzwt9q.jpg"
+    
+    success = false
+    if type == "profile_picture"
+        data = user.cloud_profile_picture_id
+    elsif type == "house_picture"
+        data = user.cloud_house_picture_id
+    else
+        user.cloud_house_image_ids.each do |data|
+            if data == id
+                success = true
+            end
+        end
+    end
+    # Second test, it should be id
+    if (not success) and (data != id)
+        fail(ArgumentError.new('Should be equal to id'))
+    end
 end
 
 Then /the file should not have been uploaded by "(.*)"/ do |e|
