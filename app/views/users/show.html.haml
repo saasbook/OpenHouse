@@ -84,8 +84,8 @@
 
 
   %div#user-page-right-box
-    - if @user.profile_picture and File.exists? Rails.root.join('app', 'assets', 'images', 'user_images', @user.email, @user.profile_picture)
-      = image_tag "user_images/#{@user.email}/#{@user.profile_picture}", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
+    -if @user.cloud_profile_picture_id
+      = cl_image_tag @user.cloud_profile_picture_id, :width => 100, :height => 100, :id => 'user-profile-img'
     - else
       = image_tag "user.png", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
     %h5= @user.first_name
