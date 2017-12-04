@@ -97,8 +97,6 @@ class UsersController < ApplicationController
     end
     
     def update_profile_picture
-        render :nothing => true
-        
         @user = current_user
         
         if params[:image_id].present?
@@ -114,13 +112,10 @@ class UsersController < ApplicationController
         else
             flash[:notice] = "Please select an image first."
         end
-        if request.referrer != nil
-            redirect_to request.referrer
-        end
+        redirect_to request.referrer || edit_user_path
     end
     
     def update_house_picture
-        render :nothing => true
         @user = current_user
         
         if params[:image_id].present?
@@ -136,13 +131,11 @@ class UsersController < ApplicationController
         else
             flash[:notice] = "Please select an image first."
         end
-        if request.referrer != nil
-            redirect_to request.referrer
-        end
+        
+        redirect_to request.referrer || edit_user_path
     end
     
     def update_multiple_pictures
-        render :nothing => true
         @user = current_user
         
         if params[:image_id].present?
@@ -154,8 +147,7 @@ class UsersController < ApplicationController
         else
             flash[:notice] = "Please select an image first."
         end
-        if request.referrer != nil
-            redirect_to request.referrer
-        end
+        
+        redirect_to request.referrer || edit_user_path
     end
 end
