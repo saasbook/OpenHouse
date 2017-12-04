@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'spec_helper'
+include SessionsHelper
 
 describe UsersController do
 	before(:each) do
@@ -213,6 +214,29 @@ describe UsersController do
 			session[:user_id] = @user.id
 			get :destroy, :id => @user.id
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)))
+		end
+    it 'renders the right page after a skip' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+      log_in(@user)
+      get :skip
+      response.should redirect_to(user_path(@user))
+    end
+		it 'allows you to edit amenities' do
+		  post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+      controller.params[:user] = @user
+      controller.params[:amenity_list] = {wifi: true}
+			patch :update, :id => @user.id , :user => @parameters
+			expect(flash[:notice]).to eq("Your account has been updated.")
+		end
+		it 'allows you to set abailable times' do
+		  post :create, :user => @parameters
+			@user = User.find_by(:email => "sodapop@pepsi.com")
+      controller.params[:user] = @user
+      controller.params[:user][:available_time_start] = "12:00"
+      controller.params[:user][:available_time_end] = "12:00"
+			patch :update, :id => @user.id , :user => @parameters
+			expect(flash[:notice]).to eq("Your account has been updated.")
 		end
 	end
 end
