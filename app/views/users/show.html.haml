@@ -104,13 +104,16 @@
           - while i <= @user.capacity
             %option{:value => i} #{i}
             - i += 1
-      - if @user != @current_user
+      - if @current_user == nil
+        %div
+          %button.btn.btn-warning#reserve-button{:value => 'Reserve', :onclick => "alert('You must be logged in to make a reservation.')"}Reserve
+      - elsif @user != @current_user
         %div
           %a{href: send_request_path(@user)}
             %button.btn.btn-warning#reserve-button{:value => 'Reserve', :onclick => "alert('Your request has been sent.')"}Reserve
       - else
         %div
-          %button.btn.btn-warning#reserve-button{:value => 'Reserve'}Reserve
+          %button.btn.btn-warning#reserve-button{:value => 'Reserve', :onclick => "alert('This button allows other users to reserve your space.')"}Reserve
 
 -if @success == false
   %div.center
