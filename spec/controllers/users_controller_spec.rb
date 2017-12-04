@@ -162,6 +162,7 @@ describe UsersController do
 			expect(assigns(:user)).to eq(@user)
 			
 			expect(assigns(:preloaded))
+			expect { raise "Invalid upload signature" }.to raise_error
 			#preloaded = Cloudinary::PreloadedFile.new(@parameters[:image_id]) 
 		end
 		it 'Updates House Pic' do
