@@ -85,16 +85,12 @@ describe MainController do
         state: "CA"
       }
       get :search, :location => location
-      expect(flash[:notice]).to eq("Your location does not exist, so check out Oakland instead :)")
+      expect(flash[:alert]).to eq("Your location does not exist, so check out Oakland instead :)")
     end
     it 'yells at you when there are no nearby locations' do
-      location = {
-        address: "5471 San Patricio Drive",
-        city: "Santa Barbara",
-        state: "CA"
-      }
+      location = {search: "Santa Barbara"}
       get :search, :location => location
-      expect(flash[:notice]).to eq("No spaces were found nearby. Zoom out with the map to find the closest spaces. If you want to learn more about those spaces, perform a new search on that city.")
+      expect(flash[:alert]).to eq("No spaces were found nearby. Zoom out with the map to find the closest spaces. If you want to learn more about those spaces, perform a new search on that city.")
     end
   end
     
