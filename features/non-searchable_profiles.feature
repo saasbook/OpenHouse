@@ -20,6 +20,7 @@ Scenario: Make account searchable
     Then I check "searchable"
     Then I press "Save Changes"
     And I am on the homepage
+    And I fill in "search-bar" with "2700 Mars"
     And I press "Search"
     Then I should see "2398 Telegraph Avenue"
 
