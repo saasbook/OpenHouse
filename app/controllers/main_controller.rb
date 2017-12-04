@@ -7,7 +7,6 @@ class MainController < ApplicationController
     
     def search
         @full_location = params[:location][:search]
-        
         # Cheesing our way into getting search results since 2017
         @all_users = User.where(:searchable => true)
         
