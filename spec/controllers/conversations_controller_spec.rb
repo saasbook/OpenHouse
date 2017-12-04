@@ -89,6 +89,7 @@ describe ConversationsController do
                  house_picture: 'mounzer-awad-348688.jpg',
                  capacity: '6',
                  title: 'Come co-work in my garage')
+    request.env["HTTP_REFERER"] = "where_i_came_from"
   end
   describe 'show conversations' do
     it 'shows the main conversations page' do
@@ -111,19 +112,28 @@ describe ConversationsController do
     end
   end
   describe 'send request' do
-  #   it 'should use an existing conversation if one already exists' do
-  #     post :create, :user => @parameters
-		# 	@sender = User.find_by(:email => "new.johnson222001@gmail.com")
-  #     @conversation = Conversation.create!({sender_id: @sender.id, recipient_id: @recipient.id})
-  #     get :send_request, {id: @recipient.id}
-  #     expect(assigns(:conversation)).to eq(@conversation)
-  #   end
-    # it "should create new conversation if it doesn't exist" do
-    #   post :create, :user => @parameters
-    #   @sender = User.find_by(:email => "new.johnson222001@gmail.com")
-    #   get :send_request, {id: @recipient.id}
-    #   @conversation = Conversation.between(@sender.id, @recipient.id).first
-    #   expect(assigns(:conversation)).to eq(@conversation)
-    # end
+    it 'should use an existing conversation if one already exists' do
+      session[:user_id] = @sender.id
+      @conversation = Conversation.create!({sender_id: @sender.id, recipient_id: @recipient.id})
+      get :send_request, {id: @recipient.id}
+      expect(assigns(:conversation)).to eq(@conversation)
+      expect(assigns(:id)).to eq((@sender.id + 1).to_s) # Not sure why this is...deals with messages?
+    end
+    it "should create new conversation if it doesn't exist" do
+      session[:user_id] = @sender.id
+      get :send_request, {id: @recipient.id}
+      @conversation = Conversation.between(@sender.id, @recipient.id).first
+      expect(assigns(:conversation)).to eq(@conversation)
+    end
+    it "should send a message" do
+      session[:user_id] = @sender.id
+      get :send_request, {id: @recipient.id}
+      @conversation = Conversation.between(@sender.id, @recipient.id).first
+      @message = Message.find_by({body: "I would like to reserve your place.", user_id: @sender.id})
+      expect(assigns(:message)).to eq(@message)
+      expect(assigns(:message_params)).to eq({body: "I would like to reserve your place.", user_id: @sender.id})
+      expect(flash[:notice]).to match("Your request has been sent.")
+      expect(response).to redirect_to(request.env["HTTP_REFERER"])
+    end
   end
 end
