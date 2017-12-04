@@ -160,6 +160,9 @@ describe UsersController do
 			session[:user_id] = @user.id
 			post :update_profile_picture, :id => @user.id, :user => @parameters
 			expect(assigns(:user)).to eq(@user)
+			
+			expect(assigns(:preloaded))
+			#preloaded = Cloudinary::PreloadedFile.new(@parameters[:image_id]) 
 		end
 		it 'Updates House Pic' do
 			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
