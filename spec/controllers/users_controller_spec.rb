@@ -153,6 +153,14 @@ describe UsersController do
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @updated_user.email, "")))
 		end
 	end
+	describe 'Upload cloud images' do
+		it 'Update Profile Pic' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+			session[:user_id] = @user.id
+			post :update_profile_picture, :id => @user.id
+			expect(assigns(:user)).to eq(@user)
+		end
+	end
 	describe 'Edit user' do
 		it 'sets the user' do
 			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
