@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'spec_helper'
+include SessionsHelper
 
 describe UsersController do
 	before(:each) do
@@ -214,6 +215,12 @@ describe UsersController do
 			get :destroy, :id => @user.id
 			expect(!File.exists?(Rails.root.join('app', 'assets', 'images', 'user_images', @user.email)))
 		end
+    it 'renders the right page after a skip' do
+			@user = User.find_by(:email => "buzz@toinfinityandbeyond.yahweh.co.id")
+      log_in(@user)
+      get :skip
+      response.should redirect_to(user_path(@user))
+    end
 	end
 end
 

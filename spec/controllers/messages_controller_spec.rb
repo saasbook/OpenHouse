@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'spec_helper'
+include SessionsHelper
 
 describe MessagesController do
   before(:each) do
@@ -9,6 +10,7 @@ describe MessagesController do
   end
   describe 'show messages' do
     it 'shows the messages when you click on a conversation' do
+      log_in(@user)
       session[:user_id] = 1;
       get :index, {conversation_id: 1}
       expect(response).to render_template(:index)
