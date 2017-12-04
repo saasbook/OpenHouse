@@ -7,7 +7,7 @@ Feature: User can click on search results' profile
 Background: user accounts are in the database
   Given the following accounts exist:
     | email                   | password   | home_street_address | home_city     | home_state  | home_zip_code | house_description   | first_name | last_name | credit_card_number | expiration_date | cvv | searchable | price |
-    | aladdin@agrabah.com     | 12341001   | 101 Agrabah Dessert | Agrabah       | ME          | 10101         | Big and extravagant | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 | true       | 16    |
+    | aladdin@agrabah.com     | 12341001   | 3845 Market Street  | Oakland       | CA          | 94608         | Big and extravagant | Ali        | Ababwa    | 1234567812345678   | 25-Nov-2300     | 101 | true       | 16    |
     | terminator@future.com   | password   | 1234 Robots Factory | New Berkeley  | NCA         | 76767         | Compact             | Terminator | T-800     | 2222222222222222   | 26-Oct-2017     | 222 | true       | 200   |
     | shyguy@minion.koopa.com | veryshyguy | Bowser's Castle     | Dark Land     | MK          | 67676         | Non-existent        | Shy        | Guy       | 0020030040050060   | 29-Feb-2020     | 676 |            |       |
     | MISSINGNO@blorp.com     | ihavenot   |                     | Pokemon Tower |             |               |                     |            |           |                    |                 |     | true       |       | 
@@ -19,14 +19,14 @@ Background: user accounts are in the database
 #   Then I should see "1234 Robots Factory"
 #   Then I should see "Pokemon Tower"
 #   Then I should not see "Bowser's Castle"
-  
+
+# Now that search actually considers distance, we need real adresses.
 Scenario: user can view other user's profile
   Given I am on the home page
-  And I fill in "search-bar" with "Agrabah"
+  And I fill in "search-bar" with "Oakland"
   When I press "Search"
-  And I click a post with id "link_101 Agrabah Dessert"
-  Then I should see "Hosting Information"
-  And I should see "Personal Description"
+  And I click a post with id "link_3845 Market Street"
+  Then I should be on the user profile page for "aladdin@agrabah.com"
   And I should not see "Edit Profile"
 
 # Scenario: using the search bar to search (note: not tested heavily because we kinda want to change this behavior later)
