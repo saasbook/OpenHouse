@@ -55,8 +55,10 @@ Here is a link to a [video][3] of the app being used.
     `bundle install`
 
 6. Start the Postgres SQL server
-
+    
     `sudo service postgresql restart`
+    OR (depends on your setup)
+    `pg_ctl -D /usr/local/var/postgres start`
 
 7. Set up the database
 
@@ -75,7 +77,7 @@ Here is a link to a [video][3] of the app being used.
 8. Run the app
 
     `sudo screen -d -m rails s`
-    or 
+    OR (depends on your setup)
     `rails server`
 
 9. Access the app via your web browser (localhost:3000 or whatever your Cloud9 port and ip are).
