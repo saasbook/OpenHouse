@@ -1,0 +1,113 @@
+%link{:href => "css/homepage.css", :rel => "stylesheet"}/
+%body{:style => 'overflow-x: hidden;'}
+
+%section.content-section-b{:style => 'border-bottom: none;margin-top: 70px'}
+  .container{:style => 'padding-left: 5px;padding-right:0px;'}
+    .row{:style => 'margin-right: 10px; margin-left: -30px'}
+      .col-md-6
+        = image_tag "/assets/about1.jpg", height: '400', weight: '600', hspace: '0', vspace: '20'
+      .col-md-6
+        .boxed
+          %h2.section-heading{:style => 'font-size: 22px'}
+            Welcome
+          .intro-divider
+          %br
+          %p.lead{:style => 'font-size: 20px'}
+            Deeply 
+            %span{:style => 'color:#2FB2C2;'} passionate
+            about the city and its
+            %br
+            fascinating residents.
+            %br>
+            %span{:style => 'color:#2FB2C2;'} We love it
+            when people are happy and 
+            %br>
+            blossom.
+            %br>
+            Hard core 
+            %span{:style => 'color:#2FB2C2;'} optimistics. 
+            %br>
+            %br
+            %span{:style => 'font-weight: bold;'} Join us !
+
+
+%br
+%br
+%p{:style => 'padding-left: 50px;font-size: 20px;'} Our crazy adventure starts here.
+%br
+%p{:style => 'font-weight: bold;padding-left: 50px;font-size: 20px;'} We believe that cities are wonderful playgrounds full of opportunities for all. 
+%br
+%br
+%section.content-section-b{:style => 'border-bottom: none;border-top:none;'}
+  .container{:style => 'padding-left: 5px;padding-right:0px;'}
+    .row{:style => 'margin-right: -10px; margin-left: -50px'}
+      .col-md-6
+        .boxed
+          %h2.section-heading{:style => 'font-size: 22px'}
+            Why home offices
+          %p.lead{:style => 'font-size: 20px'}
+            Technology has
+            %span{:style => 'color:#2FB2C2;'} transformed the way we work.
+            %br
+            %span{:style => 'font-weight: bold;'} 1 in 3 workers
+            in the US is now freelancing. 
+            %br>
+            Telecommute has 
+            %span{:style => 'font-weight: bold;'} more than doubled
+            over the past 5 years. 
+            %br
+            It has become the preferred professional choice of
+            %span{:style => 'font-weight: bold;'} millennials.
+            %br
+            %br
+            Half of the world population lives in cities: 
+            %br
+            %span{:style => 'color:#2FB2C2;'}intensification of space
+            is critical. 
+            %br>
+            Home offices increase the use of space while 
+            %br>
+            traditional offices stay empty at night.
+      .col-md-6
+        = image_tag "/assets/about2.jpg", height: '400', weight: '600',width: '600', hspace: '0', vspace: '20'
+
+%p{:style => 'font-weight: bold;padding-left: 50px;font-size: 20px;'} What makes OpenHouse unique? 
+%br
+%p{:style => 'padding-left: 50px;font-size: 20px;'} We believe in the power of the sharing and circular economy.	
+%br
+%br
+
+%br
+.row{:style => 'padding-left: 50px'}
+  .col-sm-4.my-4
+    .card
+      = image_tag "/assets/about3.png", height: '200', weight: '60', hspace: '0', vspace: '0'
+      .card-body{:style => 'font-size:18px;'}
+        %br
+        %h4.card-title{:style => 'color:#2FB2C2;font-size:20px;'} Our vision
+        %br
+        %p.card-text Matching human potential with underutilized physical assets.
+      .card-footer
+  .col-sm-4.my-4
+    .card
+      = image_tag "/assets/about4.png", height: '200', weight: '60', hspace: '0', vspace: '0'
+      .card-body{:style => 'font-size:18px;'}
+        %br
+        %h4.card-title{:style => 'color:#2FB2C2;font-size:20px;'} Our impact
+        %br
+        %p.card-text Reduce commute, lower rents, increase local opportunities.
+      .card-footer
+  .col-sm-4.my-4
+    .card
+      = image_tag "/assets/about5.png", height: '200', weight: '60', hspace: '0', vspace: '0'
+      .card-body{:style => 'font-size:18px;'}
+        %br
+        %h4.card-title{:style => 'color:#2FB2C2;font-size:20px;'} Our commitment
+        %br
+        %p.card-text Work hard towards developing more affordable and enjoyable cities.
+      .card-footer
+/ /.row
+%br
+%br
+%br
+= link_to "Back to Main Page", root_path, style: 'font-size: 16px;color:#79b8d1;font-weight: bold;padding-left: 50px;', class: 'css_class', align: "right"

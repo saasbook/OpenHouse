@@ -1,0 +1,99 @@
+%h3{:class => 'header-search'} Search Results
+  
+%div{:id => 'map'}
+
+:coffeescript
+  class @CustomMarkerBuilder extends Gmaps.Google.Builders.Marker
+    create_marker: ->
+      options = _.extend @marker_options(), @rich_marker_options()
+      @serviceObject = new RichMarker options
+
+    rich_marker_options: ->
+      marker = document.createElement("div")
+      marker.setAttribute('class', 'custom_marker_content')
+      marker.innerHTML = this.args.custom_marker
+      { content: marker }
+
+    create_infowindow: ->
+      return null unless _.isString @args.custom_infowindow
+
+      boxText = document.createElement("div")
+      boxText.setAttribute("class", 'custom_infowindow_content')
+      boxText.innerHTML = @args.custom_infowindow
+      @infowindow = new InfoBox(@infobox(boxText))
+
+    infobox: (boxText)->
+      content: boxText
+      pixelOffset: new google.maps.Size(-140, 0)
+      boxStyle:
+        width: "280px"
+
+:javascript
+  //Check ruby api and attempt to pull valid coordinates
+  lat = '#{@curr_loc_lat}';
+  lng = '#{@curr_loc_lng}';
+  nearby = '#{@nearby}'
+  locs_nearby = JSON.parse('#{@nearby_locations.to_json}'.replace(/&quot;/g,'"'));
+  
+  
+  // I think it works up to now
+  
+  
+  handler = Gmaps.build('Google', { builders: { Marker: CustomMarkerBuilder} });
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  
+    nearby_markers = [];
+    for (var i = 0; i < locs_nearby.length; i++) {
+      console.log(locs_nearby[i][4])
+      nearby_markers.push({
+        lat: parseFloat(locs_nearby[i][0]),
+        lng: parseFloat(locs_nearby[i][1]),
+        custom_marker: "$" + locs_nearby[i][2],
+        custom_infowindow: "<a href='" +  locs_nearby[i][4] + "' target='_blank'>"  + locs_nearby[i][3] + "</a>"
+      });
+    }
+    if (nearby_markers.length > 0) {
+      markers = handler.addMarkers(nearby_markers);
+      if (nearby == "false") {
+        center = handler.addMarker({
+          lat: lat,
+          lng: lng,
+          custom_marker: "",
+        });
+        handler.bounds.extendWith(center);
+        handler.map.centerOn(center);
+        handler.getMap().setZoom(9);
+      } else {
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      }
+    }
+    else {
+      center = handler.addMarker({
+        lat: lat,
+        lng: lng,
+        custom_marker: "",
+      });
+      handler.bounds.extendWith(center);
+      handler.map.centerOn(center);
+      handler.getMap().setZoom(18);
+    }
+  });
+
+<br>
+
+%div#listings-box
+  %p.center= flash[:alert] if flash[:alert]
+  - if @users != nil
+    - @users.each do |user|
+      %a.listing-link{:value => user.home_street_address, :href => user_path(user), :id =>"link_#{user.home_street_address}", :target => "_blank"}
+        %div.listing
+          - if user.cloud_house_picture_id
+            %td= cl_image_tag user.cloud_house_picture_id, :height => 150, :width => 100, :weight => 20, :hspace => 150, :vspace => 10
+          - else
+            %td= image_tag "house.jpg", height: '150', weight: '20',hspace: '150', vspace: '10', id: :house_picture
+          %div.listing-details
+            %h5.listing-location.listing-details-text= user.home_city.to_s + ", " + user.home_state.to_s
+            %h4.listing-address.listing-details-text= user.home_street_address
+            %h4.listing-price.listing-details-text= "$" + user.price.to_s + "/day"
+            %h4.listing-details-text= "Available: " + range_to_ampm(user.available_time)

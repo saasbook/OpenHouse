@@ -1,14 +1,140 @@
-%h1= "USER " + @user.first_name + " " + @user.last_name
+%div.show-box
+  - if @user.cloud_house_image_ids != []
+    #myCarousel.carousel.slide{"data-ride" => "carousel"}
+      %ol.carousel-indicators
+        %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+        - @index = 0
+        - @user.cloud_house_image_ids.each do |image|
+          %li{"data-slide-to" => "@index.to_s", "data-target" => "#myCarousel"}
+          - @index += 1
+      .carousel-inner
+        - @index = 0
+        - if @user.cloud_house_picture_id
+          .item.active
+            = cl_image_tag @user.cloud_house_picture_id, :width => 200, :height => 600
+          - active = true
+          - @index += 1
+        - else
+          - active = false
+        - @user.cloud_house_image_ids.each do |image|
+          - if active == false
+            .item.active
+              = cl_image_tag image, :width => 300, :height => 200, :id => "more_image_#{@index}"
+            - active = true
+          - else 
+            .item
+              = cl_image_tag image, :width => 300, :height => 200, :id => "more_image_#{@index}"
+          - @index += 1
+          
+      %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
+        %span.glyphicon.glyphicon-chevron-left
+        %span.sr-only Previous
+      %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
+        %span.glyphicon.glyphicon-chevron-right
+        %span.sr-only Next
+  
+  %br
+  %p.center= flash[:notice] if flash[:notice]
+  - if @user.cloud_house_picture_id
+    = cl_image_tag @user.cloud_house_picture_id, :width => 300, :height => 550
+  - else
+    = image_tag "house.jpg", height: '550', weight: '20', hspace: '150', vspace: '10', id: :house_picture
+  %br
+  
+  %div#user-page-left-box
+    %h2= @user.title
+    - if @user.home_city != "" and @user.home_state != "" and @user.home_street_address != "" and @user.home_zip_code != ""
+      %h4.post-page-address= @user.home_street_address + ", " + @user.home_city + ", " + @user.home_state + ", " + @user.home_zip_code
+    - elsif @user.home_city == ""
+      %h4.post-page-address= @user.home_street_address
+    
+    %div#show-grey-border-box
 
-%p= "EMAIL: " + @user.email
+      - if @user.capacity != nil
+        %div.show-details-box
+          <svg id="guest-icon" enable-background="new 0 0 59.8 56.1" version="1.1" viewBox="0 0 59.8 56.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+          <path d="m38 9.2c0-5 3.9-9.1 8.8-9.1s8.8 4.1 8.8 9.1-3.9 9.1-8.8 9.1c-4.9-0.1-8.8-4.1-8.8-9.1zm14.5 10.5h-11.4c-0.4 0-0.9 0-1.3 0.1 0.1 0.5 0.1 1 0.1 1.6 0 3.8-2 7.1-5 8.9-0.2 0.1-0.1 0.5 0.1 0.5h0.5c4.8 0 8.7 4 8.7 8.8v4.3h14.7c0.5 0 0.9-0.4 0.9-1v-15.6c0.2-4.2-3.2-7.6-7.3-7.6zm-39.3-1.5c4.9 0 8.8-4.1 8.8-9.1s-3.9-9.1-8.8-9.1-8.8 4.1-8.8 9.1c0 5.1 3.9 9.1 8.8 9.1zm11.1 12.5h0.5c0.2 0 0.3-0.3 0.1-0.5-3-1.8-5-5.1-5-8.9 0-0.5 0-1.1 0.1-1.6-0.4-0.1-0.8-0.1-1.3-0.1h-11.2c-4.2 0-7.5 3.4-7.5 7.6v15.6c0 0.5 0.4 1 0.9 1h14.7v-4.3c0-4.8 3.9-8.8 8.7-8.8zm5.7-0.2c4.9 0 8.8-4.1 8.8-9.1s-3.9-9.1-8.8-9.1-8.8 4.1-8.8 9.1 3.9 9.1 8.8 9.1zm5.7 1.5h-11.4c-4.2 0-7.5 3.4-7.5 7.6v15.5c0 0.5 0.4 1 0.9 1h24.5c0.5 0 0.9-0.4 0.9-1v-15.5c0.1-4.2-3.3-7.6-7.4-7.6z"/>
+          </svg>
+          %h4#guest-capacity= @user.capacity.to_s + ' Guests'
+    
+    %div.show-details-border#house-description
+      %div.show-details-header-left#house-description-header Description
+      %p.show-details-right.show-right-text#house-description-text= @user.house_description
+      
+    %div.show-details-border#amenities
+      %div.show-details-header-left#amenities-header Amenities
+      %div.show-details-right#amenities-right
+        - @user.amenity_list.attributes.each do |amenity|
+          - unless amenity.first.include? 'id'
+            - if @user.amenity_list[amenity[0]]
+              %div.amenity-box
+                = image_tag "amenity_icons/#{amenity[0]}", width: '20', weight: '20',hspace: '10', vspace: '10'
+                - if amenity[0] == 'computer_desk'
+                  Computer Desk
+                - elsif amenity[0] == 'kitchen_access'
+                  Kitchen Access
+                - elsif amenity[0] == 'art_space'
+                  Art Space
+                - elsif amenity[0] == 'outdoor_space'
+                  Outdoor Space
+                - elsif amenity[0] == 'tv_screen'
+                  TV Screen
+                - else
+                  = amenity[0].capitalize
 
-%p Address:
-%ul 
-    %li 
-        = @user.billing_street_address 
-    %li 
-        = @user.billing_city + ", " + @user.billing_state + ", " + @user.billing_zip_code
 
-%br
-= link_to "Edit Profile", edit_user_path
-= link_to "Home", root_path
+  %div#user-page-right-box
+    -if @user.cloud_profile_picture_id
+      = cl_image_tag @user.cloud_profile_picture_id, :width => 100, :height => 100, :id => 'user-profile-img'
+    - else
+      = image_tag "user.png", height: '100', width: '100', weight: '20', :id => 'user-profile-img'
+    %h5= @user.first_name
+    %h3#price-tag= '$' + @user.price.to_s + '/day'
+    %div#reservation-box  
+      %h4 Available
+      %div#time-text= +(range_to_ampm(@user.available_time || ''))
+      %h4 Reserve
+      %input#available-time-box{type: "time", name: "user[available_time_start]", value: @user.available_time_start}
+      to
+      %input#available-time-box{type: "time", name: "user[available_time_end]", value: @user.available_time_end}
+      - if @user.capacity != nil
+        %h4 Guests
+        %select#guest-select
+          - i = 1
+          - while i <= @user.capacity
+            %option{:value => i} #{i}
+            - i += 1
+      - if @current_user == nil
+        %div
+          %button.btn.btn-warning#reserve-button{:value => 'Reserve', :onclick => "alert('You must be logged in to make a reservation.')"}Reserve
+      - elsif @user != @current_user
+        %div
+          %a{href: send_request_path(@user)}
+            %button.btn.btn-warning#reserve-button{:value => 'Reserve', :onclick => "alert('Your request has been sent.')"}Reserve
+      - else
+        %div
+          %button.btn.btn-warning#reserve-button{:value => 'Reserve', :onclick => "alert('This button allows other users to reserve your space.')"}Reserve
+
+-if @success == false
+  %div.center
+    %p= "The location was not found."
+
+%div.center#map-show
+:javascript
+  //Check ruby api and attempt to pull valid coordinates
+  curr_loc_lat = '#{@curr_loc_lat}';
+  curr_loc_lng = '#{@curr_loc_lng}';
+  
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map-show'}}, function(){
+  
+  // Add initial marker to center selected location
+    center = handler.addMarker({
+      lat: curr_loc_lat,
+      lng: curr_loc_lng
+    });
+    handler.bounds.extendWith(center);
+    handler.map.centerOn(center);
+    handler.getMap().setZoom(18);
+  });
+  

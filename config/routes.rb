@@ -60,11 +60,37 @@ Rails.application.routes.draw do
   
   
   get '/', to: 'main#show', as: 'root'
+  get '/search', to: 'main#search', as: 'search'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get 'sessions/new'
+  get '/users/skip', to: 'users#skip', as: "skip"
   get '/users/edit', to: 'users#edit', as: 'edit_user'
-  get '/users/show', to: 'users#show', as: 'show_user'
-  resources :users, :except => [:edit, :show]
+  # get '/users/show', to: 'users#show', as: 'show_user'
+  get '/users/new_billing', to: 'users#new_billing', as: 'new_user_billing'
+  get '/users/new_host', to: 'users#new_host', as: 'new_user_host'
+  patch '/users/new_billing/:id', to: 'users#update_billing', as: 'update_user_billing'
+  patch '/users/new_host/:id', to: 'users#update_host', as: 'update_user_host'
+  get '/us', to: 'main#us', as: 'us'
+  get '/about', to: 'main#about', as: 'about'
+  resources :users, :except => [:edit]
+  resources :conversations do
+    resources :messages, :except => [:new]
+  end
+  get '/request/:id', to: 'conversations#send_request', as: 'send_request'
+
+  #patch '/users/:id', to: 'users#update_house_picture', as: 'update_house_picture'
+  #patch '/users/:id', to: 'users#update_house_picture', as: 'update_house_picture'
+  
+  resources :users, :except => [:edit]
+  
+  # Used to differentiate between updating house and profile pictures
+  resources :users do
+    collection do
+      post '/update_house_picture/:id', to: 'users#update_house_picture', as: 'update_house_picture'
+      post '/update_profile_picture/:id', to: 'users#update_profile_picture', as: 'update_profile_picture'
+      post '/update_multiple_pictures/:id', to: 'users#update_multiple_pictures', as: 'update_multiple_pictures'
+    end
+  end
 end

@@ -1,0 +1,125 @@
+= cloudinary_js_config 
+:javascript
+  $(function() {
+    if($.fn.cloudinary_fileupload !== undefined) {
+      $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+    }
+  });
+:javascript
+  $(document).ready(function() {
+    $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {  
+      $('.preview').html(
+        $.cloudinary.image(data.result.public_id, 
+          { format: data.result.format, version: data.result.version, 
+            crop: 'fill', width: 200, height: 150 })
+      );    
+      $('.image_public_id').val(data.result.public_id);    
+      return true;
+    });
+    
+    $('.cloudinary-fileupload').fileupload('option', 'replaceFileInput', false);
+  })
+
+%div.hosting-box
+  %p.center= flash[:notice] if flash[:notice]
+  %h2.center Hosting Information
+  <br>
+  
+  %p If you would like to host, please fill out the following information.
+  %p Otherwise, click <em>Skip</em> to proceed to use the site.
+  
+  
+  <br>
+  %h5 Please upload a profile picture:
+  = form_tag update_profile_picture_users_path(@user), method: :update_profile_picture do
+    = cl_image_upload_tag :image_id
+    = submit_tag 'Upload'
+
+  <br>
+  -if @user.cloud_profile_picture_id
+    = cl_image_tag @user.cloud_profile_picture_id, :height => 150, :width => 125, :weight => 20, :hspace => 150, :vspace => 10, :id => :profile_picture
+  -else
+    = image_tag "user.png", height: '150', weight: '20',hspace: '400', vspace: '10', id: :profile_picture
+
+
+  <br>
+  %h5 Please upload a picture of residence:
+  = form_tag update_house_picture_users_path(@user), method: :update_house_picture do
+    = cl_image_upload_tag :image_id
+    = submit_tag 'Upload'
+
+
+  <br>
+  - if @user.cloud_house_picture_id
+    = cl_image_tag @user.cloud_house_picture_id, :height => 150, :width => 125, :weight => 20, :hspace => 150, :vspace => 10, :id => :house_picture
+  - else
+    = image_tag "house.jpg", height: '150', weight: '20',hspace: '400', vspace: '10', id: :house_picture
+  
+  <br>
+
+  %h5 Upload more pictures of your residence!
+  = form_tag update_multiple_pictures_users_path(@user), method: :update_multiple_pictures do
+    = cl_image_upload_tag :image_id
+    = submit_tag 'Upload'
+
+
+  <br>
+  -if @user.cloud_house_image_ids
+    - @user.cloud_house_image_ids.each do |image|
+      = cl_image_tag image, :height => 150, :width => 125, :weight => 20, :hspace => 150, :vspace => 10
+  <br>
+
+  = form_tag update_user_host_path(@user), :method => :patch do
+  
+    = label :user, :home_street_address, "Street Address"
+    = text_field :user, :home_street_address, value: flash[:home_street_address]
+    <br>
+    = label :user, :home_city, "City"
+    = text_field :user, :home_city, value: flash[:home_city]
+    <br>
+    = label :user, :home_state, "State"
+    = text_field :user, :home_state, value: flash[:home_state]
+    <br>
+    = label :user, :home_zip_code, "Zip"
+    = text_field :user, :home_zip_code, value: flash[:home_zip_code]
+    <br>
+    = label :user, :house_description, "Description"
+    = text_field :user, :house_description, value: flash[:house_description]
+    <br>
+    = label :user, :title, "Title (i.e. \"Cozy flat\")"
+    = text_field :user, :title, value: flash[:title]
+    <br>
+    = label :user, :capacity, "Capacity"
+    = text_field :user, :capacity, value: flash[:capacity]
+    people
+    <br>
+    = label :user, :price, "Price (per day)"
+    = text_field :user, :price, value: flash[:price]
+    <br>
+    = label :user, :available_time, "Times Available"
+    %input{type: "time", name: "user[available_time_start]", value: "00:00"}
+    to
+    %input{type: "time", name: "user[available_time_end]", value: "00:00"}
+    <br>
+    
+    %p Please check all the amenities you offer:
+    %table
+      %tbody
+        - @user.amenity_list.attributes.each do |amenity|
+          - unless amenity.first.include? 'id'
+            %tr
+              %td= check_box :amenity_list, amenity[0], checked: @user.amenity_list[amenity[0]]
+              %td= image_tag "amenity_icons/#{amenity[0]}", height: '20', weight: '20',hspace: '10', vspace: '10'
+              %td= amenity[0]
+    <br>
+
+    = label :user, :searchable, "Would you like to host? Checking this box makes your location searchable."
+    = check_box :user, :searchable
+    <br>
+    <br>
+    = submit_tag 'Submit'
+  
+  
+  
+  <br>
+  = link_to "Skip", skip_path  

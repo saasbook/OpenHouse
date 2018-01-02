@@ -1,0 +1,40 @@
+<br>
+<br>
+<br>
+<br>
+<style>
+p {
+    margin: 70px;
+    font-size: 20px;
+    border: 1px solid #000000;
+    padding: 15px;
+}
+h1{
+  margin: 70px;
+}
+
+</style>
+<div class="ui segment">
+  <h1>Mailbox</h1>
+
+  <div class="ui list">
+    
+    <p class="item">
+      
+      <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
+        <% end %>
+        <br>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+<!-- Source: https://medium.com/@danamulder/tutorial-create-a-simple-messaging-system-on-rails-d9b94b0fbca1 
+      Look here to add additional messaging functionality -->

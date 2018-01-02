@@ -1,0 +1,14 @@
+production:
+  cloud_name: "hi4n78j6m"
+  api_key: "137968996311369"
+  api_secret: "QdYmbHfaGmxiiJy1rbTn0HvwUq4"
+  
+development:
+  cloud_name: "hi4n78j6m"
+  api_key: "137968996311369"
+  api_secret: "QdYmbHfaGmxiiJy1rbTn0HvwUq4"
+  
+test:
+  cloud_name: "hi4n78j6m"
+  api_key: "137968996311369"
+  api_secret: "QdYmbHfaGmxiiJy1rbTn0HvwUq4"
